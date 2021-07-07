@@ -38,9 +38,7 @@ const App = () => {
   const [showAggregation, setShowAggregation] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const [index, setIndex] = useState(0);
-  
-   
+  const [index, setIndex] = useState(0); 
 
   let displayRestaurants = false;
   let topPicks = [];
