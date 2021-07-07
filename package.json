@@ -1,0 +1,40 @@
+{
+  "name": "whatscooking",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^6.2.0",
+    "@tailwindcss/postcss7-compat": "^2.1.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "^9.8.6",
+    "axios": "^0.21.1",
+    "mapbox-gl": "^2.2.0",
+    "postcss": "^7.0.35",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-map-gl": "^6.1.14",
+    "react-rating-stars-component": "^2.2.0",
+    "react-scripts": "4.0.3",
+    "react-select": "^4.3.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11"
+  ]
+}

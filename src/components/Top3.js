@@ -1,0 +1,37 @@
+import React from 'react'
+import TopCard from './TopCard';
+
+const Top3 = ({restaurants, setShowMenu, setIndex, functionScore, setFunctionScore}) => {
+    return (
+        <div className="flex flex-col bg-white rounded">
+        <div className="flex items-center justify-center py-4 mb-0 font-bold text-white rounded bg-san-juan-500">Top Picks!</div>
+        <div className="pt-4 pl-2 mt-4">
+         { restaurants.map((restaurant, idx) => 
+                 <TopCard
+                    key={restaurant.restaurant_id}
+                    idx={idx}
+                    name={restaurant.name}
+                    score={restaurant.score}
+                    cuisine={restaurant.cuisine}
+                    borough={restaurant.borough}
+                    address={restaurant.address}
+                    stars={restaurant.stars}
+                    price={restaurant.PriceRange}
+                    reviews={restaurant.review_count}
+                    sponsored={restaurant.sponsored}
+                    menu={restaurant.menu}
+                    setShowMenu={setShowMenu}
+                    highlights={restaurant.highlights}
+                    setIndex={setIndex}
+                    source="Top3"
+                    functionScore={functionScore}
+                    setFunctionScore={setFunctionScore}
+                 ></TopCard>
+          )}
+           
+         </div>
+         </div>
+     )
+}
+
+export default Top3
