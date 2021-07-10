@@ -56,11 +56,8 @@ const TopCard = ({name, idx, setIndex, borough, cuisine, address, score, reviews
 
     let dollars = [];
 
-    { for (let i =0; i < priceValue; i++){
+    for (let i =0; i < priceValue; i++){
         dollars.push(i);
-    }
-    
-    
     }
 
     return (

@@ -59,7 +59,7 @@ const SearchBar = ({searchTerm, setSearchTerm, setSubmitted, setValid, pathOptio
             />
         </div>
         { showSuggestions && 
-            <div className="absolute z-10 w-auto bg-white rounded shadow-2xl left-20 text-san-juan-700 top-24 font-body">
+            <div className="absolute z-10 w-auto bg-white rounded shadow-2xl ml-32 text-san-juan-700 top-24 font-body">
                 <AutoSuggestions 
                     items={suggestions}
                     showSuggestions={showSuggestions}

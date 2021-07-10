@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactStars from 'react-rating-stars-component';
+import MagnifyingGlass from '../images/Search.png'
 
 const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDistanceInput, showDistanceInput, 
     setValid, setSubmitted, setStars, stars, borough, setBorough, cuisine, setCuisine, setShowSuggestions }) => {
-    
     const ratingChanged =(rating)=>{
         setStars(rating);
     }
-    
     const handleNearSearch = event =>{
         setOperator('near'); 
         setShowDistanceInput(false);
@@ -15,7 +14,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         console.log("NEAR SEARCH");
         handleSearch(event);
     }
-
     const handleGeoSearch = event =>{
         event.preventDefault(); 
         setOperator('geoWithin'); 
@@ -23,45 +21,34 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         setShowSuggestions(false);
         handleSearch(event);
     }
-
     const handleSearch = event =>{
         event.preventDefault();
         setValid(true);
         setShowSuggestions(false);
         setSubmitted(true);
     }
-
     const handleSearchMaster = event =>{
         event.preventDefault();
         if (operator==="text") handleSearch(event);
         else if (operator==="near") handleNearSearch(event);
         else handleGeoSearch(event);
     }
-
     const onChangeBorough = e =>{  
         setBorough(e.target.value)
     }
-
     const onChangeCuisine = e =>{  
         let { name, checked } = e.target;
-      
        if (checked) {
            setCuisine(prevCuisine => [...prevCuisine, name])
         //    console.log("CUISINE", cuisine);
        }
        if (checked === false) {
-
-
         let cuisineArray = cuisine.filter(item => item !==name);
         setCuisine(cuisineArray);
         }
-     
-      //  console.log(cuisine);
     }
     let active ="w-20 h-12 my-auto text text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none" ;
     let inactive="w-20 h-12 my-auto text text-white bg-gray-400 border border-gray-500 rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none" ;
-
-
     return (
         <>
         <div className="flex flex-col bg-white border border-gray-300 rounded left-10">
@@ -71,19 +58,19 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 (operator === 'text') ?   <button type='button' className={active} onClick={()=>setOperator('text')} >text</button>
                 :  <button type='button' className={inactive} onClick={()=>{setOperator('text'); setShowDistanceInput(false)}}>text</button>
             }
-            
             {  
                 (operator === 'near') ?   <button type='button' className={active} onClick={()=>setOperator('text')} >near</button>
                 :  <button type='button' className={inactive} onClick={handleNearSearch}>near</button>
             }
-    
             {  
                 (operator === 'geoWithin') ?   
                 <button type='button' className={active} 
                     onClick={()=>{setOperator('text'); setShowDistanceInput(false)}} >geoWithin</button>
                 :  <button type='button' className={inactive} onClick={()=>{setOperator('geoWithin');setShowDistanceInput(true)}}>geoWithin</button>
             }
-    
+                <button className="flex items-center justify-center w-20 h-12 my-auto text-lg font-bold transform bg-white border border-gray-400 rounded hover:shadow-2xl hover:scale-110 focus:outline-none"
+                    type="button" onClick={handleSearchMaster}
+                ><img className="w-12" src={MagnifyingGlass} alt="glass" /></button>
             </div> 
              { showDistanceInput && 
                 <div className="flex items-center pb-2 mx-4">
@@ -106,8 +93,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 borderColor : 'darkgreen'
             }}/>   
             <br />
-            
-            
             <div className="mx-auto">
                 <label className="font-bold text-tolopea-500">Average Star Rating: </label>
                 <ReactStars
@@ -128,9 +113,7 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 borderColor : 'darkgreen'
             }}/>   
             <br />
-        
-    {/**************************************************************************************/}
-      {/*  <label className="mb-2 ml-16 text-xl font-bold text-green-900">Cuisine </label> */}
+    
     <div className="text-xl" onChange={onChangeCuisine}>
         <div className="mb-2 ml-10 space-x-6 cursor-pointer">
             <input 
@@ -140,7 +123,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
               />   
             <label for="American">American</label>      
         </div>
-
         <div className="mb-2 ml-10 space-x-6 cursor-pointer">
             <input 
                 type="checkbox"
@@ -157,8 +139,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             />   
             <label for="French">French</label>
         </div>
-        
-
         <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
             <input 
                 type="checkbox"
@@ -167,7 +147,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             />   
             <label for="Hamburgers">Hamburgers</label>
         </div>
-
         <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
             <input 
                 type="checkbox"
@@ -176,7 +155,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             />   
             <label for="Italian">Italian</label>
         </div>
-
         <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
             <input 
                 type="checkbox"
@@ -185,8 +163,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             />   
             <label for="Japanese">Japanese</label>
         </div>
-
-
         <div className="mb-2 ml-10 space-x-6 cursor-pointer">
             <input 
                 type="checkbox"
@@ -194,10 +170,7 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 checked={cuisine.includes("Mexican")}
               />   
             <label for="Mexican">Mexican</label>
-            
         </div>
-        
-
         <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
             <input 
                 type="checkbox"
@@ -206,11 +179,8 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             />   
             <label for="Pizza">Pizza</label>
         </div>
-
-        
     </div>
-
-    {/**************************************************************************************/}
+    
     <hr style={{
         color: 'darkgreen',
         backgroundColor: 'darkgreen',
@@ -219,7 +189,7 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         borderColor : 'darkgreen'
     }}/>   
     <br />
-
+    
     <div className="text-xl" onChange={onChangeBorough}>
             <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
                 <input 
@@ -229,7 +199,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                     checked={borough === 'Manhattan'}
                   />   
                 <label for="Manhattan">Manhattan</label>
-                
             </div>
             <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
                 <input 
@@ -258,7 +227,6 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 />
                 <label for="Bronx">Bronx</label>
             </div>
-            
             <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
                 <input 
                     type="radio" 
@@ -269,20 +237,8 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 <label for="Staten Island">Staten Island</label>
             </div>
         </div>
-            
-               
-        
-        <button className="flex items-center justify-center p-4 mx-10 my-4 font-bold text-white transform rounded bg-night-shadz-500 hover:shadow-2xl hover:bg-red-900 hover:scale-110 focus:outline-none"
-            type="button" onClick={handleSearchMaster}
-        
-        >Submit</button>
         </div>
         </>
-            
-
     )
 }
-
 export default SearchSideBar;
-
-
