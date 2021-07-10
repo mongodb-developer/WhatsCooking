@@ -13,6 +13,7 @@ export const useHomeFetch=()=>{
     const [functionScore, setFunctionScore] = useState(null);
     const [stars, setStars] = useState(1);
     const [borough, setBorough] = useState();
+    const [cuisine, setCuisine] = useState([]);
     const [stages, setStages] = useState({
                                             searchStage:{},
                                             limitStage:{},
@@ -30,8 +31,9 @@ export const useHomeFetch=()=>{
             functionScore: functionScore,
             path: pathOptions,
             borough: borough,
+            cuisine:cuisine,
             stars: stars
-        }
+        };
         axios
         .post(
           endpoint,
@@ -57,7 +59,6 @@ export const useHomeFetch=()=>{
         // eslint-disable-next-line
         },[submitted]);
        
-
     return {
         setOperator,
         operator,
@@ -76,8 +77,11 @@ export const useHomeFetch=()=>{
         stages,
         borough,
         setBorough,
+        cuisine,
+        setCuisine,
         setStars,
         stars
 	};
+
 
 };

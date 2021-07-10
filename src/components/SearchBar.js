@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AutoSuggestions from './AutoSuggestions';
   
-
 const SearchBar = ({searchTerm, setSearchTerm, setSubmitted, setValid, pathOptions, showSuggestions, setShowSuggestions}) => {
 
     const initial = useRef(true);

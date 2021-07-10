@@ -29,7 +29,9 @@ const App = () => {
     setStars,
     stars,
     borough,
-    setBorough
+    setBorough,
+    cuisine,
+    setCuisine
   } = useHomeFetch();
 
   const [showDistanceInput, setShowDistanceInput] = useState(false);
@@ -65,6 +67,7 @@ const App = () => {
           setDistance={setDistance}
           setRestaurants={setRestaurants}
           pathOptions={pathOptions}
+          setCuisine={setCuisine}
           setPathOptions={setPathOptions}
           setBorough={setBorough}
           functionScore={functionScore}
@@ -108,6 +111,8 @@ const App = () => {
             stars={stars}
             setBorough={setBorough}
             borough={borough}
+            cuisine={cuisine}
+            setCuisine={setCuisine}
           />
                     
           <NYCMap   

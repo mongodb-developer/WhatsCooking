@@ -2,7 +2,7 @@ import React from 'react';
 import ReactStars from 'react-rating-stars-component';
 
 const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDistanceInput, showDistanceInput, 
-    setValid, setSubmitted, setStars, stars, borough, setBorough, setShowSuggestions }) => {
+    setValid, setSubmitted, setStars, stars, borough, setBorough, cuisine, setCuisine, setShowSuggestions }) => {
     
     const ratingChanged =(rating)=>{
         setStars(rating);
@@ -38,8 +38,25 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         else handleGeoSearch(event);
     }
 
-    const onChangeRadio = e =>{  
+    const onChangeBorough = e =>{  
         setBorough(e.target.value)
+    }
+
+    const onChangeCuisine = e =>{  
+        let { name, checked } = e.target;
+      
+       if (checked) {
+           setCuisine(prevCuisine => [...prevCuisine, name])
+        //    console.log("CUISINE", cuisine);
+       }
+       if (checked === false) {
+
+
+        let cuisineArray = cuisine.filter(item => item !==name);
+        setCuisine(cuisineArray);
+        }
+     
+      //  console.log(cuisine);
     }
     let active ="w-20 h-12 my-auto text text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none" ;
     let inactive="w-20 h-12 my-auto text text-white bg-gray-400 border border-gray-500 rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none" ;
@@ -84,10 +101,11 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             <hr style={{
                 color: 'darkgreen',
                 backgroundColor: 'darkgreen',
-                height: 2,
-                margin:6,
+                height: 1,
+                margin:4,
                 borderColor : 'darkgreen'
             }}/>   
+            <br />
             
             
             <div className="mx-auto">
@@ -105,12 +123,104 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
             <hr style={{
                 color: 'darkgreen',
                 backgroundColor: 'darkgreen',
-                height: 2,
-                margin:6,
+                height: 1,
+                margin:4,
                 borderColor : 'darkgreen'
             }}/>   
             <br />
-        <div onChange={onChangeRadio}>
+        
+    {/**************************************************************************************/}
+      {/*  <label className="mb-2 ml-16 text-xl font-bold text-green-900">Cuisine </label> */}
+    <div className="text-xl" onChange={onChangeCuisine}>
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+            <input 
+                type="checkbox"
+                name="American"
+                checked={cuisine.includes("American")}
+              />   
+            <label for="American">American</label>      
+        </div>
+
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+            <input 
+                type="checkbox"
+                name="Chinese"
+                checked={cuisine.includes("Chinese")}
+              />   
+            <label for="Chinese">Chinese</label>  
+        </div>
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+            <input 
+                type="checkbox"
+                name="French"
+                checked={cuisine.includes("French")}
+            />   
+            <label for="French">French</label>
+        </div>
+        
+
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+            <input 
+                type="checkbox"
+                name="Hamburgers"
+                checked={cuisine.includes("Hamburgers")}
+            />   
+            <label for="Hamburgers">Hamburgers</label>
+        </div>
+
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+            <input 
+                type="checkbox"
+                name="Italian"
+                checked={cuisine.includes("Italian")}
+            />   
+            <label for="Italian">Italian</label>
+        </div>
+
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+            <input 
+                type="checkbox"
+                name="Japanese"
+                checked={cuisine.includes("Japanese")}
+            />   
+            <label for="Japanese">Japanese</label>
+        </div>
+
+
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+            <input 
+                type="checkbox"
+                name="Mexican"
+                checked={cuisine.includes("Mexican")}
+              />   
+            <label for="Mexican">Mexican</label>
+            
+        </div>
+        
+
+        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+            <input 
+                type="checkbox"
+                name="Pizza"
+                checked={cuisine.includes("Pizza")}
+            />   
+            <label for="Pizza">Pizza</label>
+        </div>
+
+        
+    </div>
+
+    {/**************************************************************************************/}
+    <hr style={{
+        color: 'darkgreen',
+        backgroundColor: 'darkgreen',
+        height: 1,
+        margin:4,
+        borderColor : 'darkgreen'
+    }}/>   
+    <br />
+
+    <div className="text-xl" onChange={onChangeBorough}>
             <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
                 <input 
                     type="radio"
