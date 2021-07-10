@@ -137,65 +137,65 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                     <input 
                         type="checkbox"
                         name="American"
-                        checked={cuisine.includes("American")}
+                        defaultChecked={cuisine.includes("American")}
                     />   
-                    <label for="American">American</label>      
+                    <label htmlFor="American">American</label>      
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer">
                     <input 
                         type="checkbox"
                         name="Chinese"
-                        checked={cuisine.includes("Chinese")}
+                        defaultChecked={cuisine.includes("Chinese")}
                     />   
-                    <label for="Chinese">Chinese</label>  
+                    <label htmlFor="Chinese">Chinese</label>  
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
                     <input 
                         type="checkbox"
                         name="French"
-                        checked={cuisine.includes("French")}
+                        defaultChecked={cuisine.includes("French")}
                     />   
-                    <label for="French">French</label>
+                    <label htmlFor="French">French</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
                     <input 
                         type="checkbox"
                         name="Hamburgers"
-                        checked={cuisine.includes("Hamburgers")}
+                        defaultChecked={cuisine.includes("Hamburgers")}
                     />   
-                    <label for="Hamburgers">Hamburgers</label>
+                    <label htmlFor="Hamburgers">Hamburgers</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
                     <input 
                         type="checkbox"
                         name="Italian"
-                        checked={cuisine.includes("Italian")}
+                        defaultChecked={cuisine.includes("Italian")}
                     />   
-                    <label for="Italian">Italian</label>
+                    <label htmlFor="Italian">Italian</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
                     <input 
                         type="checkbox"
                         name="Japanese"
-                        checked={cuisine.includes("Japanese")}
+                        defaultChecked={cuisine.includes("Japanese")}
                     />   
-                    <label for="Japanese">Japanese</label>
+                    <label htmlFor="Japanese">Japanese</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer">
                     <input 
                         type="checkbox"
                         name="Mexican"
-                        checked={cuisine.includes("Mexican")}
+                        defaultChecked={cuisine.includes("Mexican")}
                     />   
-                    <label for="Mexican">Mexican</label>
+                    <label htmlFor="Mexican">Mexican</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
                     <input 
                         type="checkbox"
                         name="Pizza"
-                        checked={cuisine.includes("Pizza")}
+                        defaultChecked={cuisine.includes("Pizza")}
                     />   
-                    <label for="Pizza">Pizza</label>
+                    <label htmlFor="Pizza">Pizza</label>
                 </div>
             </div>
     
@@ -216,45 +216,45 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                         type="radio"
                         name="borough" 
                         value="Manhattan"
-                        checked={borough === 'Manhattan'}
+                        defaultChecked={borough === 'Manhattan'}
                     />   
-                    <label for="Manhattan">Manhattan</label>
+                    <label htmlFor="Manhattan">Manhattan</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
                     <input 
                         type="radio" 
                         value="Brooklyn"
                         name="borough"
-                        checked={borough === 'Brooklyn'}
+                        defaultChecked={borough === 'Brooklyn'}
                     />
-                    <label for="Brooklyn">Brooklyn</label>
+                    <label htmlFor="Brooklyn">Brooklyn</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
                     <input 
                         type="radio" 
                         value="Queens"
                         name="borough"
-                        checked={borough === 'Queens'}     
+                        defaultChecked={borough === 'Queens'}     
                     />
-                    <label for="Queens">Queens</label>
+                    <label htmlFor="Queens">Queens</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
                     <input 
                         type="radio" 
                         value="Bronx"
                         name="borough"
-                        checked={borough==='Bronx'}   
+                        defaultChecked={borough==='Bronx'}   
                     />
-                    <label for="Bronx">Bronx</label>
+                    <label htmlFor="Bronx">Bronx</label>
                 </div>
                 <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
                     <input 
                         type="radio" 
                         value="Staten Island"
                         name="borough"
-                        checked={borough==='Staten Island'}   
+                        defaultChecked={borough==='Staten Island'}   
                     />
-                    <label for="Staten Island">Staten Island</label>
+                    <label htmlFor="Staten Island">Staten Island</label>
                 </div>
             </div>
         </div>
