@@ -7,22 +7,18 @@ const SearchBar = ({searchTerm, setSearchTerm, setSubmitted, setValid, pathOptio
     const initial = useRef(true);
     const [suggestions, setSuggestions] = useState([]);
 
-    console.log("SEARCHTERM: " + searchTerm);
-
     const Suggestions_AC_Endpoint =
-        "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-hcogd/service/cookingPost/incoming_webhook/restaurants_autocomplete";
+        "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsAutocomplete";
         
     // this is a function definition that calls another function API.fetchContent()
     const fetchAC_Content = async (searchTerm) =>{
-        let endpoint = Suggestions_AC_Endpoint;
-        if (searchTerm && pathOptions.includes('name')){
-            endpoint = endpoint +`?restname=${searchTerm}`;
+        let autocomplete_names_endpoint = Suggestions_AC_Endpoint;
+        if (searchTerm &&  pathOptions.includes('name')){   
+            autocomplete_names_endpoint = autocomplete_names_endpoint +`?restname=${searchTerm}`;
         }
-        try {
-                
-            let restaurants = await (await fetch(endpoint)).json();
-            setSuggestions(restaurants);
-            
+        try {      
+            let restaurants = await (await fetch(autocomplete_names_endpoint)).json();
+            setSuggestions(restaurants);     
         } catch (error){
             console.error(error);
         }   
@@ -32,20 +28,20 @@ const SearchBar = ({searchTerm, setSearchTerm, setSubmitted, setValid, pathOptio
         if ( initial.current){
             initial.current=false;
             return;
-        }
-       
-// BUILD OUT AUTOCOMPLETE TERMS
-        if (searchTerm!==''&& pathOptions.includes('name')){
-                fetchAC_Content(searchTerm);
-                console.log("FETCHING AC CONTENT");
-                if (suggestions.length !== 0){
-                    setShowSuggestions(true);
-                    return;
-                }
-                setShowSuggestions(false);     
+        }  
+        // BUILD OUT AUTOCOMPLETE TERMS
+        if (searchTerm!==''&& searchTerm.length > 3 && pathOptions.includes('name')){
+            fetchAC_Content(searchTerm);
+
+            if (suggestions.length !== 0){
+                setShowSuggestions(true);
+                return;
+            }
+            setShowSuggestions(false);     
         }
         return;
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchTerm]);
 
     return (
@@ -74,9 +70,7 @@ const SearchBar = ({searchTerm, setSearchTerm, setSubmitted, setValid, pathOptio
                     setValid={setValid}
                 />
             </div>
-        }    
-        
-       
+        }        
     </div>
     )
 }

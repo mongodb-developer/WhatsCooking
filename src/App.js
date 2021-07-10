@@ -34,7 +34,6 @@ const App = () => {
 
   const [showDistanceInput, setShowDistanceInput] = useState(false);
   const [valid, setValid] = useState(false); 
-  const [showSideBar, setShowSideBar] = useState(false);
   const [showAggregation, setShowAggregation] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -76,8 +75,6 @@ const App = () => {
           setShowDistanceInput={setShowDistanceInput}
           valid={valid}
           setValid={setValid}
-          setShowSideBar={setShowSideBar}
-          showSideBar={showSideBar}
           setStars={setStars}
           setShowSuggestions={setShowSuggestions}
           showSuggestions={showSuggestions}
@@ -96,44 +93,40 @@ const App = () => {
       <div className="relative flex flex-col mx-auto">
         
         <div className="flex w-full px-10 mx-auto mt-4 bg-white">
-            
-              { showSideBar &&
-                <SearchSideBar className="" 
-                  setOperator={setOperator} 
-                  operator={operator} 
-                  distance={distance} 
-                  setDistance={setDistance}
-                  showDistanceInput={showDistanceInput}
-                  setShowDistanceInput={setShowDistanceInput}
-                  setShowSuggestions={setShowSuggestions}
-                  valid={valid}
-                  setValid={setValid}
-                  setSubmitted={setSubmitted}
-                  setStars={setStars}
-                  stars={stars}
-                  setBorough={setBorough}
-                  borough={borough}
-                />
-              }
-             
-                
-                <NYCMap   
-                  restaurants={restaurants}
-                  submitted={submitted}
-                />
-                          
-              { displayRestaurants && 
-                <div className="w-1/2 -right-0">
-                  <Top3  
-                    restaurants={topPicks}
-                    setShowMenu={setShowMenu}
-                    setIndex={setIndex}
-                    functionScore={functionScore}
-                    setFunctionScore={setFunctionScore}
-                  />
-                </div>
-              }
-          </div>
+          <SearchSideBar className="" 
+            setOperator={setOperator} 
+            operator={operator} 
+            distance={distance} 
+            setDistance={setDistance}
+            showDistanceInput={showDistanceInput}
+            setShowDistanceInput={setShowDistanceInput}
+            setShowSuggestions={setShowSuggestions}
+            valid={valid}
+            setValid={setValid}
+            setSubmitted={setSubmitted}
+            setStars={setStars}
+            stars={stars}
+            setBorough={setBorough}
+            borough={borough}
+          />
+                    
+          <NYCMap   
+            restaurants={restaurants}
+            submitted={submitted}
+          />
+                    
+          { displayRestaurants && 
+            <div className="w-1/2 -right-0">
+              <Top3  
+                restaurants={topPicks}
+                setShowMenu={setShowMenu}
+                setIndex={setIndex}
+                functionScore={functionScore}
+                setFunctionScore={setFunctionScore}
+              />
+            </div>
+          }
+        </div>
   
         { displayRestaurants && 
               <Grid 

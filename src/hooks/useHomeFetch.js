@@ -1,11 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const FuzzyCookingPost = "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-hcogd/service/cookingPost/incoming_webhook/fuzzyPost";
-
-const FuzzyCookingPostTEST = "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-hcogd/service/TEST-DEV/incoming_webhook/test-post-cooking";
-
-const FuzzySynonymsPostTest = "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-hcogd/service/TEST-DEV/incoming_webhook/synonyms";
+const GetRestaurantsEndpoint= "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurants";
 
 export const useHomeFetch=()=>{
     const [restaurants, setRestaurants] = useState([]);
@@ -25,7 +21,7 @@ export const useHomeFetch=()=>{
 
 
     const postSearch = async() =>{
-       let endpoint = FuzzyCookingPost; 
+       let endpoint = GetRestaurantsEndpoint; 
 
         let data = {
             arg:searchTerm,

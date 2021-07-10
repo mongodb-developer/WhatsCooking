@@ -5,7 +5,7 @@ import Icon from '../images/whatscooking.png'
 
 const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFunctionScore, functionScore, setDistance, setShowDistanceInput,
     setRestaurants, restaurants, pathOptions, setPathOptions, setSubmitted, setBorough, showAggregation, setShowAggregation, valid, setValid, 
-    setShowSideBar, setStars, showSideBar, setShowSuggestions, showSuggestions}) => {
+     setStars, setShowSuggestions, showSuggestions}) => {
 
     
     
@@ -45,7 +45,7 @@ const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFuncti
         <>
         <form onSubmit={handleSearch} className="relative flex flex-col w-full px-0 bg-white">
             <div className="flex p-10 mx-10 rounded shadow-2xl bg-gradient-to-r from-san-juan-500 via-san-juan-400 to-deep-cerulean-700">
-                <img src={Icon} alt="app logo" onClick={()=>setShowSideBar(!showSideBar)} className="my-auto w-60"></img>
+                <img src={Icon} alt="app logo" className="my-auto w-60"></img>
                 <div className="flex flex-col w-full">
                     <div className="mb-4 text-4xl font-bold text-white ml-72 font-body">Restaurant Finder</div>
                     <div className="flex w-full pl-8 my-auto">
