@@ -6,9 +6,7 @@ import Icon from '../images/whatscooking.png'
 const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFunctionScore, functionScore, setDistance, setShowDistanceInput,
     setRestaurants, restaurants, pathOptions, setPathOptions, setSubmitted, setBorough, showAggregation, setShowAggregation, valid, setValid, 
      setStars, setShowSuggestions, showSuggestions}) => {
-
-    
-    
+   
     const handleSearch = event =>{
         event.preventDefault();
         setValid(true);
@@ -22,6 +20,7 @@ const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFuncti
         console.log("IMPLEMENT FUNCTION SCORE"); 
         handleSearch(event);
     }
+
     const handleShowAggregation =()=>{
         setShowAggregation(!showAggregation);
     }
@@ -47,7 +46,9 @@ const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFuncti
             <div className="flex p-10 mx-10 rounded shadow-2xl bg-gradient-to-r from-san-juan-500 via-san-juan-400 to-deep-cerulean-700">
                 <img src={Icon} alt="app logo" className="my-auto w-60"></img>
                 <div className="flex flex-col w-full">
-                    <div className="mb-4 text-4xl font-bold text-white ml-72 font-body">Restaurant Finder</div>
+                    <div className="mb-4 text-4xl font-bold text-white ml-72 font-body">
+                        Restaurant Finder
+                    </div>
                     <div className="flex w-full pl-8 my-auto">
                         <SearchBar 
                             searchTerm={searchTerm} 
@@ -60,14 +61,12 @@ const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFuncti
                             pathOptions={pathOptions}
                         />
 
-
                         <div className="flex w-1/2 px-0">
                             <div className="relative w-full">
                                 <div className="absolute top-0 flex flex-col items-center w-full mt-4">
                                     <label className="text-white font-body">Search Fields</label>
                                     <Selector
                                         setPathOptions={setPathOptions} 
-                                        name="main"
                                     />
                                 </div>
                             </div>    
@@ -82,6 +81,8 @@ const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFuncti
                 </div>     
             </div>            
         </form>
+
+    {/*************** DISPLAY BAR CLEAR --- SHOW AGGREGATION --- FUNCTION SCORE *****************/}
         {   valid &&  
             <div className="flex justify-center px-2 mx-10 space-x-20 bg-yellow-300 rounded">
                 <div className="py-2 my-auto text-xl text-center bg-yellow-300 font-body"

@@ -7,6 +7,7 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
     const ratingChanged =(rating)=>{
         setStars(rating);
     }
+    
     const handleNearSearch = event =>{
         setOperator('near'); 
         setShowDistanceInput(false);
@@ -14,6 +15,7 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         console.log("NEAR SEARCH");
         handleSearch(event);
     }
+    
     const handleGeoSearch = event =>{
         event.preventDefault(); 
         setOperator('geoWithin'); 
@@ -21,21 +23,25 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         setShowSuggestions(false);
         handleSearch(event);
     }
+    
     const handleSearch = event =>{
         event.preventDefault();
         setValid(true);
         setShowSuggestions(false);
         setSubmitted(true);
     }
+    
     const handleSearchMaster = event =>{
         event.preventDefault();
         if (operator==="text") handleSearch(event);
         else if (operator==="near") handleNearSearch(event);
         else handleGeoSearch(event);
     }
+    
     const onChangeBorough = e =>{  
         setBorough(e.target.value)
     }
+    
     const onChangeCuisine = e =>{  
         let { name, checked } = e.target;
        if (checked) {
@@ -47,12 +53,19 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
         setCuisine(cuisineArray);
         }
     }
+    
     let active ="w-20 h-12 my-auto text text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none" ;
     let inactive="w-20 h-12 my-auto text text-white bg-gray-400 border border-gray-500 rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none" ;
+    
     return (
         <>
         <div className="flex flex-col bg-white border border-gray-300 rounded left-10">
-        <div className="flex items-center justify-center py-4 font-bold text-white rounded bg-san-juan-500">Advanced Search Features</div>
+            <div className="flex items-center justify-center py-4 font-bold text-white rounded bg-san-juan-500">
+                Advanced Search Features
+            </div>
+            
+        {/************* SEARCH OPERATOR SECTION ******************/}
+        
             <div className="flex h-16 px-2 ">
             {  
                 (operator === 'text') ?   <button type='button' className={active} onClick={()=>setOperator('text')} >text</button>
@@ -93,6 +106,9 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 borderColor : 'darkgreen'
             }}/>   
             <br />
+
+        {/************* STAR RATING SECTION ******************/}
+
             <div className="mx-auto">
                 <label className="font-bold text-tolopea-500">Average Star Rating: </label>
                 <ReactStars
@@ -113,130 +129,134 @@ const SearchSideBar = ({setOperator, operator, distance, setDistance, setShowDis
                 borderColor : 'darkgreen'
             }}/>   
             <br />
+        
+        {/************* CUISINE TYPE SECTION ******************/}
+
+            <div className="text-xl" onChange={onChangeCuisine}>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+                    <input 
+                        type="checkbox"
+                        name="American"
+                        checked={cuisine.includes("American")}
+                    />   
+                    <label for="American">American</label>      
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+                    <input 
+                        type="checkbox"
+                        name="Chinese"
+                        checked={cuisine.includes("Chinese")}
+                    />   
+                    <label for="Chinese">Chinese</label>  
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+                    <input 
+                        type="checkbox"
+                        name="French"
+                        checked={cuisine.includes("French")}
+                    />   
+                    <label for="French">French</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+                    <input 
+                        type="checkbox"
+                        name="Hamburgers"
+                        checked={cuisine.includes("Hamburgers")}
+                    />   
+                    <label for="Hamburgers">Hamburgers</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+                    <input 
+                        type="checkbox"
+                        name="Italian"
+                        checked={cuisine.includes("Italian")}
+                    />   
+                    <label for="Italian">Italian</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+                    <input 
+                        type="checkbox"
+                        name="Japanese"
+                        checked={cuisine.includes("Japanese")}
+                    />   
+                    <label for="Japanese">Japanese</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+                    <input 
+                        type="checkbox"
+                        name="Mexican"
+                        checked={cuisine.includes("Mexican")}
+                    />   
+                    <label for="Mexican">Mexican</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+                    <input 
+                        type="checkbox"
+                        name="Pizza"
+                        checked={cuisine.includes("Pizza")}
+                    />   
+                    <label for="Pizza">Pizza</label>
+                </div>
+            </div>
     
-    <div className="text-xl" onChange={onChangeCuisine}>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer">
-            <input 
-                type="checkbox"
-                name="American"
-                checked={cuisine.includes("American")}
-              />   
-            <label for="American">American</label>      
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer">
-            <input 
-                type="checkbox"
-                name="Chinese"
-                checked={cuisine.includes("Chinese")}
-              />   
-            <label for="Chinese">Chinese</label>  
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
-            <input 
-                type="checkbox"
-                name="French"
-                checked={cuisine.includes("French")}
-            />   
-            <label for="French">French</label>
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
-            <input 
-                type="checkbox"
-                name="Hamburgers"
-                checked={cuisine.includes("Hamburgers")}
-            />   
-            <label for="Hamburgers">Hamburgers</label>
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
-            <input 
-                type="checkbox"
-                name="Italian"
-                checked={cuisine.includes("Italian")}
-            />   
-            <label for="Italian">Italian</label>
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
-            <input 
-                type="checkbox"
-                name="Japanese"
-                checked={cuisine.includes("Japanese")}
-            />   
-            <label for="Japanese">Japanese</label>
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer">
-            <input 
-                type="checkbox"
-                name="Mexican"
-                checked={cuisine.includes("Mexican")}
-              />   
-            <label for="Mexican">Mexican</label>
-        </div>
-        <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
-            <input 
-                type="checkbox"
-                name="Pizza"
-                checked={cuisine.includes("Pizza")}
-            />   
-            <label for="Pizza">Pizza</label>
-        </div>
-    </div>
-    
-    <hr style={{
-        color: 'darkgreen',
-        backgroundColor: 'darkgreen',
-        height: 1,
-        margin:4,
-        borderColor : 'darkgreen'
-    }}/>   
-    <br />
-    
-    <div className="text-xl" onChange={onChangeBorough}>
-            <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
-                <input 
-                    type="radio"
-                    name="borough" 
-                    value="Manhattan"
-                    checked={borough === 'Manhattan'}
-                  />   
-                <label for="Manhattan">Manhattan</label>
+            <hr style={{
+                color: 'darkgreen',
+                backgroundColor: 'darkgreen',
+                height: 1,
+                margin:4,
+                borderColor : 'darkgreen'
+            }}/>   
+            <br />
+
+        {/************* BOROUGH SECTION ******************/}
+
+            <div className="text-xl" onChange={onChangeBorough}>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
+                    <input 
+                        type="radio"
+                        name="borough" 
+                        value="Manhattan"
+                        checked={borough === 'Manhattan'}
+                    />   
+                    <label for="Manhattan">Manhattan</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+                    <input 
+                        type="radio" 
+                        value="Brooklyn"
+                        name="borough"
+                        checked={borough === 'Brooklyn'}
+                    />
+                    <label for="Brooklyn">Brooklyn</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+                    <input 
+                        type="radio" 
+                        value="Queens"
+                        name="borough"
+                        checked={borough === 'Queens'}     
+                    />
+                    <label for="Queens">Queens</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+                    <input 
+                        type="radio" 
+                        value="Bronx"
+                        name="borough"
+                        checked={borough==='Bronx'}   
+                    />
+                    <label for="Bronx">Bronx</label>
+                </div>
+                <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+                    <input 
+                        type="radio" 
+                        value="Staten Island"
+                        name="borough"
+                        checked={borough==='Staten Island'}   
+                    />
+                    <label for="Staten Island">Staten Island</label>
+                </div>
             </div>
-            <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
-                <input 
-                    type="radio" 
-                    value="Brooklyn"
-                    name="borough"
-                    checked={borough === 'Brooklyn'}
-                />
-                <label for="Brooklyn">Brooklyn</label>
-            </div>
-            <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
-                <input 
-                    type="radio" 
-                    value="Queens"
-                    name="borough"
-                    checked={borough === 'Queens'}     
-                />
-                <label for="Queens">Queens</label>
-            </div>
-            <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
-                <input 
-                    type="radio" 
-                    value="Bronx"
-                    name="borough"
-                    checked={borough==='Bronx'}   
-                />
-                <label for="Bronx">Bronx</label>
-            </div>
-            <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
-                <input 
-                    type="radio" 
-                    value="Staten Island"
-                    name="borough"
-                    checked={borough==='Staten Island'}   
-                />
-                <label for="Staten Island">Staten Island</label>
-            </div>
-        </div>
         </div>
         </>
     )

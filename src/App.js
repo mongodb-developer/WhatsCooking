@@ -5,8 +5,10 @@ import NYCMap from './components/NYCMap';
 import SearchSideBar from './components/SearchSideBar';
 import Top3 from './components/Top3';
 import AggregationCode from './components/AggregationCode'
-import { useHomeFetch } from './hooks/useHomeFetch';
 import MenuModal from './components/MenuModal';
+
+// HOOKS
+import { useHomeFetch } from './hooks/useHomeFetch';
 
 
 const App = () => {
@@ -34,11 +36,11 @@ const App = () => {
     setCuisine
   } = useHomeFetch();
 
-  const [showDistanceInput, setShowDistanceInput] = useState(false);
-  const [valid, setValid] = useState(false); 
-  const [showAggregation, setShowAggregation] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showDistanceInput, setShowDistanceInput] = useState(false);    // USED IN SEARCH SIDE BAR FOR GEOWITHIN OPERATOR OPTION
+  const [valid, setValid] = useState(false);        // IF VALID SEARCH EXECUTED - WILL SHOW BUTTONS TO CLEAR/AGGREGATION/FUNCTION SCORE
+  const [showAggregation, setShowAggregation] = useState(false);  // TO SHOW MODAL FOR AGGREGATION CODE
+  const [showSuggestions, setShowSuggestions] = useState(false);  // FOR AUTOCOMPLETED RESTAURANT NAMES IN SEARCH BAR
+  const [showMenu, setShowMenu] = useState(false);              // POP UP FOR RESTAURANT MENU ITEMS
   const [index, setIndex] = useState(0); 
 
   let displayRestaurants = false;
@@ -134,13 +136,13 @@ const App = () => {
         </div>
   
         { displayRestaurants && 
-              <Grid 
-                restaurants={picks}
-                setShowMenu={setShowMenu}
-                setIndex={setIndex}
-                functionScore={functionScore}
-                setFunctionScore={setFunctionScore}
-              /> 
+          <Grid 
+            restaurants={picks}
+            setShowMenu={setShowMenu}
+            setIndex={setIndex}
+            functionScore={functionScore}
+            setFunctionScore={setFunctionScore}
+          /> 
           }
        
         { showMenu && 
@@ -151,8 +153,7 @@ const App = () => {
               name={restaurants[index].name}
           />
          }  
- 
-      
+   
       </div>
     </div>
     
