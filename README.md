@@ -11,48 +11,40 @@
 </ul>
 <div align="center"><img src="https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif" width="300"  /></div>
 
-<p>
-By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:
-</p>
-<ul>
-<li>fuzzy matching</li>
-<li>autocomplete</li>
-<li>relevance-based scoring</li>
-<li>custom function scoring</li>
-</ul>
+<p> Atlas Search is powered by Apache Lucene and supports the most popular application search features, from autocomplete to custom scoring. By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:</p>
+
+- fuzzy matching
+- highlighting
+- autocomplete
+- range queries
+- geoqueries
+- facets
+- relevance-based scoring
+- custom function scoring
+
 <p>Check out the video of the MongoDB .Live keynote to see a demonstration of all the features or visit the link below to play around with the finished hosted application:</p>
 <h2 align="center"><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
 
 <p>This application is hosted entirely by MongoDB Atlas was created using:</p>
-<ul>
-<li>React</li>
-<li>Tailwind CSS</li>
-<li>A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset</li>
-<li></li>
-</ul>
+*React
+*Tailwind CSS
+*A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset
 
 <h3>Prerequisites</h3>
 <p>Once you have the entire  </p>
-<ul>
-<li>A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a></li>
-<li>A recent version of Node.js and npm.</li>
-<li>Restaurant sample dataset.</li>
-</ul>
-<p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MonogDB Compass using the following URI:
-```mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking```
-It is also included in this repo as whatscooking.json.</p>
+* A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
+* A recent version of Node.js and npm.
+* Restaurant sample dataset.
 
-## Available Scripts
+<p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MonogDB Compass using the following URI:</p>
 
-In the project directory, you can run:
+<pre>
+  <code>
+mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
+</code>
+</pre>
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p>It is also included in this repo's Supplemental Files branch as <pre>whatscooking.json</pre></p>
 
 # WhatsCooking
 
