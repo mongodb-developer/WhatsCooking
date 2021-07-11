@@ -9,7 +9,7 @@
 <li>average star rating</li>
 <li>borough</li>
 </ul>
-![Restaurant Finder Demo](https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif)
+<div align="center"><img src="https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif" width="300"  /></div>
 
 <p>
 By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:
