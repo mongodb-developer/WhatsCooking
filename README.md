@@ -9,7 +9,8 @@
 <li>average star rating</li>
 <li>borough</li>
 </ul>
-<div align="center"><img src="https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif" width="300"  /></div>
+<img src="https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif" width="300"  />
+<div>![DEMO]("https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif")</div>
 
 <p> Atlas Search is powered by Apache Lucene and supports the most popular application search features, from autocomplete to custom scoring. By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:</p>
 
