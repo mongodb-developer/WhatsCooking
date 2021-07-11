@@ -13,7 +13,7 @@
 <img src="CookingDemo.gif" width="300"  />
 </div>
 
-<p> Atlas Search is powered by Apache Lucene and supports the most popular application search features, from autocomplete to custom scoring. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your Atlas data using Apache Lucene.</p>
+<p> Atlas Search is powered by Apache Lucene and supports the most popular Atlas Search features from autocomplete to custom scoring. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches <em>SIMPLY</em> on your Atlas data using Apache Lucene.</p>
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
@@ -55,16 +55,30 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 ---
 
 <h2>To Run This Application....</h2>
+
 1. Clone the repo.
-2. Navigate inside directory.
+2. Navigate inside `WhatsCooking` directory.
 3. Run <code>npm install</code> .
 4. Run <code>npm start </code> .
 
+---
+
+<h2>To Build This Application...</h2>
+
+<h2>Prepare Data</h2>
+
+1. load data to Atlas cluster
+2. Create Search indexes. (Index definitions includes in `supplement-files` .)
+
+<h2>React Components....</h2>
 <p float="left">
     <img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents1.png" width="250"  />
     <img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents2.png" width="250"  />
     <img src="https://search-demos.s3.us-east-2.amazonaws.com/AggregationComponent.png" width="250"  />
 </p>
+
+<h2>Using Realm as Your Serverless Backend....</h2>
+<p>What's Cooking uses HTTP services in Realm to create 2 APIs to allow you to query for your restaurant data over HTTP. Find the Realm application in the <code>supplement-files</code> branch</p>
 
 # WhatsCooking
 
