@@ -67,8 +67,16 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 
 <h2>Prepare Data</h2>
 
-1. load data to Atlas cluster
-2. Create Search indexes. (Index definitions includes in `supplement-files` .)
+<ol>
+<li> Load data to Atlas cluster:
+<ul>
+<li>database: `whatscooking`</li>
+<li>collection: `restaurants`</li>
+</ul>
+</li>
+
+<li> Create Search indexes. (Index definitions includes in `supplement-files` .)</li>
+</ol>
 
 <h2>React Components....</h2>
 <p float="left">
@@ -81,7 +89,7 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 <p>What's Cooking uses HTTP services in Realm to create 2 APIs to allow you to query for your restaurant data over HTTP: </p>
 
 - `getRestaurants` called from the `useHomeFetch.js` hook.
-- `getRestaurantsAutocomplete` called from the `Autotsuggestions.js` component.
+- `getRestaurantsAutocomplete` called from the `Autosuggestions.js` component.
 
 Find the Realm application in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
 
