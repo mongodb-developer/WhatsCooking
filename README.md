@@ -10,7 +10,6 @@
 <li>borough</li>
 </ul>
 <img src="https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif" width="300"  />
-<div>![DEMO]("https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif")</div>
 
 <p> Atlas Search is powered by Apache Lucene and supports the most popular application search features, from autocomplete to custom scoring. By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:</p>
 
@@ -46,6 +45,10 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 </pre>
 
 <p>It is also included in this repo's Supplemental Files branch as <pre>whatscooking.json</pre></p>
+
+<img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents1.png" width="200"  />
+<img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents2.png" width="200"  />
+<img src="https://search-demos.s3.us-east-2.amazonaws.com/AggregationComponent.png" width="200"  />
 
 # WhatsCooking
 
