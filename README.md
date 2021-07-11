@@ -70,8 +70,8 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 <ol>
 <li> Load data to Atlas cluster:
 <ul>
-<li>database: `whatscooking`</li>
-<li>collection: `restaurants`</li>
+<li>database: <code>whatscooking</code></li>
+<li>collection: <code>restaurants</code></li>
 </ul>
 </li>
 
@@ -91,8 +91,8 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 - `getRestaurants` called from the `useHomeFetch.js` hook.
 - `getRestaurantsAutocomplete` called from the `Autosuggestions.js` component.
 
-Find the Realm application in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
+Find the Realm application and code for these webhooks in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
 
 # WhatsCooking
 
-Keynote 2021 for Atlas Search
+Keynote 2021 for Atlas Search Demo
