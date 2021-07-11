@@ -9,7 +9,7 @@
 <li>average star rating</li>
 <li>borough</li>
 </ul>
-![](WhatsCookingApp.gif)
+![Restaurant Finder Demo](https://search-demos.s3.us-east-2.amazonaws.com/WhatsCookingDemo.gif)
 
 <p>
 By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:
