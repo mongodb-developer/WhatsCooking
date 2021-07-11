@@ -1,5 +1,26 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+<<<<<<<h2 HEAD
+
+<h1 align="center">What's Cooking with Atlas Search</h1>
+
+<h2 align="center">A Restaurant Finder Application to Demonstrate Features of MongoDB Atlas Search</h2>
+<p>This application allows you to search for restaurants in the New York city area based on a variety of search parameters:
+<ul>
+<li>restaurant name</li>
+<li>geolocation coordinates</li>
+<li>cuisine type</li>
+<li>average star rating</li>
+<li>borough</li>
+</ul>
+
+<h2><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
+<p>to play around with the finished hosted application.</p>
+
+<p>This application was created using:</p>
+<ul>
+<li>React</li>
+<li>Tailwind CSS</li>
+<li>A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset</li>
+</ul>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -68,8 +89,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
+# This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # WhatsCooking
+
 Keynote 2021 for Atlas Search
->>>>>>> 51d6016fbab6cbc110d0a47ea6ba744975d8b50e
+
+> > > > > > > 51d6016fbab6cbc110d0a47ea6ba744975d8b50e

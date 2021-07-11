@@ -10,7 +10,6 @@ import MenuModal from './components/MenuModal';
 // HOOKS
 import { useHomeFetch } from './hooks/useHomeFetch';
 
-
 const App = () => {
   const {
     setSearchTerm,
