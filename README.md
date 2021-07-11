@@ -46,9 +46,11 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 
 <p>It is also included in this repo's Supplemental Files branch as <pre>whatscooking.json</pre></p>
 
-<img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents1.png" width="200"  />
-<img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents2.png" width="200"  />
-<img src="https://search-demos.s3.us-east-2.amazonaws.com/AggregationComponent.png" width="200"  />
+<p float="left">
+    <img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents1.png" width="200"  />
+    <img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents2.png" width="200"  />
+    <img src="https://search-demos.s3.us-east-2.amazonaws.com/AggregationComponent.png" width="200"  />
+</p>
 
 # WhatsCooking
 
