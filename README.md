@@ -1,9 +1,7 @@
-<<<<<<<h2 HEAD
-
 <h1 align="center">What's Cooking with Atlas Search</h1>
 
-<h2 align="center">A Restaurant Finder Application to Demonstrate Features of MongoDB Atlas Search</h2>
-<p>This application allows you to search for restaurants in the New York city area based on a variety of search parameters:
+<h2 align="center">A Restaurant Finder Application Demo MongoDB Atlas Search</h2>
+<p>Hello! 👋 This application allows you to search lightning fast through over 25,000 restaurants in the New York city area based on a variety of search parameters and data types:
 <ul>
 <li>restaurant name</li>
 <li>geolocation coordinates</li>
@@ -11,18 +9,38 @@
 <li>average star rating</li>
 <li>borough</li>
 </ul>
+![](WhatsCookingApp.gif)
 
-<h2><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
-<p>to play around with the finished hosted application.</p>
+<p>
+By building out Whats' Cooking, you'll learn all sorts of ways MongoDB allows you to build fine-grained full-text searches on your data using Apache Lucene, including:
+</p>
+<ul>
+<li>fuzzy matching</li>
+<li>autocomplete</li>
+<li>relevance-based scoring</li>
+<li>custom function scoring</li>
+</ul>
+<p>Check out the video of the MongoDB .Live keynote to see a demonstration of all the features or visit the link below to play around with the finished hosted application:</p>
+<h2 align="center"><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
 
-<p>This application was created using:</p>
+<p>This application is hosted entirely by MongoDB Atlas was created using:</p>
 <ul>
 <li>React</li>
 <li>Tailwind CSS</li>
 <li>A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset</li>
+<li></li>
 </ul>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3>Prerequisites</h3>
+<p>Once you have the entire  </p>
+<ul>
+<li>A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a></li>
+<li>A recent version of Node.js and npm.</li>
+<li>Restaurant sample dataset.</li>
+</ul>
+<p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MonogDB Compass using the following URI:
+```mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking```
+It is also included in this repo as whatscooking.json.</p>
 
 ## Available Scripts
 
@@ -36,63 +54,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-# This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
 # WhatsCooking
 
 Keynote 2021 for Atlas Search
-
-> > > > > > > 51d6016fbab6cbc110d0a47ea6ba744975d8b50e
