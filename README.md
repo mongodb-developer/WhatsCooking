@@ -10,7 +10,7 @@
 <li>borough</li>
 </ul>
 <div align="center">
-<img src="CookingDemo.gif" width="300"  />
+<img src="CookingDemo.gif" width="450"  />
 </div>
 
 <p> Atlas Search is powered by Apache Lucene and supports the most popular Atlas Search features from autocomplete to custom scoring. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches <em>SIMPLY</em> on your Atlas data using Apache Lucene.</p>
@@ -78,7 +78,12 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 </p>
 
 <h2>Using Realm as Your Serverless Backend....</h2>
-<p>What's Cooking uses HTTP services in Realm to create 2 APIs to allow you to query for your restaurant data over HTTP. Find the Realm application in the <code>supplement-files</code> branch</p>
+<p>What's Cooking uses HTTP services in Realm to create 2 APIs to allow you to query for your restaurant data over HTTP: </p>
+
+- `getRestaurants` called from the `useHomeFetch.js` hook.
+- `getRestaurantsAutocomplete` called from the `Autotsuggestions.js` component.
+
+Find the Realm application in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
 
 # WhatsCooking
 
