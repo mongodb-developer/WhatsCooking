@@ -69,17 +69,17 @@ const RestaurantCard = ({name, idx, setIndex, borough, cuisine, address, score, 
         <>
         <div className="relative flex flex-col justify-around w-full px-4 py-3 mb-10 text-center transition duration-500 transform bg-white border rounded-lg shadow-lg hover:scale-110">
             { source === "Top3" ?   
-                <div className="absolute px-2 mx-auto text-xl font-bold text-white transition duration-700 transform rounded-full shadow-lg hover:scale-150 bg-gradient-to-r from-mongo-700 to-mongo-600 -top-4">
+                <div className="absolute px-2 mx-auto text-xl font-bold text-white rounded-full shadow-lg hover:scale-150 bg-gradient-to-r from-mongo-700 to-mongo-600 -top-4">
                     {modScore}
                 </div> 
                 :
-                <div className="absolute px-2 mx-auto text-xl font-bold text-white transition duration-700 transform rounded-full shadow-lg hover:scale-150 bg-gradient-to-r from-red-700 to-red-600 -top-4">
+                <div className="absolute px-2 mx-auto text-xl font-bold text-white  rounded-full shadow-lg hover:scale-150 bg-gradient-to-r from-red-700 to-red-600 -top-4">
                     {modScore}
                 </div>  
             }
             {   (functionScore === 'function' && sponsored) && 
                 <div 
-                    className="absolute right-0 px-2 mx-auto text-lg text-white transition duration-700 transform bg-black rounded shadow-lg -top-4 font-body hover:scale-150">
+                    className="absolute right-0 px-2 mx-auto text-lg text-white  bg-black rounded shadow-lg -top-4 font-body hover:scale-150">
                     SPONSORED 🎉
                 </div>
             }

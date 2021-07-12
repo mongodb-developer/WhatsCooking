@@ -94,8 +94,6 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 
 Find the Realm application and code for these webhooks in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
 
-<h2>If you have any questions or feedback, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</h2>
-
-<h2>Have fun and happy coding!</h2>
+<h4>If you have any questions or feedback, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.<br/>Have fun and happy coding!</h4>
 
 Keynote 2021 for Atlas Search Demo

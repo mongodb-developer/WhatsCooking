@@ -152,8 +152,11 @@ const App = () => {
               name={restaurants[index].name}
           />
          }  
-   
+        <div className="sticky bottom-0 px-4 py-2 mx-auto text-white italic text-center rounded-full shadow-lg bg-gradient-to-r from-mongo-600 to-mongo-700">
+          This data is partially mocked. Enjoy playing with the app, but please do not use to make dining decisions.
+        </div> 
       </div>
+      
     </div>
     
 
