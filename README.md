@@ -42,7 +42,7 @@
 - Restaurant sample dataset.
 - (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
 
-<p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MonogDB Compass using the following URI:</p>
+<p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MongoDB Compass using the following URI:</p>
 
 <pre>
   <code>
