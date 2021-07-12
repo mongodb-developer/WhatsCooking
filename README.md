@@ -13,7 +13,7 @@
 <img src="CookingDemo.gif" width="450"  />
 </div>
 
-<p> Atlas Search is powered by Apache Lucene and supports the most popular Atlas Search features from autocomplete to custom scoring. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches <em>SIMPLY</em> on your Atlas data using Apache Lucene.</p>
+<p> What's Cooking implements many Atlas Search features from autocomplete to custom function scoring. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
