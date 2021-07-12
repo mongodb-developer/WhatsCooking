@@ -46,8 +46,11 @@ const SearchForm = ({setSearchTerm, searchTerm, setOperator, operator, setFuncti
             <div className="flex p-10 mx-10 rounded shadow-2xl bg-gradient-to-r from-san-juan-500 via-san-juan-400 to-deep-cerulean-700">
                 <img src={Icon} alt="app logo" className="my-auto w-60"></img>
                 <div className="flex flex-col w-full">
-                    <div className="mb-4 text-4xl font-bold text-white ml-72 font-body">
+                    <div className="mb-2 text-4xl font-bold text-white text-center font-body">
                         Restaurant Finder
+                    </div>
+                    <div className="mb-4 text-2xl font-bold text-white text-center font-body">
+                        Atlas Search Demo
                     </div>
                     <div className="flex w-full pl-8 my-auto">
                         <SearchBar 

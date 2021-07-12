@@ -24,7 +24,7 @@ const RestaurantCard = ({name, idx, setIndex, borough, cuisine, address, score, 
         case 'American':
             image = '🍲';
             break;
-        case 'burger':
+        case 'Hamburgers':
             image = '🍔';
             break;
         case 'Pizza':
@@ -48,6 +48,12 @@ const RestaurantCard = ({name, idx, setIndex, borough, cuisine, address, score, 
             break;
         case 'Japanese':
             image = '🍱';
+            break;
+        case 'Mexican':
+            image = '🫔';
+            break;
+        case 'Latin (Cuban, Dominican, Puerto Rican, South & Central American)':
+            image = '🌶️';
             break;
         default:
             image ='🥗';

@@ -12,8 +12,9 @@
 <div align="center">
 <img src="CookingDemo.gif" width="450"  />
 </div>
+<p><em>Note: This dataset is mocked. Please do not use to make actual dining decisions.</em></p>
 
-<p> What's Cooking implements many Atlas Search features from autocomplete to custom function scoring. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
+<p> What's Cooking implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
@@ -93,6 +94,8 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 
 Find the Realm application and code for these webhooks in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
 
-# WhatsCooking
+<h2>If you have any questions or feedback, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</h2>
+
+<h2>Have fun and happy coding!</h2>
 
 Keynote 2021 for Atlas Search Demo
