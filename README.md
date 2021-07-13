@@ -36,6 +36,8 @@
 - Tailwind CSS
 - A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset
 
+<p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
+
 <h3>Prerequisites</h3>
 
 - A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
@@ -94,6 +96,6 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 
 Find the Realm application and code for these webhooks in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
 
-<h4>If you have any questions or feedback, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.<br/>Have fun and happy coding!</h4>
-
-Keynote 2021 for Atlas Search Demo
+<h4>If you have any questions or feedback about this repo, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</h4>
+<br/>
+<h4>Also please join our online <a href="https://developer.mongodb.com/community/forums/">MongoDB Community</a> to interact with our product and engineering teams along with thousands of other MongoDB and Realm users. <br/><br/>Have fun and happy coding!</h4></h4>
