@@ -1,7 +1,7 @@
 <h1 align="center">What's Cooking with Atlas Search</h1>
 
 <h2 align="center">A Restaurant Finder Application Demo MongoDB Atlas Search</h2>
-<p>Hello! 👋 This application allows you to search lightning fast through over 25,000 restaurants in the New York city area based on a variety of search parameters and data types:
+<p>Hello! 👋 This application allows you to search lightning fast through over 25,000 restaurants in the New York city area based on a variety of search parameters and data types:</p>
 <ul>
 <li>restaurant name</li>
 <li>geolocation coordinates</li>
@@ -9,9 +9,11 @@
 <li>average star rating</li>
 <li>borough</li>
 </ul>
+<br/>
 <div align="center">
 <img src="CookingDemo.gif" width="450"  />
 </div>
+<br/>
 <p><em>Note: This dataset is mocked. Please do not use to make actual dining decisions.</em></p>
 
 <p> What's Cooking implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
