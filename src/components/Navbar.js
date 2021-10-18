@@ -1,12 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ showAggregation, setShowAggregation }) => {
   const history = useHistory();
+  const handleShowAggregation = () => {
+    setShowAggregation(!showAggregation);
+  };
   return (
     <header className="container mt-4 flex pl-20 mx-auto justify-between divide-x divide-green-500">
       <button
-        //   onClick={handleShowAggregation}
+        onClick={handleShowAggregation}
         className="flex items-center h-12 pl-4 my-auto space-x-6 text-lg rounded w-full font-body transition duration-700 transform  hover:scale-150 hover:font-bold focus:outline-none"
       >
         <span>Aggregation</span>

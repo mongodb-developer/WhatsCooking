@@ -43,10 +43,6 @@ const SearchForm = ({
     handleSearch(event);
   };
 
-  const handleShowAggregation = () => {
-    setShowAggregation(!showAggregation);
-  };
-
   const handleClearSearch = () => {
     setOperator("text");
     setDistance(1);
@@ -85,12 +81,13 @@ const SearchForm = ({
                 showSuggestions={showSuggestions}
                 setShowSuggestions={setShowSuggestions}
               />
-              <div className="flex w-1/4 px-3 py-2 mx-auto my-4 text-xl text-black  bg-white border rounded border-san-juan-300 hover:shadow-xl">
+              <div className="flex w-1/4 px-3 py-2 mx-auto my-4 text-xl text-black  bg-white border rounded border-san-juan-300 hover:shadow-xl focus:outline-none">
                 <input
                   ref={foodInputRef}
                   type="text"
                   id="menu"
                   placeholder="food..."
+                  autoComplete="off"
                   className="px-5 bg-transparent outline-none font-body"
                 />
               </div>

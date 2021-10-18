@@ -61,7 +61,7 @@ const SearchSideBar = ({
     let { name, checked } = e.target;
     if (checked) {
       setCuisine((prevCuisine) => [...prevCuisine, name]);
-      //    console.log("CUISINE", cuisine);
+      console.log("CUISINE", cuisine);
     }
     if (checked === false) {
       let cuisineArray = cuisine.filter((item) => item !== name);
@@ -77,10 +77,6 @@ const SearchSideBar = ({
   return (
     <>
       <div className="flex flex-col bg-white border border-gray-300 rounded left-10">
-        {/* <div className="flex items-center justify-center py-4 font-bold text-white rounded bg-san-juan-500">
-                Advanced Search Features
-            </div> */}
-
         {/************* SEARCH OPERATOR SECTION ******************/}
 
         <div className="flex h-16 px-2 ">

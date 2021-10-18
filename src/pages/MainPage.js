@@ -4,13 +4,13 @@ import Grid from "../components/Grid";
 import NYCMap from "../components/NYCMap";
 import SearchSideBar from "../components/SearchSideBar";
 import Top3 from "../components/Top3";
-import AggregationCode from "../components/AggregationCode";
+import AggregationModal from "../components/AggregationModal";
 import MenuModal from "../components/MenuModal";
 
 // HOOKS
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
-const MainPage = () => {
+const MainPage = ({ showAggregation, setShowAggregation }) => {
   const {
     setSearchTerm,
     searchTerm,
@@ -37,7 +37,6 @@ const MainPage = () => {
 
   const [showDistanceInput, setShowDistanceInput] = useState(false); // USED IN SEARCH SIDE BAR FOR GEOWITHIN OPERATOR OPTION
   const [valid, setValid] = useState(false); // IF VALID SEARCH EXECUTED - WILL SHOW BUTTONS TO CLEAR/AGGREGATION/FUNCTION SCORE
-  const [showAggregation, setShowAggregation] = useState(false); // TO SHOW MODAL FOR AGGREGATION CODE
   const [showSuggestions, setShowSuggestions] = useState(false); // FOR AUTOCOMPLETED RESTAURANT NAMES IN SEARCH BAR
   const [showMenu, setShowMenu] = useState(false); // POP UP FOR RESTAURANT MENU ITEMS
   const [showMoreRestaurants, setShowMoreRestaurants] = useState(false);
@@ -75,8 +74,6 @@ const MainPage = () => {
         functionScore={functionScore}
         setFunctionScore={setFunctionScore}
         stages={stages}
-        setShowAggregation={setShowAggregation}
-        showAggregation={showAggregation}
         setShowDistanceInput={setShowDistanceInput}
         valid={valid}
         setValid={setValid}
@@ -87,7 +84,7 @@ const MainPage = () => {
 
       {showAggregation && (
         <div className="absolute z-10 rounded right-96">
-          <AggregationCode
+          <AggregationModal
             setShowAggregation={setShowAggregation}
             stages={stages}
           />

@@ -25,7 +25,7 @@ export const useHomeFetch = () => {
     let endpoint = GetRestaurantsEndpointTEST;
 
     let data = {
-      arg: searchTerm,
+      searchTerm: searchTerm,
       food: food,
       operator: operator,
       dist: distance,
