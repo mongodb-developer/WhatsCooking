@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import SearchBar from "./SearchBar";
 import Icon from "../images/whatscooking.png";
 
@@ -25,8 +25,12 @@ const SearchForm = ({
   setShowSuggestions,
   showSuggestions,
 }) => {
+  const foodInputRef = useRef();
+
   const handleSearch = (event) => {
     event.preventDefault();
+    setFood(foodInputRef.current.value);
+    console.log("FOODFROMFORM: " + food);
     setValid(true);
     setShowSuggestions(false);
     setSubmitted(true);
@@ -83,7 +87,7 @@ const SearchForm = ({
               />
               <div className="flex w-1/4 px-3 py-2 mx-auto my-4 text-xl text-black  bg-white border rounded border-san-juan-300 hover:shadow-xl">
                 <input
-                  // food and setFood HERE
+                  ref={foodInputRef}
                   type="text"
                   id="menu"
                   placeholder="food..."

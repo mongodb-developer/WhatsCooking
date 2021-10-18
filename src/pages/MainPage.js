@@ -14,6 +14,8 @@ const MainPage = () => {
   const {
     setSearchTerm,
     searchTerm,
+    food,
+    setFood,
     setOperator,
     operator,
     distance,
@@ -59,6 +61,8 @@ const MainPage = () => {
       <SearchForm
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        food={food}
+        setFood={setFood}
         setOperator={setOperator}
         operator={operator}
         submitted={submitted}

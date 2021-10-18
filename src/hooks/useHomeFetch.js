@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const GetRestaurantsEndpoint =
-  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurants";
+const GetRestaurantsEndpointTEST =
+  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTest_Oct18";
 
 export const useHomeFetch = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -22,7 +22,7 @@ export const useHomeFetch = () => {
   });
 
   const postSearch = async () => {
-    let endpoint = GetRestaurantsEndpoint;
+    let endpoint = GetRestaurantsEndpointTEST;
 
     let data = {
       arg: searchTerm,
@@ -51,6 +51,7 @@ export const useHomeFetch = () => {
 
     postSearch();
     setSubmitted(false);
+
     // eslint-disable-next-line
   }, [submitted]);
 
