@@ -10,7 +10,7 @@ const AggregationModal = ({ setShowAggregation, stages }) => {
   return (
     <div className="fixed inset-0 z-20 flex justify-center bg-smoke-dark font-body">
       <div className="relative px-20 py-10 mx-auto mt-24 overflow-x-scroll overflow-y-auto text-2xl text-white whitespace-pre-wrap bg-black h-3/4 ">
-        <div className="text-4xl text-center text-deep-cerulean-200 font-bold">
+        <div className="text-4xl text-center text-deep-cerulean-100 font-bold">
           Aggregation Pipeline with $search
         </div>
         <br></br>

@@ -114,6 +114,9 @@ const MainPage = ({ showAggregation, setShowAggregation }) => {
           />
 
           <NYCMap restaurants={restaurants} submitted={submitted} />
+          <div className="flex w-1/2 px-10 mx-auto mt-4 bg-white">
+            Holding Space for AggCode
+          </div>
 
           {displayRestaurants && (
             <div className="w-1/2 -right-0">

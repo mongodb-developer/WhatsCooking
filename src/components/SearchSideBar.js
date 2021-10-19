@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import MagnifyingGlass from "../images/Search.png";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const SearchSideBar = ({
   setOperator,
@@ -19,9 +21,35 @@ const SearchSideBar = ({
   setCuisine,
   setShowSuggestions,
 }) => {
+  const [showStars, setShowStars] = useState(false);
+  const [showCuisine, setShowCuisine] = useState(false);
+  const [showBorough, setShowBorough] = useState(false);
+
   const ratingChanged = (rating) => {
     setStars(rating);
   };
+
+  useEffect(() => {
+    console.log("Stars: " + stars);
+    if (stars === 1) return;
+    setShowStars(true);
+
+    // eslint-disable-next-line
+  }, [stars]);
+
+  useEffect(() => {
+    console.log("Cuisine: " + cuisine);
+    if (cuisine.length === 0) return;
+    setShowCuisine(true);
+    // eslint-disable-next-line
+  }, [cuisine]);
+
+  useEffect(() => {
+    console.log("Borough: " + borough);
+    if (!borough) return;
+    setShowBorough(true);
+    // eslint-disable-next-line
+  }, [borough]);
 
   const handleNearSearch = (event) => {
     setOperator("near");
@@ -74,12 +102,32 @@ const SearchSideBar = ({
   let inactive =
     "w-20 h-12 my-auto text text-white bg-gray-400 border border-gray-500 rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none";
 
+  const starObject = {
+    range: {
+      gte: stars,
+      path: "stars",
+    },
+  };
+  const starString = JSON.stringify(starObject, null, 2);
+
+  const cuisineObject = {
+    query: cuisine,
+    path: "cuisine",
+  };
+  const cuisineString = JSON.stringify(cuisineObject, null, 2);
+
+  const boroughObject = {
+    text: borough,
+    path: "borough",
+  };
+  const boroughString = JSON.stringify(boroughObject, null, 2);
+
   return (
     <>
-      <div className="flex flex-col bg-white border border-gray-300 rounded left-10">
+      <div className="flex flex-col bg-white border border-gray-300 rounded w-2/3">
         {/************* SEARCH OPERATOR SECTION ******************/}
 
-        <div className="flex h-16 px-2 ">
+        <div className="flex h-12 justify-evenly px-1 ">
           {operator === "text" ? (
             <button
               type="button"
@@ -161,15 +209,7 @@ const SearchSideBar = ({
             ></input>
           </div>
         )}
-        <hr
-          style={{
-            color: "darkgreen",
-            backgroundColor: "darkgreen",
-            height: 1,
-            margin: 4,
-            borderColor: "darkgreen",
-          }}
-        />
+
         <br />
 
         {/************* STAR RATING SECTION ******************/}
@@ -188,6 +228,19 @@ const SearchSideBar = ({
             value={stars}
           />
         </div>
+        {}
+        {showStars && (
+          <div
+            onClick={() => {
+              setShowStars(false);
+            }}
+          >
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+              {starString}
+            </SyntaxHighlighter>
+          </div>
+        )}
+
         <hr
           style={{
             color: "darkgreen",
@@ -201,8 +254,8 @@ const SearchSideBar = ({
 
         {/************* CUISINE TYPE SECTION ******************/}
 
-        <div className="text-xl" onChange={onChangeCuisine}>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+        <div className="text-lg" onChange={onChangeCuisine}>
+          <div className="mb-1 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"
               name="American"
@@ -267,6 +320,17 @@ const SearchSideBar = ({
             <label htmlFor="Pizza">Pizza</label>
           </div>
         </div>
+        {showCuisine && (
+          <div
+            onClick={() => {
+              setShowCuisine(false);
+            }}
+          >
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+              {cuisineString}
+            </SyntaxHighlighter>
+          </div>
+        )}
 
         <hr
           style={{
@@ -281,7 +345,7 @@ const SearchSideBar = ({
 
         {/************* BOROUGH SECTION ******************/}
 
-        <div className="text-xl" onChange={onChangeBorough}>
+        <div className="text-lg" onChange={onChangeBorough}>
           <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
             <input
               type="radio"
@@ -328,6 +392,17 @@ const SearchSideBar = ({
             <label htmlFor="Staten Island">Staten Island</label>
           </div>
         </div>
+        {showBorough && (
+          <div
+            onClick={() => {
+              setShowBorough(false);
+            }}
+          >
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+              {boroughString}
+            </SyntaxHighlighter>
+          </div>
+        )}
       </div>
     </>
   );
