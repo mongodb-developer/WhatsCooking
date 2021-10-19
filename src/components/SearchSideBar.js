@@ -124,7 +124,7 @@ const SearchSideBar = ({
 
   return (
     <>
-      <div className="flex flex-col bg-white border border-gray-300 rounded w-2/3">
+      <div className="flex flex-col bg-white border border-gray-300 rounded w-1/4">
         {/************* SEARCH OPERATOR SECTION ******************/}
 
         <div className="flex h-12 justify-evenly px-1 ">

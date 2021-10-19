@@ -3,6 +3,7 @@ import SearchForm from "../components/SearchForm";
 import Grid from "../components/Grid";
 import NYCMap from "../components/NYCMap";
 import SearchSideBar from "../components/SearchSideBar";
+import AggregationSideBar from "../components/AggregationSideBar";
 import Top3 from "../components/Top3";
 import AggregationModal from "../components/AggregationModal";
 import MenuModal from "../components/MenuModal";
@@ -114,9 +115,6 @@ const MainPage = ({ showAggregation, setShowAggregation }) => {
           />
 
           <NYCMap restaurants={restaurants} submitted={submitted} />
-          <div className="flex w-1/2 px-10 mx-auto mt-4 bg-white">
-            Holding Space for AggCode
-          </div>
 
           {displayRestaurants && (
             <div className="w-1/2 -right-0">
@@ -129,6 +127,7 @@ const MainPage = ({ showAggregation, setShowAggregation }) => {
               />
             </div>
           )}
+          <AggregationSideBar />
         </div>
 
         {!showMoreRestaurants ? (
