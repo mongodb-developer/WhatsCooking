@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ReactStars from "react-rating-stars-component";
 import MagnifyingGlass from "../images/Search.png";
+import { SearchStageContext } from "../store/SearchStageContext";
+
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -21,9 +23,26 @@ const SearchSideBar = ({
   setCuisine,
   setShowSuggestions,
 }) => {
-  const [showStars, setShowStars] = useState(false);
-  const [showCuisine, setShowCuisine] = useState(false);
-  const [showBorough, setShowBorough] = useState(false);
+  const {
+    showStars,
+    setShowStars,
+    showCuisine,
+    setShowCuisine,
+    showBorough,
+    setShowBorough,
+    cuisineString,
+    setCuisineString,
+    starString,
+    setStarString,
+    boroughString,
+    setBoroughString,
+    showStarsAgg,
+    setShowStarsAgg,
+    showCuisineAgg,
+    setShowCuisineAgg,
+    showBoroughAgg,
+    setShowBoroughAgg,
+  } = useContext(SearchStageContext);
 
   const ratingChanged = (rating) => {
     setStars(rating);
@@ -31,23 +50,34 @@ const SearchSideBar = ({
 
   useEffect(() => {
     console.log("Stars: " + stars);
-    if (stars === 1) return;
+    if (stars === 1) {
+      return;
+    }
     setShowStars(true);
+    setShowStarsAgg(true);
 
     // eslint-disable-next-line
   }, [stars]);
 
   useEffect(() => {
     console.log("Cuisine: " + cuisine);
-    if (cuisine.length === 0) return;
+    if (cuisine.length === 0) {
+      setShowCuisineAgg(false);
+      return;
+    }
     setShowCuisine(true);
+    setShowCuisineAgg(true);
     // eslint-disable-next-line
   }, [cuisine]);
 
   useEffect(() => {
     console.log("Borough: " + borough);
-    if (!borough) return;
+    if (!borough) {
+      setShowBoroughAgg(false);
+      return;
+    }
     setShowBorough(true);
+    setShowBoroughAgg(true);
     // eslint-disable-next-line
   }, [borough]);
 
@@ -108,23 +138,26 @@ const SearchSideBar = ({
       path: "stars",
     },
   };
-  const starString = JSON.stringify(starObject, null, 2);
+  const sString = JSON.stringify(starObject, null, 2);
+  setStarString(sString);
 
   const cuisineObject = {
     query: cuisine,
     path: "cuisine",
   };
-  const cuisineString = JSON.stringify(cuisineObject, null, 2);
+  const cString = JSON.stringify(cuisineObject, null, 2);
+  setCuisineString(cString);
 
   const boroughObject = {
     text: borough,
     path: "borough",
   };
-  const boroughString = JSON.stringify(boroughObject, null, 2);
+  const bString = JSON.stringify(boroughObject, null, 2);
+  setBoroughString(bString);
 
   return (
     <>
-      <div className="flex flex-col bg-white border border-gray-300 rounded w-1/4">
+      <div className="flex flex-col bg-white border border-gray-300 rounded w-1/6">
         {/************* SEARCH OPERATOR SECTION ******************/}
 
         <div className="flex h-12 justify-evenly px-1 ">

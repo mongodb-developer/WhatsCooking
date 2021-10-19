@@ -1,5 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
+import LOGO from "../images/mainlogo.png";
 
 const Navbar = ({ showAggregation, setShowAggregation }) => {
   const history = useHistory();
@@ -7,47 +9,47 @@ const Navbar = ({ showAggregation, setShowAggregation }) => {
     setShowAggregation(!showAggregation);
   };
   return (
-    <header className="container mt-4 flex pl-20 mx-auto justify-between divide-x divide-green-500">
-      <button
-        onClick={handleShowAggregation}
-        className="flex items-center h-12 pl-4 my-auto space-x-6 text-lg rounded w-full font-body transition duration-700 transform  hover:scale-150 hover:font-bold focus:outline-none"
+    <header className="container flex px-10 justify-between pb-2 mx-auto">
+      <div id="logo">
+        <Link to="/" className="flex items-center space-x-3">
+          <img className="mx-auto h-16" src={LOGO} alt="logo" />
+        </Link>
+      </div>
+      <div
+        id="right"
+        className="container pl-32 mt-4 flex justify-end divide-x divide-green-500 "
       >
-        <span>Aggregation</span>
-        <div className="flex items-center justify-center w-8 h-12 text-5xl rounded-full">
-          {" "}
-          💻
-        </div>
-      </button>
-      <button
-        // onClick={handleFunctionScore}
-        className="flex items-center pl-4 my-auto mx-auto space-x-6 text-lg text-tolopea transition duration-700 transform rounded  w-full font-body  hover:scale-150 hover:font-bold focus:outline-none"
-      >
-        <span>Function Score</span>
-        <div className="flex items-center justify-center w-8 h-12 text-5xl rounded-full">
-          {" "}
-          💯
-        </div>
-      </button>
-      <button
-        className="flex items-center pl-4 my-auto space-x-6 text-lg text-mongo-600 transition duration-700 transform rounded w-full font-body font-bold hover:scale-150 hover:font-bold focus:outline-none"
-        onClick={() => history.push("/synonyms")}
-      >
-        <span>Synonyms</span>
-        <div className="flex items-center justify-center w-8 h-12 text-5xl rounded-full">
-          {" "}
-          📚
-        </div>
-      </button>
-      <button
-        className="flex items-center pl-4 my-auto space-x-6 text-lg text-mongo-600 transition duration-700 transform rounded  w-full font-body font-bold hover:scale-150 hover:font-bold focus:outline-none"
-        onClick={() => history.push("/scoring")}
-      >
-        <span>Custom Scores</span>
-        <div className="flex items-center justify-center w-8 h-12 text-5xl rounded-full">
-          {" "}
-          ✨
-        </div>
-      </button>
+        <button
+          onClick={handleShowAggregation}
+          className="flex items-center h-12 pl-4 my-auto space-x-6 text-lg rounded w-full font-body transition duration-700 transform  hover:scale-150 hover:font-bold focus:outline-none"
+        >
+          <span>Aggregation</span>
+          <div className="flex items-center justify-center w-8 h-12 text-xl rounded-full">
+            {" "}
+            💻
+          </div>
+        </button>
+        <button
+          // onClick={handleFunctionScore}
+          className="flex items-center pl-4 my-auto mx-auto space-x-6 text-lg text-tolopea transition duration-700 transform rounded  w-full font-body  hover:scale-150 hover:font-bold focus:outline-none"
+        >
+          <span>Function Score</span>
+          <div className="flex items-center justify-center w-8 h-12 text-xl rounded-full">
+            {" "}
+            💯
+          </div>
+        </button>
+        <button
+          className="flex items-center pl-4 my-auto space-x-6 text-lg text-mongo-600 transition duration-700 transform rounded w-full font-body font-bold hover:scale-150 hover:font-bold focus:outline-none"
+          onClick={() => history.push("/synonyms")}
+        >
+          <span>Synonyms</span>
+          <div className="flex items-center justify-center w-8 h-12 text-2xl rounded-full">
+            {" "}
+            📚
+          </div>
+        </button>
+      </div>
     </header>
   );
 };
@@ -64,6 +66,16 @@ export default Navbar;
             <Link to="/scoring">Custom Scores</Link>
           </li>
         </ul>
+        <button
+        className="flex items-center pl-4 my-auto space-x-6 text-lg text-mongo-600 transition duration-700 transform rounded  w-full font-body font-bold hover:scale-150 hover:font-bold focus:outline-none"
+        onClick={() => history.push("/scoring")}
+      >
+        <span>Custom Scores</span>
+        <div className="flex items-center justify-center w-8 h-12 text-xl rounded-full">
+          {" "}
+          ✨
+        </div>
+      </button>
       </nav>
  * 
  * 
