@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
-
+import { SearchParametersContext } from "../store/SearchParametersContext";
 import LOGO from "../images/mainlogo.png";
 
-const Navbar = ({ showAggregation, setShowAggregation }) => {
+const Navbar = () => {
   const history = useHistory();
+  const {
+    showAggregation,
+    setShowAggregation,
+    setFunctionScore,
+    setValid,
+    setShowSuggestions,
+    setSubmitted,
+  } = useContext(SearchParametersContext);
   const handleShowAggregation = () => {
     setShowAggregation(!showAggregation);
+  };
+
+  const handleFunctionScore = (event) => {
+    event.preventDefault();
+    setFunctionScore("function");
+    console.log("IMPLEMENT FUNCTION SCORE");
+    setValid(true);
+    setShowSuggestions(false);
+    setSubmitted(true);
+    // handleSearch(event);
   };
   return (
     <header className="container flex px-10 justify-between pb-2 mx-auto">
@@ -30,7 +48,7 @@ const Navbar = ({ showAggregation, setShowAggregation }) => {
           </div>
         </button>
         <button
-          // onClick={handleFunctionScore}
+          onClick={handleFunctionScore}
           className="flex items-center pl-4 my-auto mx-auto space-x-6 text-lg text-tolopea transition duration-700 transform rounded  w-full font-body  hover:scale-150 hover:font-bold focus:outline-none"
         >
           <span>Function Score</span>

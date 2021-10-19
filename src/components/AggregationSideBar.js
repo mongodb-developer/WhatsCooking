@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { SearchStageContext } from "../store/SearchStageContext";
+import { SearchParametersContext } from "../store/SearchParametersContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -13,19 +14,19 @@ const AggregationSideBar = () => {
     showBoroughAgg,
   } = useContext(SearchStageContext);
 
+  const { searchTerm } = useContext(SearchParametersContext);
+
   let basicSearchObject = {
-    $search: {
-      text: "searchTerm",
-      path: ["name", "cuisine"],
-    },
+    text: searchTerm,
+    path: ["name", "cuisine"],
   };
 
   let basicSearchString = JSON.stringify(basicSearchObject, null, 2);
 
   return (
     <div className="flex flex-col rounded h-auto bg-black">
-      <div className="text-white font-body text-2xl py-4 font-bold text-center">
-        Search Stage
+      <div className="text-fuchsia-400 font-mono text-2xl py-4 font-bold text-left">
+        <pre>&#123; $search :</pre>
       </div>
 
       <SyntaxHighlighter language="javascript" style={atomDark}>
@@ -51,6 +52,9 @@ const AggregationSideBar = () => {
             </SyntaxHighlighter>
           )}
           <div className="text-xl pl-2 text-yellow-300 font-mono">]</div>
+          <div className="text-fuchsia-400 font-mono text-2xl py-4 font-bold text-left">
+            <pre>&#125; </pre>
+          </div>
         </div>
       )}
     </div>

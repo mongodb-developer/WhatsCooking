@@ -1,25 +1,35 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { SearchParametersContext } from "../store/SearchParametersContext";
 
 const GetRestaurantsEndpointTEST =
   "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTest_Oct18";
 
 export const useHomeFetch = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [food, setFood] = useState("");
-  const [operator, setOperator] = useState("text");
-  const [distance, setDistance] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
-  const [functionScore, setFunctionScore] = useState(null);
-  const [stars, setStars] = useState(1);
-  const [borough, setBorough] = useState();
-  const [cuisine, setCuisine] = useState([]);
-  const [stages, setStages] = useState({
-    searchStage: {},
-    limitStage: {},
-    projectStage: {},
-  });
+  const {
+    restaurants,
+    setRestaurants,
+    searchTerm,
+    setSearchTerm,
+    food,
+    setFood,
+    operator,
+    setOperator,
+    distance,
+    setDistance,
+    submitted,
+    setSubmitted,
+    setStages,
+    functionScore,
+    setFunctionScore,
+    stars,
+    setStars,
+    borough,
+    setBorough,
+    cuisine,
+    setCuisine,
+    stages,
+  } = useContext(SearchParametersContext);
 
   const postSearch = async () => {
     let endpoint = GetRestaurantsEndpointTEST;

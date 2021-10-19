@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import {
-  SearchStageContext,
-  SearchStageProvider,
-} from "../store/SearchStageContext";
+import React, { useState, useContext } from "react";
+import { SearchStageProvider } from "../store/SearchStageContext";
+import { SearchParametersContext } from "../store/SearchParametersContext";
 import SearchForm from "../components/SearchForm";
 import Grid from "../components/Grid";
 import NYCMap from "../components/NYCMap";
@@ -15,37 +13,47 @@ import MenuModal from "../components/MenuModal";
 // HOOKS
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
-const MainPage = ({ showAggregation, setShowAggregation }) => {
+const MainPage = () => {
   const {
-    setSearchTerm,
-    searchTerm,
-    food,
-    setFood,
     setOperator,
     operator,
     distance,
     setDistance,
     submitted,
     setSubmitted,
+    searchTerm,
+    setSearchTerm,
+    food,
+    setFood,
     restaurants,
     setRestaurants,
-    functionScore,
     setFunctionScore,
+    functionScore,
     stages,
-    setStars,
-    stars,
     borough,
     setBorough,
     cuisine,
     setCuisine,
+    setStars,
+    stars,
   } = useHomeFetch();
 
-  const [showDistanceInput, setShowDistanceInput] = useState(false); // USED IN SEARCH SIDE BAR FOR GEOWITHIN OPERATOR OPTION
-  const [valid, setValid] = useState(false); // IF VALID SEARCH EXECUTED - WILL SHOW BUTTONS TO CLEAR/AGGREGATION/FUNCTION SCORE
-  const [showSuggestions, setShowSuggestions] = useState(false); // FOR AUTOCOMPLETED RESTAURANT NAMES IN SEARCH BAR
-  const [showMenu, setShowMenu] = useState(false); // POP UP FOR RESTAURANT MENU ITEMS
-  const [showMoreRestaurants, setShowMoreRestaurants] = useState(false);
-  const [index, setIndex] = useState(0);
+  const {
+    showDistanceInput,
+    setShowDistanceInput,
+    valid,
+    setValid,
+    showSuggestions,
+    setShowSuggestions,
+    setIndex,
+    index,
+    showMenu,
+    setShowMenu,
+    showAggregation,
+    setShowAggregation,
+  } = useContext(SearchParametersContext);
+
+  const [showMoreRestaurants, setShowMoreRestaurants] = useState(false); //---CAN STAY HERE
 
   let displayRestaurants = false;
   let topPicks = [];
