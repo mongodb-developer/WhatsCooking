@@ -138,15 +138,19 @@ const SearchSideBar = ({
   setStarString(sString);
 
   const cuisineObject = {
-    query: cuisine,
-    path: "cuisine",
+    text: {
+      query: cuisine,
+      path: "cuisine",
+    },
   };
   const cString = JSON.stringify(cuisineObject, null, 2);
   setCuisineString(cString);
 
   const boroughObject = {
-    text: borough,
-    path: "borough",
+    text: {
+      query: borough,
+      path: "borough",
+    },
   };
   const bString = JSON.stringify(boroughObject, null, 2);
   setBoroughString(bString);

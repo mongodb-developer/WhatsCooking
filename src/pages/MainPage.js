@@ -61,8 +61,8 @@ const MainPage = () => {
 
   if (restaurants && restaurants.length > 0) {
     displayRestaurants = true;
-    topPicks = restaurants.slice(0, 3);
-    picks = restaurants.slice(3);
+    topPicks = restaurants.slice(0, 4);
+    picks = restaurants.slice(4);
     console.log(restaurants);
     console.log("Top Picks", topPicks);
     console.log("picks", picks);

@@ -30,9 +30,11 @@ const AggregationSideBar = () => {
   };
 
   let synObject = {
-    text: food,
-    path: "menu",
-    synonyms: "MenuSynonyms",
+    text: {
+      query: food,
+      path: "menu",
+      synonyms: "MenuSynonyms",
+    },
   };
 
   let synString = JSON.stringify(synObject, null, 2);
