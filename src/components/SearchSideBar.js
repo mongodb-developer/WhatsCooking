@@ -36,11 +36,8 @@ const SearchSideBar = ({
     setStarString,
     boroughString,
     setBoroughString,
-    showStarsAgg,
     setShowStarsAgg,
-    showCuisineAgg,
     setShowCuisineAgg,
-    showBoroughAgg,
     setShowBoroughAgg,
   } = useContext(SearchStageContext);
 
@@ -49,7 +46,6 @@ const SearchSideBar = ({
   };
 
   useEffect(() => {
-    console.log("Stars: " + stars);
     if (stars === 1) {
       return;
     }
@@ -60,9 +56,9 @@ const SearchSideBar = ({
   }, [stars]);
 
   useEffect(() => {
-    console.log("Cuisine: " + cuisine);
     if (cuisine.length === 0) {
       setShowCuisineAgg(false);
+      setShowCuisine(false);
       return;
     }
     setShowCuisine(true);
@@ -71,9 +67,9 @@ const SearchSideBar = ({
   }, [cuisine]);
 
   useEffect(() => {
-    console.log("Borough: " + borough);
     if (!borough) {
       setShowBoroughAgg(false);
+      setShowBorough(false);
       return;
     }
     setShowBorough(true);
@@ -287,7 +283,7 @@ const SearchSideBar = ({
 
         {/************* CUISINE TYPE SECTION ******************/}
 
-        <div className="text-lg" onChange={onChangeCuisine}>
+        <div className="text" onChange={onChangeCuisine}>
           <div className="mb-1 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"
@@ -378,7 +374,7 @@ const SearchSideBar = ({
 
         {/************* BOROUGH SECTION ******************/}
 
-        <div className="text-lg" onChange={onChangeBorough}>
+        <div className="text" onChange={onChangeBorough}>
           <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
             <input
               type="radio"
@@ -423,6 +419,15 @@ const SearchSideBar = ({
               defaultChecked={borough === "Staten Island"}
             />
             <label htmlFor="Staten Island">Staten Island</label>
+          </div>
+          <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+            <input
+              type="radio"
+              name="borough"
+              value={null}
+              defaultChecked={borough === null}
+            />
+            <label>All</label>
           </div>
         </div>
         {showBorough && (

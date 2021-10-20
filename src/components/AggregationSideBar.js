@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { SearchStageContext } from "../store/SearchStageContext";
 import { SearchParametersContext } from "../store/SearchParametersContext";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -14,28 +14,91 @@ const AggregationSideBar = () => {
     showBoroughAgg,
   } = useContext(SearchStageContext);
 
-  const { searchTerm } = useContext(SearchParametersContext);
+  const { searchTerm, food, borough, stars, cuisine } = useContext(
+    SearchParametersContext
+  );
+
+  const [showAggCode, setShowAggCode] = useState(false);
+  const [showFilterAgg, setShowFilterAgg] = useState(false);
+  const [showMustAgg, setShowMustAgg] = useState(false);
+  const [showCompound, setShowCompound] = useState(false);
 
   let basicSearchObject = {
     text: searchTerm,
     path: ["name", "cuisine"],
+    fuzzy: {},
   };
+
+  let synObject = {
+    text: food,
+    path: "menu",
+    synonyms: "MenuSynonyms",
+  };
+
+  let synString = JSON.stringify(synObject, null, 2);
 
   let basicSearchString = JSON.stringify(basicSearchObject, null, 2);
 
+  useEffect(() => {
+    if (borough || stars > 1 || cuisine.length > 0) {
+      setShowFilterAgg(true);
+      setShowAggCode(true);
+    } else setShowFilterAgg(false);
+    // eslint-disable-next-line
+  }, [stars, cuisine, borough]);
+
+  useEffect(() => {
+    if (showFilterAgg || showMustAgg) {
+      setShowCompound(true);
+    } else setShowCompound(false);
+    // eslint-disable-next-line
+  }, [showMustAgg, showFilterAgg]);
+
+  useEffect(() => {
+    if (searchTerm || food) setShowAggCode(true);
+    if (searchTerm !== "" && food !== "") {
+      setShowMustAgg(true);
+    } else if ((searchTerm !== "" || food !== "") && showFilterAgg) {
+      setShowMustAgg(true);
+    } else setShowMustAgg(false);
+    // eslint-disable-next-line
+  }, [food, searchTerm, showFilterAgg]);
+
   return (
-    <div className="flex flex-col rounded h-auto bg-black">
-      <div className="text-fuchsia-400 font-mono text-2xl py-4 font-bold text-left">
-        <pre>&#123; $search :</pre>
+    <div className="flex flex-col w-1/4 rounded h-auto bg-black px-4 pt-10">
+      <div className="absolute text-lg mx-auto font-body font-bold bg-mongo-500 hover:bg-mongo-400 border-b-4 border-mongo-700 hover:border-green-500 text-white py-2 px-4 rounded -top-2">
+        Search Stage
+      </div>
+      {showAggCode && (
+        <pre className="text-fuchsia-400 font-mono text-xl py-2 text-left">
+          &#123; $search :
+        </pre>
+      )}
+      {showCompound && (
+        <pre className="text-blue-300 font-mono pl-2 text-left">
+          &#123; compound : &#123;
+        </pre>
+      )}
+      {showMustAgg && <pre className="pl-8 text-orange-300">must : [</pre>}
+      <div className="">
+        {searchTerm !== "" && (
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {basicSearchString}
+          </SyntaxHighlighter>
+        )}
+
+        {food !== "" && (
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {synString}
+          </SyntaxHighlighter>
+        )}
+
+        {showMustAgg && <pre className="pl-4 text-orange-300">]</pre>}
       </div>
 
-      <SyntaxHighlighter language="javascript" style={atomDark}>
-        {basicSearchString}
-      </SyntaxHighlighter>
-
-      {(showStarsAgg || showCuisineAgg || showBoroughAgg) && (
+      {showFilterAgg && (
         <div id="filter">
-          <div className="text-xl pl-2 text-yellow-300 font-mono">filter:[</div>
+          <div className="pl-2 text-yellow-300 font-mono">filter:[</div>
           {showStarsAgg && (
             <SyntaxHighlighter language="javascript" style={atomDark}>
               {starString},
@@ -51,11 +114,16 @@ const AggregationSideBar = () => {
               {boroughString}
             </SyntaxHighlighter>
           )}
-          <div className="text-xl pl-2 text-yellow-300 font-mono">]</div>
-          <div className="text-fuchsia-400 font-mono text-2xl py-4 font-bold text-left">
-            <pre>&#125; </pre>
-          </div>
+          <div className="pl-4 text-yellow-300 font-mono">]</div>
         </div>
+      )}
+      {showCompound && (
+        <pre className="text-blue-300 font-mono pl-2 text-left">&#125; </pre>
+      )}
+      {showAggCode && (
+        <pre className="text-fuchsia-400 font-mono text-lg px-0 text-left">
+          &#125;{" "}
+        </pre>
       )}
     </div>
   );
