@@ -5,9 +5,9 @@
 
 #toggle-switch::after {
   content: "";
-  @apply h-16 w-16 rounded-full bg-mongo-500 absolute right-0 -top-1 transform scale-125 transition duration-200;
+  @apply h-12 w-12 rounded-full bg-mongo-500 absolute -right-1 -top-2 transform scale-110 transition duration-200;
 }
 
 #toggle-switch:checked::after {
-  @apply transform scale-125 -translate-x-16;
+  @apply transform scale-110 -translate-x-12;
 }
