@@ -10,18 +10,6 @@ const Top3 = ({
 }) => {
   return (
     <div className="flex flex-col bg-white rounded">
-      <div className="flex items-center justify-center py-4 mb-0 font-bold  rounded">
-        Top Picks!
-      </div>
-      <hr
-        style={{
-          color: "darkgreen",
-          backgroundColor: "darkgreen",
-          height: 1,
-          margin: 4,
-          borderColor: "darkgreen",
-        }}
-      />
       <div className="pt-4 pl-2 mt-4">
         {restaurants.map((restaurant, idx) => (
           <RestaurantCard

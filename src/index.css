@@ -2,3 +2,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#toggle-switch::after {
+  content: "";
+  @apply h-16 w-16 rounded-full bg-mongo-500 absolute right-0 -top-1 transform scale-125 transition duration-200;
+}
+
+#toggle-switch:checked::after {
+  @apply transform scale-125 -translate-x-16;
+}
