@@ -13,6 +13,9 @@ export const SearchStageProvider = (props) => {
   const [showStarsAgg, setShowStarsAgg] = useState(false);
   const [showCuisineAgg, setShowCuisineAgg] = useState(false);
   const [showBoroughAgg, setShowBoroughAgg] = useState(false);
+  const [showGeo, setShowGeo] = useState(false);
+  const [showGeoAgg, setShowGeoAgg] = useState(false);
+  const [geoString, setGeoString] = useState("");
 
   const value = {
     showStars,
@@ -33,6 +36,12 @@ export const SearchStageProvider = (props) => {
     setShowCuisineAgg,
     showBoroughAgg,
     setShowBoroughAgg,
+    showGeo,
+    setShowGeo,
+    showGeoAgg,
+    setShowGeoAgg,
+    geoString,
+    setGeoString,
   };
 
   return (

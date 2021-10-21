@@ -8,13 +8,14 @@ const AggregationSideBar = () => {
   const {
     cuisineString,
     starString,
+    geoString,
     boroughString,
     showStarsAgg,
     showCuisineAgg,
     showBoroughAgg,
   } = useContext(SearchStageContext);
 
-  const { searchTerm, food, borough, stars, cuisine } = useContext(
+  const { searchTerm, food, operator, borough, stars, cuisine } = useContext(
     SearchParametersContext
   );
 
@@ -58,13 +59,19 @@ const AggregationSideBar = () => {
 
   useEffect(() => {
     if (searchTerm || food) setShowAggCode(true);
-    if (searchTerm !== "" && food !== "") {
+    if (
+      (searchTerm !== "" && food !== "") ||
+      (searchTerm !== "" && operator !== "text")
+    ) {
       setShowMustAgg(true);
-    } else if ((searchTerm !== "" || food !== "") && showFilterAgg) {
+    } else if (
+      (searchTerm !== "" || food !== "" || operator !== "text") &&
+      showFilterAgg
+    ) {
       setShowMustAgg(true);
     } else setShowMustAgg(false);
     // eslint-disable-next-line
-  }, [food, searchTerm, showFilterAgg]);
+  }, [food, searchTerm, operator, showFilterAgg]);
 
   return (
     <div className="flex flex-col w-1/4 rounded h-auto bg-black px-4 pt-10">
@@ -92,6 +99,11 @@ const AggregationSideBar = () => {
         {food !== "" && (
           <SyntaxHighlighter language="javascript" style={atomDark}>
             {synString}
+          </SyntaxHighlighter>
+        )}
+        {operator !== "text" && (
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {geoString}
           </SyntaxHighlighter>
         )}
 

@@ -39,11 +39,34 @@ const SearchSideBar = ({
     setShowStarsAgg,
     setShowCuisineAgg,
     setShowBoroughAgg,
+    showGeo,
+    setShowGeo,
+    showGeoAgg,
+    setShowGeoAgg,
+    geoString,
+    setGeoString,
   } = useContext(SearchStageContext);
 
   const ratingChanged = (rating) => {
     setStars(rating);
   };
+
+  useEffect(() => {
+    if (operator === "text") {
+      setShowGeoAgg(false);
+      setShowGeo(false);
+      return;
+    }
+    if (operator === "geoWithin") {
+      setGeoString(geoWithinString);
+    } else if (operator === "near") {
+      setGeoString(nearString);
+    }
+
+    setShowGeo(true);
+    setShowGeoAgg(true);
+    // eslint-disable-next-line
+  }, [operator, distance]);
 
   useEffect(() => {
     if (stars === 1) {
@@ -155,6 +178,37 @@ const SearchSideBar = ({
   const bString = JSON.stringify(boroughObject, null, 2);
   setBoroughString(bString);
 
+  const METERS_PER_MILE = 1609.0;
+
+  let dist = parseFloat(distance) * METERS_PER_MILE;
+
+  const geoWithinObject = {
+    geoWithin: {
+      circle: {
+        center: {
+          type: "Point",
+          coordinates: [-73.98474, 40.76289],
+        },
+        radius: dist,
+      },
+      path: "location",
+    },
+  };
+
+  const geoWithinString = JSON.stringify(geoWithinObject, null, 2);
+
+  const nearObject = {
+    near: {
+      origin: {
+        type: "Point",
+        coordinates: [-73.98474, 40.76289],
+      },
+      pivot: 1609,
+      path: "location",
+    },
+  };
+  const nearString = JSON.stringify(nearObject, null, 2);
+
   return (
     <>
       <div className="flex flex-col bg-white border border-gray-300 rounded w-1/6">
@@ -238,8 +292,18 @@ const SearchSideBar = ({
               value={distance}
               onChange={(event) => setDistance(event.target.value)}
               className="w-16 mx-auto leading-10 text-center bg-transparent rounded outline-none"
-              onSubmit={handleSearchMaster}
             ></input>
+          </div>
+        )}
+        {showGeo && (
+          <div
+            onClick={() => {
+              setShowGeo(false);
+            }}
+          >
+            <SyntaxHighlighter language="javascript" style={atomDark}>
+              {geoString}
+            </SyntaxHighlighter>
           </div>
         )}
 
