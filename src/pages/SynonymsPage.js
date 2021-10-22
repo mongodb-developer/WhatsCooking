@@ -22,16 +22,37 @@ const SynonymsPage = () => {
     <>
       <div className="text-4xl text-center my-8">Synonyms</div>
       {/* <div className="flex flex-col w-full h-full bg-foodIdeas bg-contain bg-no-repeat bg-right-bottom bg-scroll"> */}
-      <div className="grid grid-cols-3 gap-6 p-2 mt-10 md:grid-cols-4 md:gap-6">
-        {loadedSynonyms.map((syn) => (
-          <div className="" key={syn._id} clickable synId={syn._id}>
-            {syn.mappingType}
+      <div className="grid grid-cols-2 gap-6 p-2 mt-10 px-20 md:grid-cols-2 md:gap-6">
+        {loadedSynonyms.map((syndoc) => (
+          <div className="flex text-center my-auto text-lg w-full px-6 py-6 overflow-auto  border border-black rounded-sm shadow-xl h-48 font-body">
+            <>
+              <div
+                id="left-col"
+                className="flex flex-col text-center my-auto text-lg w-1/4 px-6 py-3 overflow-auto rounded-sm h-auto font-body"
+                key={syndoc._id}
+                clickable
+                synId={syndoc._id}
+              >
+                <h1 className="text-6xl mb-2"> ⚖️</h1>
+                <h1 className="text-2xl">EQUIVALENT</h1>
+              </div>
+
+              <div id="right-col" className="my-auto text-center mx-auto w-3/4">
+                {syndoc.mappingType === "explicit" && (
+                  <h1 className="text-4xl mb-2 text-indigo-700 ">
+                    {syndoc.input[0]}
+                  </h1>
+                )}
+                {syndoc.synonyms.map((word) => (
+                  <span className="text-xl px-4">{word}, </span>
+                ))}
+              </div>
+            </>
           </div>
         ))}
       </div>
 
       <SynonymForm />
-      {/* </div> */}
     </>
   );
 };
