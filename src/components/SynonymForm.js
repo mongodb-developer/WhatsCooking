@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import MenuIcon from "../images/restaurant-menu.png";
 
 const SynonymForm = () => {
   const [equivalentMapping, setEquivalentMapping] = useState(true);
@@ -37,9 +38,16 @@ const SynonymForm = () => {
   return (
     <div>
       <form
-        className="flex my-24 w-3/4 justify-evenly ml-20 border border-gray-300 shadow p-3 rounded "
+        className="flex my-24 w-3/4 justify-between px-10 ml-20 border border-gray-300 shadow p-3 rounded "
         onSubmit={handleSubmit(addSynonym)}
       >
+        <div id="map" className="w-48 text-center my-auto">
+          <img
+            src={MenuIcon}
+            alt="restaurant"
+            className="object-contain w-3/4 mx-auto my-auto"
+          />
+        </div>
         <div className="flex flex-col w-1/3">
           <div className="flex items-center">
             <label
@@ -78,10 +86,10 @@ const SynonymForm = () => {
           </div>
         </div>
 
-        <div id="synonyms" className="flex flex-col">
+        <div id="synonyms" className="flex flex-col w-1/3">
           <textarea
             rows="4"
-            cols="25"
+            cols="30"
             className="border border-gray-400 p-5 outline-none focus:border-tolopea-400 rows=10"
             placeholder={`synonyms separated by a comma...`}
             name={`synonyms`}
