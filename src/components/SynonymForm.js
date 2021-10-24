@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import MenuIcon from "../images/restaurant-menu.png";
 
-const SynonymForm = () => {
+const SynonymForm = ({ setShowSynForm }) => {
   const [equivalentMapping, setEquivalentMapping] = useState(true);
   const { register, handleSubmit, watch, control, formState, reset, setValue } =
     useForm({
       word: "",
       synonyms: "",
-      mapping: true,
+      isEquivalent: true,
     });
 
   const { errors } = formState;
@@ -26,19 +26,25 @@ const SynonymForm = () => {
       requestOptions
     ).then(() => {
       console.log("SUBMITTED SYNONYM!!");
+      setShowSynForm(false);
       reset({
         word: "",
         synonyms: "",
-        mapping: true,
+        isEquivalent: true,
       });
       //history.replace("/");
     }); // push goes back to previous page - so replace // fetch returns a promise
   };
 
   return (
-    <div>
+    <div className="text-center mx-32 my-10 justify-center">
+      <div>
+        Synonyms allow you to create a relationship between one term and
+        another. Add a synonym to your menu search by adding terms and
+        specifying mappingType to "equivalent" or "explicit."
+      </div>
       <form
-        className="flex my-24 w-3/4 justify-between px-10 ml-20 border border-gray-300 shadow p-3 rounded "
+        className="flex my-10 w-full justify-between px-10 border border-gray-300 shadow p-3 rounded"
         onSubmit={handleSubmit(addSynonym)}
       >
         <div id="map" className="w-48 text-center my-auto">
@@ -74,12 +80,12 @@ const SynonymForm = () => {
             <label htmlFor="toggle-switch">
               <input
                 type="checkbox"
-                name="mapping"
+                name="isEquivalent"
                 id="toggle-switch"
                 defaultChecked={true}
                 className="cursor-pointer mx-16 h-10 my-10 w-24 rounded-full appearance-none bg-gray-800 border-4 border-black checked:bg-gray-800 transition duration-200 relative"
                 onChange={() => setEquivalentMapping(!equivalentMapping)}
-                {...register("mapping")}
+                {...register("isEquivalent")}
               />
             </label>
             <div className="font-body text-2xl mx-auto my-auto">Explicit</div>
@@ -107,7 +113,7 @@ const SynonymForm = () => {
         </div>
       </form>
 
-      <pre>{JSON.stringify(watch(), null, 2)}</pre>
+      <pre className="text-left">{JSON.stringify(watch(), null, 2)}</pre>
     </div>
   );
 };

@@ -100,46 +100,6 @@ const SearchForm = ({
           </div>
         </div>
       </form>
-
-      {/*************** DISPLAY BAR CLEAR --- SHOW AGGREGATION --- FUNCTION SCORE **************
-      {valid && (
-        <div className="flex justify-center px-2 mx-10 space-x-20 bg-yellow-300 rounded">
-          <div className="py-2 my-auto text-xl text-center bg-yellow-300 font-body">
-            Search results for "{searchTerm}" with {operator} operator.
-          </div>
-          <button
-            onClick={handleClearSearch}
-            className="flex items-center h-12 pl-4 my-auto space-x-6 text-xl bg-yellow-300 border border-yellow-200 rounded shadow-xl w-60 font-body hover:bg-yellow-200 focus:outline-none"
-          >
-            <span>Clear table</span>
-            <div className="flex items-center justify-center w-12 text-5xl bg-black rounded-full">
-              🍽️
-            </div>
-          </button>
-          <button
-            onClick={handleShowAggregation}
-            className="flex items-center h-12 pl-4 my-auto space-x-6 text-lg bg-yellow-300 border border-yellow-200 rounded shadow-xl w-60 font-body hover:bg-yellow-200 focus:outline-none"
-          >
-            <span>Aggregation</span>
-            <div className="flex items-center justify-center w-12 h-12 text-5xl rounded-full">
-              {" "}
-              💻
-            </div>
-          </button>
-          <button
-            onClick={handleFunctionScore}
-            className="flex items-center pl-4 my-auto space-x-6 text-lg text-white transition duration-700 transform rounded shadow-xl bg-night-shadz-500 w-60 font-body hover:bg-night-shadz-600 hover:scale-150 hover:font-bold focus:outline-none"
-          >
-            <span>Function Score</span>
-            <div className="flex items-center justify-center w-12 h-12 text-6xl rounded-full">
-              {" "}
-              ✨
-            </div>
-          </button>
-        </div>
-      )}
-
-      ***/}
     </>
   );
 };
