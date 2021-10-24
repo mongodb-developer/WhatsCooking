@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import MenuIcon from "../images/restaurant-menu.png";
 
-const SynonymForm = ({ setShowSynForm }) => {
+const SynonymForm = ({ setShowSynForm, setSubmissionMessage }) => {
   const [equivalentMapping, setEquivalentMapping] = useState(true);
   const { register, handleSubmit, watch, control, formState, reset, setValue } =
     useForm({
@@ -27,6 +27,7 @@ const SynonymForm = ({ setShowSynForm }) => {
     ).then(() => {
       console.log("SUBMITTED SYNONYM!!");
       setShowSynForm(false);
+      setSubmissionMessage(`You successfully added synonyms for ${data.word}`);
       reset({
         word: "",
         synonyms: "",
@@ -37,10 +38,10 @@ const SynonymForm = ({ setShowSynForm }) => {
   };
 
   return (
-    <div className="text-center mx-32 my-10 justify-center">
-      <div>
+    <div className="text-center text-3xl mx-32 my-10 justify-center">
+      <div className="text-2xl mx-auto text-center">
         Synonyms allow you to create a relationship between one term and
-        another. Add a synonym to your menu search by adding terms and
+        another. <br></br>Add a synonym to your menu search by adding terms and
         specifying mappingType to "equivalent" or "explicit."
       </div>
       <form
@@ -107,9 +108,19 @@ const SynonymForm = ({ setShowSynForm }) => {
             </p>
           )}
           <input
-            className="px-8 py-4 bg-indigo-800 text-white rounded h-12 my-auto"
+            className="px-8 py-2 mb-2 bg-gradient-to-r from-san-juan-500 via-san-juan-400 to-deep-cerulean-700 text-white rounded h-12 my-auto"
             type="submit"
           />
+          <button
+            className="px-8 py-2 bg-gradient-to-r from-red-700 to-red-900 text-white rounded h-12 my-auto flex items-center space-x-4 justify-center"
+            onClick={() => setShowSynForm(false)}
+            type="button"
+          >
+            <span className="my-auto">Cancel</span>
+            <div className="flex items-center justify-center w-16 h-16 text-4xl rounded-full bg-white">
+              ❌
+            </div>
+          </button>
         </div>
       </form>
 

@@ -7,6 +7,7 @@ import IdeasIcon from "../images/foodIdeas.png";
 const SynonymsPage = () => {
   const [loadedSynonyms, setLoadedSynonyms] = useState([]);
   const [showSynForm, setShowSynForm] = useState(false);
+  const [submissionMessage, setSubmissionMessage] = useState("");
 
   const getSynonyms = async () => {
     let storedSynonyms = await (
@@ -38,19 +39,22 @@ const SynonymsPage = () => {
       </div>
 
       <div className="flex mx-40 text-2xl justify-center">
-        <div className="my-auto text-center">
+        <div className="my-auto text-center text-4xl">
           <div className="text-center text-4xl">
             You say "pop," and I say "coke?"{" "}
             <span className="text-6xl">🥤</span>
           </div>
-          <div className="text-center text-3xl">
+          <div className="text-center">
             <br></br>With synonyms in Atlas Search, call it what you will.
           </div>
 
           <button
             type="button"
-            className="flex justify-center my-auto mt-6 w-full mx-auto h-16 pl-4 space-x-4 text-4xl text-white rounded bg-mongo-500 to-green-500 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
-            onClick={() => setShowSynForm(true)}
+            className="flex justify-center my-auto mt-12 w-full mx-auto h-16 pl-4 space-x-4 text-4xl text-white rounded bg-gradient-to-r from-mongo-500 to-green-700 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
+            onClick={() => {
+              setShowSynForm(true);
+              setSubmissionMessage("");
+            }}
           >
             <span className="my-auto">Create Synonym</span>
             <div className="flex items-center justify-center w-16 h-16 text-6xl rounded-full bg-white">
@@ -59,7 +63,7 @@ const SynonymsPage = () => {
           </button>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-1/3">
           <img
             src={IdeasIcon}
             alt="thinking"
@@ -67,10 +71,20 @@ const SynonymsPage = () => {
           ></img>
         </div>
       </div>
+      {submissionMessage !== "" && (
+        <div
+          className="flex justify-center px-2 w-4/5 mt-4 py-4 text-2xl mx-auto bg-yellow-300 rounded"
+          onClick={() => setSubmissionMessage("")}
+        >
+          {submissionMessage}
+        </div>
+      )}
+
       {showSynForm && (
         <SynonymForm
           className="mx-auto justify-center"
           setShowSynForm={setShowSynForm}
+          setSubmissionMessage={setSubmissionMessage}
         />
       )}
 
