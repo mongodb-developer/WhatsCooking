@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import MenuIcon from "../images/restaurant-menu.png";
 
@@ -27,7 +27,7 @@ const SynonymForm = ({ setShowSynForm, setSubmissionMessage }) => {
     ).then(() => {
       console.log("SUBMITTED SYNONYM!!");
       setShowSynForm(false);
-      setSubmissionMessage(`You successfully added synonyms for ${data.word}`);
+      setSubmissionMessage(`You successfully added synonyms for ${data.word}.`);
       reset({
         word: "",
         synonyms: "",
