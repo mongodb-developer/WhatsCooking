@@ -55,7 +55,7 @@ const SynonymsPage = () => {
             You say "pop," and I say "coke?"{" "}
             <span className="text-6xl">🥤</span>
           </div>
-          <div className="text-center">
+          <div className="text-center text-2xl">
             <br></br>With synonyms in Atlas Search, call it what you will.
           </div>
 
