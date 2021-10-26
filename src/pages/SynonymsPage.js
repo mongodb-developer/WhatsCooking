@@ -90,7 +90,6 @@ const SynonymsPage = () => {
           setShowSynForm={setShowSynForm}
           setSubmissionMessage={setSubmissionMessage}
           setDeleteMessage={setDeleteMessage}
-          source="page"
         />
       )}
 
@@ -102,7 +101,7 @@ const SynonymsPage = () => {
             setDeleteMessage={setDeleteMessage}
             setUpdateMessage={setUpdateMessage}
             setShowSynForm
-            setSubmissionMessage
+            setSubmissionMessage={setSubmissionMessage}
             updateMessage={updateMessage}
             index={index}
           />

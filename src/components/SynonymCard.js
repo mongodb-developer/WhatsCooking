@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import OneWay from "../images/one-way.png";
-import SynonymForm from "./SynonymForm";
+import SynonymUpdateForm from "./SynonymUpdateForm";
 
 const SynonymCard = ({
   syndoc,
@@ -44,14 +44,14 @@ const SynonymCard = ({
     <>
       {
         (index = cardIDToUpdate ? (
-          <SynonymForm
+          <SynonymUpdateForm
             className="mx-auto justify-center"
             setShowSynForm={setShowSynForm}
             setSubmissionMessage={setSubmissionMessage}
             setDeleteMessage={setDeleteMessage}
             setCardIDToUpdate={setCardIDToUpdate}
-            synID
-            setSynID
+            synID={synID}
+            setSynID={setSynID}
             values={{
               word: wordToUpdate,
               synString: synString,
