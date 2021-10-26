@@ -10,6 +10,7 @@ const SynonymsPage = () => {
   const [showSynForm, setShowSynForm] = useState(false);
   const [submissionMessage, setSubmissionMessage] = useState("");
   const [deleteMessage, setDeleteMessage] = useState("");
+  const [updateMessage, setUpdateMessage] = useState("");
 
   const getSynonyms = async () => {
     let storedSynonyms = await (
@@ -17,12 +18,10 @@ const SynonymsPage = () => {
         "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/getFoodSynonyms"
       )
     ).json();
-    console.log("STOREDSYNONYMS: " + storedSynonyms.foodSynonyms.length);
     setLoadedSynonyms(storedSynonyms.foodSynonyms);
   };
   useEffect(() => {
     getSynonyms();
-    console.log("SYNONYMS", loadedSynonyms);
   }, [deleteMessage, submissionMessage]); // add all external values your effect function depends on - none in this case
 
   return (
@@ -91,12 +90,22 @@ const SynonymsPage = () => {
           setShowSynForm={setShowSynForm}
           setSubmissionMessage={setSubmissionMessage}
           setDeleteMessage={setDeleteMessage}
+          source="page"
         />
       )}
 
       <div className="grid grid-cols-2 gap-6 p-2 mt-10 px-20 md:grid-cols-2 md:gap-6">
-        {loadedSynonyms.map((syndoc) => (
-          <SynonymCard syndoc={syndoc} setDeleteMessage={setDeleteMessage} />
+        {loadedSynonyms.map((syndoc, index) => (
+          <SynonymCard
+            key={syndoc._id}
+            syndoc={syndoc}
+            setDeleteMessage={setDeleteMessage}
+            setUpdateMessage={setUpdateMessage}
+            setShowSynForm
+            setSubmissionMessage
+            updateMessage={updateMessage}
+            index={index}
+          />
         ))}
       </div>
       {deleteMessage !== "" && (
