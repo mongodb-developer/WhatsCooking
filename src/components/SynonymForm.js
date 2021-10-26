@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import MenuIcon from "../images/restaurant-menu.png";
@@ -8,16 +9,38 @@ const SynonymForm = ({
   source,
   values,
   setCardIDToUpdate,
+  synID,
+  setSynID,
 }) => {
   const [equivalentMapping, setEquivalentMapping] = useState(true);
-  const { register, handleSubmit, watch, control, formState, reset, setValue } =
-    useForm({
+
+  const { register, handleSubmit, watch, formState, reset, setValue } = useForm(
+    {
       word: "",
       synonyms: "",
       isEquivalent: true,
-    });
+    }
+  );
 
   const { errors } = formState;
+
+  const updateSynonym = (id) => {
+    console.log("In updateSynonym function");
+    const UPDATE_ENDPOINT = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/updateSynonym?id=${synID}`;
+
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(UPDATE_ENDPOINT, requestOptions).then(() => {
+      console.log("POSTED TO UPDATE ENDPOINT");
+      setCardIDToUpdate(0);
+      setSynID(0);
+    });
+  };
 
   const addSynonym = (data) => {
     const requestOptions = {
@@ -39,8 +62,7 @@ const SynonymForm = ({
         synonyms: "",
         isEquivalent: true,
       });
-      //history.replace("/");
-    }); // push goes back to previous page - so replace // fetch returns a promise
+    });
   };
 
   return (
@@ -142,7 +164,7 @@ const SynonymForm = ({
         <div className="text-center text-xl mx-32 my-4 justify-center">
           <form
             className="flex flex-col my-10 w-full justify-between border border-gray-300 shadow p-3 rounded"
-            onSubmit={handleSubmit(addSynonym)}
+            // onSubmit={handleSubmit(addSynonym)}
           >
             <div className="flex justify-evenly space-x-6">
               <div className="flex flex-col w-1/2">
@@ -192,7 +214,7 @@ const SynonymForm = ({
               <div id="synonyms" className="flex flex-col">
                 <textarea
                   rows="4"
-                  cols="24"
+                  cols="20"
                   className="border border-gray-400 p-5 outline-none focus:border-tolopea-400 rows=10"
                   placeholder={values.synString}
                   name={`synonyms`}
@@ -210,16 +232,6 @@ const SynonymForm = ({
                 type="button"
                 className="px-6 py-2 text-center text-white font-body bg-yellow-400 rounded bg-gradient-to-r from-san-juan-500 via-san-juan-400 to-deep-cerulean-700 font-bold"
                 onClick={() => {
-                  // let synString2 = values.synString;
-                  // let synArray = values.synString
-                  //   .split(",")
-                  //   .map((item) => item.trim());
-                  // if (values.isEquivalent === true) {
-                  //   synArray = synArray.shift();
-                  //   synString2 = synArray?.join(", ");
-                  //   console.log("SYNSTRING2: " + synString2);
-                  // }
-
                   setValue("word", values.word);
                   setValue("isEquivalent", values.isEquivalent);
                   setValue("synonyms", values.synString);
@@ -229,7 +241,12 @@ const SynonymForm = ({
               </button>
               <button
                 className="px-8 py-2 bg-gradient-to-r from-green-700 via-mongo-500 to-mongo-800 text-white rounded h-12 my-auto flex items-center space-x-4 justify-center"
-                type="submit"
+                type="button"
+                onClick={() => {
+                  updateSynonym(values.id);
+                  setCardIDToUpdate(0);
+                  console.log("click: " + values.id);
+                }}
               >
                 <div className="flex items-center justify-center w-16 h-16 text-4xl rounded-full bg-white border border-deep-cerulean-700">
                   👌

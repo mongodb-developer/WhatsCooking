@@ -13,6 +13,7 @@ const SynonymCard = ({
 }) => {
   const [cardIDToUpdate, setCardIDToUpdate] = useState(0);
   const [wordToUpdate, setWordToUpdate] = useState("");
+  const [synID, setSynID] = useState(0);
 
   const DELETE_ENDPOINT =
     "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/removeSynonym";
@@ -22,12 +23,15 @@ const SynonymCard = ({
     setDeleteMessage("Successfully deleted synonym.");
   };
 
-  const editSynonym = async (id) => {
+  const editSynonym = async (id, index) => {
     console.log("IMPLEMENT EDIT FOR SYNONYM: " + id);
     setCardIDToUpdate(index);
+    //   setSynID(id);
+
     setUpdateMessage(`Edit synonym for ${wordToUpdate}.`);
-    console.log("INDEX: " + index);
-    console.log(cardIDToUpdate);
+    console.log("IN EDIT SYNONYM");
+    // console.log(cardIDToUpdate);
+    console.log("SYNID: " + synID);
   };
 
   const synArray = syndoc.synonyms;
@@ -46,6 +50,8 @@ const SynonymCard = ({
             setSubmissionMessage={setSubmissionMessage}
             setDeleteMessage={setDeleteMessage}
             setCardIDToUpdate={setCardIDToUpdate}
+            synID
+            setSynID
             values={{
               word: wordToUpdate,
               synString: synString,
@@ -90,10 +96,18 @@ const SynonymCard = ({
                   <button
                     className="flex items-center w-20 h-20 px-6 py-4 text-3xl text-white transition duration-300 rounded shadow-xl bg-deep-cerulean-600"
                     onClick={() => {
+                      console.log("IN BUTTON PRESS");
                       if (syndoc.mappingType === "explicit")
                         setWordToUpdate(syndoc.input[0]);
                       else setWordToUpdate(syndoc.synonyms[0]);
-                      editSynonym(Object.values(syndoc._id), index);
+
+                      console.log("IN BUTTON PRESS");
+                      //   console.log("INDEX", index);
+                      console.log("UNDERSCOREID: ", syndoc._id.$oid);
+
+                      setSynID(syndoc._id.$oid);
+                      editSynonym(synID, index);
+                      console.log(synID);
                     }}
                   >
                     <svg
