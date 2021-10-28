@@ -86,7 +86,7 @@ const SynonymsPage = () => {
           </button>
         </div>
 
-        <div className="w-1/4 ml-10 rounded text-base my-auto">
+        <div className="w-1/4 ml-10 rounded text-base my-auto p-4">
           <SyntaxHighlighter language="javascript" style={okaidia}>
             {synIndexString}
           </SyntaxHighlighter>

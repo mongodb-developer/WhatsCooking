@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import Icon from "../images/whatscooking.png";
-import SearchIcon from "../images/WebReadySearch.JPG";
+import SearchIcon from "../images/ATLAS_Search.png";
 
 const SearchForm = ({
   setSearchTerm,
@@ -100,16 +100,16 @@ const SearchForm = ({
               </div>{" "}
               <button
                 onClick={() => setShowSearchStage(!showSearchStage)}
-                className="absolute flex flex-col text-2xl my-auto font-body font-bold bg-white border-t-2 border-l-2 border-b-4 border-r-4 border-solid border-san-juan-400 py-2 px-4 rounded-xl -bottom-8 z-10 right-24"
+                className="absolute flex space-x-4 my-auto font-body font-bold bg-mongo-500 border-b-4 border-r-4 border-solid border-mongo-700 rounded-xl -bottom-8 z-10 right-16"
               >
+                <div className="relative text-2xl my-auto text-white font-extrabold font-body pr-6 pl-12 py-2">
+                  $search
+                </div>
                 <img
                   src={SearchIcon}
                   alt="app logo"
-                  className="my-auto w-16 h-16 bg-white rounded-xl mx-auto"
+                  className="absolute right-32 -bottom-4 my-auto w-20 h-20 rounded-full mx-auto bg-white border-t-2 border-l-2 border-b-4 border-r-4 border-solid border-mongo-600"
                 ></img>
-                <div className="text-xl font-extrabold font-body">
-                  Search Stage
-                </div>
               </button>
             </div>
           </div>
