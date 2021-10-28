@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SynonymForm from "../components/SynonymForm";
 import SynonymCard from "../components/SynonymCard";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import Icon from "../images/whatscooking.png";
 import IdeasIcon from "../images/foodIdeas.png";
@@ -24,6 +26,20 @@ const SynonymsPage = () => {
     getSynonyms();
   }, [deleteMessage, submissionMessage]); // add all external values your effect function depends on - none in this case
 
+  const synonymIndex = {
+    synonyms: [
+      {
+        analyzer: "lucene.standard",
+        name: "MenuSynonyms",
+        source: {
+          collection: "menu_synonyms",
+        },
+      },
+    ],
+  };
+
+  const synIndexString = JSON.stringify(synonymIndex, null, 2);
+
   return (
     <>
       <div
@@ -42,7 +58,10 @@ const SynonymsPage = () => {
         </div>
       </div>
 
-      <div className="flex mx-40 text-2xl justify-center">
+      <div className="flex space-x-20 text-2xl justify-center">
+        <div className="w-1/4">
+          <img src={IdeasIcon} alt="thinking" className="my-auto"></img>
+        </div>
         <div className="my-auto text-center text-4xl">
           <div className="text-center text-4xl">
             You say "pop," and I say "coke?"{" "}
@@ -67,12 +86,10 @@ const SynonymsPage = () => {
           </button>
         </div>
 
-        <div className="w-1/3">
-          <img
-            src={IdeasIcon}
-            alt="thinking"
-            className="my-auto ml-20 pl-30"
-          ></img>
+        <div className="w-1/4 ml-10 rounded text-base my-auto">
+          <SyntaxHighlighter language="javascript" style={okaidia}>
+            {synIndexString}
+          </SyntaxHighlighter>
         </div>
       </div>
       {submissionMessage !== "" && (
@@ -93,7 +110,7 @@ const SynonymsPage = () => {
         />
       )}
 
-      <div className="grid grid-cols-2 gap-6 p-2 mt-10 px-20 md:grid-cols-2 md:gap-6">
+      <div className="grid grid-cols-3 gap-6 p-2 mt-10 px-20 md:grid-cols-3 md:gap-6">
         {loadedSynonyms.map((syndoc, index) => (
           <SynonymCard
             key={syndoc._id}

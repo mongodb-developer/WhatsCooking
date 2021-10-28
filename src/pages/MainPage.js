@@ -51,6 +51,8 @@ const MainPage = () => {
     setShowMenu,
     showAggregation,
     setShowAggregation,
+    setShowSearchStage,
+    showSearchStage,
   } = useContext(SearchParametersContext);
 
   const [showMoreRestaurants, setShowMoreRestaurants] = useState(false); //---CAN STAY HERE
@@ -94,6 +96,8 @@ const MainPage = () => {
           setStars={setStars}
           setShowSuggestions={setShowSuggestions}
           showSuggestions={showSuggestions}
+          showSearchStage={showSearchStage}
+          setShowSearchStage={setShowSearchStage}
         />
 
         {showAggregation && (
@@ -140,7 +144,7 @@ const MainPage = () => {
                 />
               </div>
             )}
-            <AggregationSideBar />
+            {showSearchStage && <AggregationSideBar />}
           </div>
 
           {!showMoreRestaurants ? (

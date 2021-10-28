@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import Icon from "../images/whatscooking.png";
+import SearchIcon from "../images/WebReadySearch.JPG";
 
 const SearchForm = ({
   setSearchTerm,
@@ -24,6 +25,8 @@ const SearchForm = ({
   setStars,
   setShowSuggestions,
   showSuggestions,
+  setShowSearchStage,
+  showSearchStage,
 }) => {
   const handleSearch = (event) => {
     event.preventDefault();
@@ -84,7 +87,6 @@ const SearchForm = ({
                   className="px-5 bg-transparent outline-none font-body"
                 />
               </div>
-
               <div className="flex mx-4 w-1/4 px-0">
                 <button
                   type="submit"
@@ -95,7 +97,20 @@ const SearchForm = ({
                     👩🏽‍🍳
                   </div>
                 </button>
-              </div>
+              </div>{" "}
+              <button
+                onClick={() => setShowSearchStage(!showSearchStage)}
+                className="absolute flex flex-col text-2xl my-auto font-body font-bold bg-white border-t-2 border-l-2 border-b-4 border-r-4 border-solid border-san-juan-400 py-2 px-4 rounded-xl -bottom-8 z-10 right-24"
+              >
+                <img
+                  src={SearchIcon}
+                  alt="app logo"
+                  className="my-auto w-16 h-16 bg-white rounded-xl mx-auto"
+                ></img>
+                <div className="text-xl font-extrabold font-body">
+                  Search Stage
+                </div>
+              </button>
             </div>
           </div>
         </div>

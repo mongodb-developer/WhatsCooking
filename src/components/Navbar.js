@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { SearchParametersContext } from "../store/SearchParametersContext";
-import LOGO from "../images/mainlogo.png";
+import LOGO from "../images/MongoDB_Logo.svg";
 
 const Navbar = () => {
   const history = useHistory();
@@ -29,8 +29,8 @@ const Navbar = () => {
   return (
     <header className="container flex px-10 justify-between pb-2 mx-auto">
       <div id="logo">
-        <Link to="/" className="flex items-center space-x-3">
-          <img className="mx-auto h-16" src={LOGO} alt="logo" />
+        <Link to="/" className="flex items-center">
+          <img className="mx-auto my-auto h-20" src={LOGO} alt="logo" />
         </Link>
       </div>
       <div

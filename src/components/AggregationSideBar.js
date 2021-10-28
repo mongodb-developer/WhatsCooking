@@ -75,9 +75,9 @@ const AggregationSideBar = () => {
 
   return (
     <div className="flex flex-col w-1/4 rounded h-auto bg-black px-4 pt-10">
-      <button className="absolute text-lg font-body font-bold bg-mongo-500 hover:bg-mongo-400 border-b-4 border-mongo-700 hover:border-green-500 text-white py-2 px-4 rounded -top-2">
+      {/* <button className="absolute text-lg font-body font-bold bg-mongo-500 hover:bg-mongo-400 border-b-4 border-mongo-700 hover:border-green-500 text-white py-2 px-4 rounded -top-2">
         Search Stage
-      </button>
+      </button> */}
 
       {showAggCode && (
         <pre className="text-fuchsia-400 font-mono text-xl py-2 text-left">

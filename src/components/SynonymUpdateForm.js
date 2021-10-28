@@ -69,22 +69,24 @@ const SynonymUpdateForm = ({
               <p className="text-fuchsia-600 text-right">Cannot be empty.</p>
             )}
 
-            <div id="switch" className="flex mx-auto my-auto">
-              <div className="font-body text-xl mx-auto my-auto">
+            <div id="switch" className="flex flex-col mx-auto my-auto">
+              {/* <div className="font-body text-xl mx-auto my-auto">
                 Equivalent
-              </div>
+              </div> */}
               <label htmlFor="toggle-switch">
                 <input
                   type="checkbox"
                   name="isEquivalent"
                   id="toggle-switch"
                   defaultChecked={values.isEquivalent}
-                  className="cursor-pointer mx-16 h-10 my-10 w-24 rounded-full appearance-none bg-gray-800 border-4 border-black checked:bg-gray-800 transition duration-200 relative"
+                  className="cursor-pointer mx-16 h-10 mt-10 mb-6 w-24 rounded-full appearance-none bg-gray-800 border-4 border-black checked:bg-gray-800 transition duration-200 relative"
                   onChange={() => setEquivalentMapping(!equivalentMapping)}
                   {...register("isEquivalent")}
                 />
               </label>
-              <div className="font-body text-xl mx-auto my-auto">Explicit</div>
+              <div className="font-body text-xl mx-auto my-auto mb-4">
+                Equivalent --- Explicit
+              </div>
             </div>
           </div>
 
