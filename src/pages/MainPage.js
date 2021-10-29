@@ -36,6 +36,8 @@ const MainPage = () => {
     setCuisine,
     setStars,
     stars,
+    noResultsMsg,
+    setNoResultsMsg,
   } = useHomeFetch();
 
   const {
@@ -54,8 +56,6 @@ const MainPage = () => {
     setShowSearchStage,
     showSearchStage,
   } = useContext(SearchParametersContext);
-
-  // const [showMoreRestaurants, setShowMoreRestaurants] = useState(false); //---CAN STAY HERE
 
   let displayRestaurants = false;
   let topPicks = [];
@@ -100,6 +100,15 @@ const MainPage = () => {
           showSearchStage={showSearchStage}
           setShowSearchStage={setShowSearchStage}
         />
+
+        {noResultsMsg !== "" && (
+          <div
+            className="w-3/4 mx-auto py-6 text-2xl bg-black text-white text-center rounded my-4"
+            onClick={() => setNoResultsMsg("")}
+          >
+            {noResultsMsg}
+          </div>
+        )}
 
         {showAggregation && (
           <div className="absolute z-10 rounded right-96">

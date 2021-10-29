@@ -29,6 +29,8 @@ export const useHomeFetch = () => {
     cuisine,
     setCuisine,
     stages,
+    noResultsMsg,
+    setNoResultsMsg,
   } = useContext(SearchParametersContext);
 
   const postSearch = async () => {
@@ -46,6 +48,11 @@ export const useHomeFetch = () => {
     };
     axios.post(endpoint, data).then((res) => {
       setRestaurants(res.data.restaurants);
+      if (res.data.restaurants.length === 0) {
+        setNoResultsMsg(
+          "NO RESULTS MATCH YOUR SEARCH. 😞 TRY DIFFERENT SEARCH PARAMETERS."
+        );
+      } else setNoResultsMsg("");
       setStages({
         searchStage: res.data.searchStage,
         limitStage: res.data.limitStage,
@@ -87,5 +94,7 @@ export const useHomeFetch = () => {
     setCuisine,
     setStars,
     stars,
+    noResultsMsg,
+    setNoResultsMsg,
   };
 };
