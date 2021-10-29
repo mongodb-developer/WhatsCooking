@@ -25,7 +25,7 @@ export const SearchParametersProvider = (props) => {
   const [showMenu, setShowMenu] = useState(false); // POP UP FOR RESTAURANT MENU ITEMS
   const [index, setIndex] = useState(0);
   const [showAggregation, setShowAggregation] = useState(false); // TO SHOW MODAL FOR AGGREGATION CODE
-  const [showSearchStage, setShowSearchStage] = useState(true);
+  const [showSearchStage, setShowSearchStage] = useState(false);
 
   const value = {
     restaurants,

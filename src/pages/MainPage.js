@@ -6,7 +6,7 @@ import Grid from "../components/Grid";
 import NYCMap from "../components/NYCMap";
 import SearchSideBar from "../components/SearchSideBar";
 import AggregationSideBar from "../components/AggregationSideBar";
-import Top3 from "../components/Top3";
+import TopPicks from "../components/TopPicks";
 import AggregationModal from "../components/AggregationModal";
 import MenuModal from "../components/MenuModal";
 
@@ -55,19 +55,20 @@ const MainPage = () => {
     showSearchStage,
   } = useContext(SearchParametersContext);
 
-  const [showMoreRestaurants, setShowMoreRestaurants] = useState(false); //---CAN STAY HERE
+  // const [showMoreRestaurants, setShowMoreRestaurants] = useState(false); //---CAN STAY HERE
 
   let displayRestaurants = false;
   let topPicks = [];
+
   let picks = [];
 
   if (restaurants && restaurants.length > 0) {
     displayRestaurants = true;
-    topPicks = restaurants.slice(0, 4);
-    picks = restaurants.slice(4);
+    topPicks = restaurants.slice(0, 5);
+    picks = restaurants.slice(5);
     console.log(restaurants);
-    console.log("Top Picks", topPicks);
-    console.log("picks", picks);
+    // console.log("Top Picks", topPicks);
+    // console.log("picks", picks);
   }
 
   return (
@@ -131,11 +132,14 @@ const MainPage = () => {
               setCuisine={setCuisine}
             />
 
-            <NYCMap restaurants={restaurants} submitted={submitted} />
-
+            <NYCMap
+              className=""
+              restaurants={restaurants}
+              submitted={submitted}
+            />
             {displayRestaurants && (
               <div className="w-1/2 -right-0">
-                <Top3
+                <TopPicks
                   restaurants={topPicks}
                   setShowMenu={setShowMenu}
                   setIndex={setIndex}
@@ -144,48 +148,17 @@ const MainPage = () => {
                 />
               </div>
             )}
-            {showSearchStage && <AggregationSideBar />}
+
+            {showSearchStage && <AggregationSideBar className="" />}
           </div>
-
-          {!showMoreRestaurants ? (
-            <div className="flex w-full">
-              <button
-                onClick={() => {
-                  setShowMoreRestaurants(true);
-                }}
-                className="flex  justify-center w-full h-12 px-64 space-x-4 text-2xl text-white rounded bg-mongo-500 to-green-500 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
-              >
-                <span>Show Me More</span>
-                <div className="flex justify-center w-16 h-16 text-6xl rounded-full bg-mongo-700">
-                  🍽️
-                </div>
-              </button>
-            </div>
-          ) : (
-            <>
-              <Grid
-                restaurants={picks}
-                setShowMenu={setShowMenu}
-                setIndex={setIndex}
-                functionScore={functionScore}
-                setFunctionScore={setFunctionScore}
-              />
-              <div className="flex w-full">
-                <button
-                  onClick={() => {
-                    setShowMoreRestaurants(false);
-                  }}
-                  className="flex  justify-center w-full h-12 px-64 space-x-4 text-2xl text-white rounded bg-purple-500 to-green-500 font-body hover:shadow-2xl hover:bg-purple-700 focus:outline-none"
-                >
-                  <span>Hide Restaurants</span>
-                  <div className="flex justify-center w-16 h-16 text-6xl rounded-full bg-mongo-700">
-                    🍽️
-                  </div>
-                </button>
-              </div>
-            </>
-          )}
-
+          <Grid
+            restaurants={picks}
+            setShowMenu={setShowMenu}
+            setIndex={setIndex}
+            functionScore={functionScore}
+            setFunctionScore={setFunctionScore}
+          />
+          )
           {showMenu && (
             <MenuModal
               menu={restaurants[index].menu}

@@ -100,6 +100,7 @@ const SearchForm = ({
               </div>{" "}
               <button
                 onClick={() => setShowSearchStage(!showSearchStage)}
+                type="button"
                 className="absolute flex space-x-4 my-auto font-body font-bold bg-mongo-500 border-b-4 border-r-4 border-solid border-mongo-700 rounded-xl -bottom-8 z-10 right-16"
               >
                 <div className="relative text-2xl my-auto text-white font-extrabold font-body pr-6 pl-12 py-2">

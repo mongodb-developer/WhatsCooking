@@ -1,7 +1,7 @@
 import React from "react";
 import RestaurantCard from "./RestaurantCard";
 
-const Top3 = ({
+const TopPicks = ({
   restaurants,
   setShowMenu,
   setIndex,
@@ -28,7 +28,7 @@ const Top3 = ({
             setShowMenu={setShowMenu}
             highlights={restaurant.highlights}
             setIndex={setIndex}
-            source="Top3"
+            source="TopPicks"
             functionScore={functionScore}
             setFunctionScore={setFunctionScore}
           ></RestaurantCard>
@@ -38,4 +38,4 @@ const Top3 = ({
   );
 };
 
-export default Top3;
+export default TopPicks;

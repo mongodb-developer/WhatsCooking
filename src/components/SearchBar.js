@@ -12,6 +12,8 @@ const SearchBar = ({
   const initial = useRef(true);
   const [suggestions, setSuggestions] = useState([]);
 
+  if (searchTerm === "") setShowSuggestions(false);
+
   const Suggestions_AC_Endpoint =
     "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsAutocomplete";
 
@@ -66,12 +68,13 @@ const SearchBar = ({
         />
       </div>
       {showSuggestions && (
-        <div className="absolute z-10 w-auto bg-white rounded shadow-2xl ml-32 text-san-juan-700 top-24 font-body">
+        <div className="absolute z-10 w-full bg-white rounded shadow-2xl ml-32 text-san-juan-700 top-24 font-body">
           <AutoSuggestions
             items={suggestions}
             showSuggestions={showSuggestions}
             setSuggestions={setSuggestions}
             setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
             setSubmitted={setSubmitted}
             setValid={setValid}
           />

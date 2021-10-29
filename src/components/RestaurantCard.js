@@ -82,7 +82,7 @@ const RestaurantCard = ({
   return (
     <>
       <div className="relative flex flex-col justify-around w-full px-4 py-3 mb-10 text-center transition duration-500 transform bg-white border rounded-lg shadow-lg hover:scale-110">
-        {source === "Top3" ? (
+        {source === "TopPicks" ? (
           <div className="absolute px-2 mx-auto text-xl font-bold text-white rounded-full shadow-lg hover:scale-150 bg-gradient-to-r from-mongo-700 to-mongo-600 -top-4">
             score: {modScore}
           </div>
