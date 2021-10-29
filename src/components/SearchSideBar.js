@@ -147,9 +147,9 @@ const SearchSideBar = ({
   };
 
   let active =
-    "w-20 h-12 my-auto text text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none";
+    "w-1/2 h-12 my-auto text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none";
   let inactive =
-    "w-20 h-12 my-auto text text-white bg-gray-400 border border-gray-500 rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none";
+    "w-1/2 h-12 my-auto text-white bg-gray-700 border border-black rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none";
 
   const starObject = {
     range: {
@@ -213,28 +213,10 @@ const SearchSideBar = ({
     <>
       <div className="flex flex-col bg-white border border-gray-300 rounded w-1/6">
         {/************* SEARCH OPERATOR SECTION ******************/}
-
-        <div className="flex h-12 justify-evenly px-1 ">
-          {operator === "text" ? (
-            <button
-              type="button"
-              className={active}
-              onClick={() => setOperator("text")}
-            >
-              text
-            </button>
-          ) : (
-            <button
-              type="button"
-              className={inactive}
-              onClick={() => {
-                setOperator("text");
-                setShowDistanceInput(false);
-              }}
-            >
-              text
-            </button>
-          )}
+        <label className="font-bold text-tolopea-500 text-center mt-2">
+          Geospatial Search Options
+        </label>
+        <div className="flex h-12 px-1 ">
           {operator === "near" ? (
             <button
               type="button"
@@ -247,7 +229,7 @@ const SearchSideBar = ({
             <button
               type="button"
               className={inactive}
-              onClick={handleNearSearch}
+              onClick={() => setOperator("near")}
             >
               near
             </button>
@@ -275,13 +257,13 @@ const SearchSideBar = ({
               geoWithin
             </button>
           )}
-          <button
+          {/* <button
             className="flex items-center justify-center w-20 h-12 my-auto text-lg font-bold transform bg-white border border-gray-400 rounded hover:shadow-2xl hover:scale-110 focus:outline-none"
             type="button"
             onClick={handleSearchMaster}
           >
             <img className="w-12" src={MagnifyingGlass} alt="glass" />
-          </button>
+          </button> */}
         </div>
         {showDistanceInput && (
           <div className="flex items-center pb-2 mx-4">
@@ -351,7 +333,7 @@ const SearchSideBar = ({
 
         {/************* CUISINE TYPE SECTION ******************/}
 
-        <div className="text" onChange={onChangeCuisine}>
+        <div className="" onChange={onChangeCuisine}>
           <div className="mb-1 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"

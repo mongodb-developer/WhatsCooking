@@ -58,7 +58,7 @@ const SynonymsPage = () => {
         </div>
       </div>
 
-      <div className="flex space-x-20 text-2xl justify-center">
+      <div className="flex space-x-20 mx-28 text-2xl justify-center">
         <div className="w-1/4">
           <img src={IdeasIcon} alt="thinking" className="my-auto"></img>
         </div>

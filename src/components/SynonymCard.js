@@ -76,7 +76,7 @@ const SynonymCard = ({
                     <img
                       src={OneWay}
                       alt="explicit"
-                      className="object-contain w-1/3 mx-auto my-auto mb-2"
+                      className="object-contain w-1/2 mx-auto my-auto mb-2"
                     />
                     <h1 className="text-2xl">Explicit</h1>
                   </>
