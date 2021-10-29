@@ -122,7 +122,7 @@ const MainPage = () => {
         <div className="relative flex flex-col mx-auto">
           <div className="flex w-full px-10 mx-auto mt-4 bg-white">
             <SearchSideBar
-              className=""
+              className="w-auto"
               setOperator={setOperator}
               operator={operator}
               distance={distance}

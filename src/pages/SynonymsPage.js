@@ -58,12 +58,12 @@ const SynonymsPage = () => {
         </div>
       </div>
 
-      <div className="flex space-x-20 mx-28 text-2xl justify-center">
-        <div className="w-1/4">
+      <div className="flex space-x-8 mx-16 text-2xl justify-center">
+        <div className="w-1/4 my-auto">
           <img src={IdeasIcon} alt="thinking" className="my-auto"></img>
         </div>
-        <div className="my-auto text-center text-4xl">
-          <div className="text-center text-4xl">
+        <div className="my-auto text-center">
+          <div className="text-center text-3xl">
             You say "pop," and I say "coke?"{" "}
             <span className="text-6xl">🥤</span>
           </div>
@@ -73,7 +73,7 @@ const SynonymsPage = () => {
 
           <button
             type="button"
-            className="flex justify-center my-auto mt-12 w-full mx-auto h-16 pl-4 space-x-4 text-4xl text-white rounded bg-gradient-to-r from-mongo-500 to-green-700 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
+            className="flex justify-center my-auto mt-12 w-4/5 mx-auto h-16 pl-4 space-x-4 text-3xl text-white rounded bg-gradient-to-r from-mongo-500 to-green-700 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
             onClick={() => {
               setShowSynForm(true);
               setSubmissionMessage("");
@@ -86,7 +86,7 @@ const SynonymsPage = () => {
           </button>
         </div>
 
-        <div className="w-1/4 ml-10 rounded text-base my-auto p-4">
+        <div className="w-auto ml-10 rounded text-base my-auto p-4">
           <SyntaxHighlighter language="javascript" style={okaidia}>
             {synIndexString}
           </SyntaxHighlighter>

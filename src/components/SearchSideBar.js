@@ -211,7 +211,7 @@ const SearchSideBar = ({
 
   return (
     <>
-      <div className="flex flex-col bg-white border border-gray-300 rounded w-1/6">
+      <div className="flex flex-col bg-white border border-gray-300 rounded w-1/5">
         {/************* SEARCH OPERATOR SECTION ******************/}
         <label className="font-bold text-tolopea-500 text-center mt-2">
           Geospatial Search Options
