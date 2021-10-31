@@ -8,6 +8,7 @@ import SearchSideBar from "../components/SearchSideBar";
 import AggregationSideBar from "../components/AggregationSideBar";
 import TopPicks from "../components/TopPicks";
 import AggregationModal from "../components/AggregationModal";
+import FacetModal from "../components/FacetModal";
 import MenuModal from "../components/MenuModal";
 
 // HOOKS
@@ -30,6 +31,7 @@ const MainPage = () => {
     setFunctionScore,
     functionScore,
     stages,
+    facetStage,
     borough,
     setBorough,
     cuisine,
@@ -56,6 +58,8 @@ const MainPage = () => {
     setShowMenu,
     showAggregation,
     setShowAggregation,
+    showFacetCode,
+    setShowFacetCode,
     setShowSearchStage,
     showSearchStage,
     showFacets,
@@ -123,6 +127,14 @@ const MainPage = () => {
             />
           </div>
         )}
+        {showFacetCode && (
+          <div className="absolute z-10 rounded right-96">
+            <FacetModal
+              setShowFacetCode={setShowFacetCode}
+              facetStage={facetStage}
+            />
+          </div>
+        )}
 
         <div className="relative flex flex-col mx-auto">
           <div className="flex w-full px-10 mx-auto mt-4 bg-white">
@@ -149,6 +161,7 @@ const MainPage = () => {
               facetOverallCount={facetOverallCount}
               showFacets={showFacets}
               setShowFacets={setShowFacets}
+              setShowFacetCode={setShowFacetCode}
             />
 
             <NYCMap

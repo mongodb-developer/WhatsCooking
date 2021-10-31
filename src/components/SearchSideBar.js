@@ -26,6 +26,7 @@ const SearchSideBar = ({
   cuisineBuckets,
   facetOverallCount,
   showFacets,
+  setShowFacetCode,
 }) => {
   const {
     showStars,
@@ -575,16 +576,16 @@ const SearchSideBar = ({
           </div>
         )} */}
         <button
-          onClick={() => console.log("click!")}
+          onClick={() => setShowFacetCode(true)}
           type="button"
-          className="mx-auto relative w-4/5 flex space-x-4 my-auto font-body font-bold shadow-lg bg-gradient-to-r from-mongo-600 to-mongo-700 border-b-4 border-r-2 border-solid border-black rounded-lg"
+          className="mx-auto relative w-2/3 flex space-x-4 my-auto font-body font-bold shadow-lg bg-gradient-to-r from-mongo-500 to-mongo-600 border-b-4 border-r-2 border-solid border-mongo-700 rounded-lg"
         >
           <div className="relative text-2xl my-auto text-white  font-extrabold font-body pr-4 pl-12 py-2">
-            $facet Code
+            $facet
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -right-6 -bottom-2 h-16 w-16 my-auto text-white bg-black rounded-full"
+            className="absolute -right-4 -bottom-2 h-16 w-16 my-auto text-white bg-black rounded-full"
             viewBox="0 0 20 20"
             fill="currentColor"
           >

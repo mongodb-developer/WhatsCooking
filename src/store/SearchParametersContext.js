@@ -19,12 +19,14 @@ export const SearchParametersProvider = (props) => {
     limitStage: {},
     projectStage: {},
   });
+  const [facetStage, setFacetStage] = useState({});
   const [showDistanceInput, setShowDistanceInput] = useState(false); // USED IN SEARCH SIDE BAR FOR GEOWITHIN OPERATOR OPTION
   const [valid, setValid] = useState(false); // IF VALID SEARCH EXECUTED - WILL SHOW BUTTONS TO CLEAR/AGGREGATION/FUNCTION SCORE
   const [showSuggestions, setShowSuggestions] = useState(false); // FOR AUTOCOMPLETED RESTAURANT NAMES IN SEARCH BAR
   const [showMenu, setShowMenu] = useState(false); // POP UP FOR RESTAURANT MENU ITEMS
   const [index, setIndex] = useState(0);
   const [showAggregation, setShowAggregation] = useState(false); // TO SHOW MODAL FOR AGGREGATION CODE
+  const [showFacetCode, setShowFacetCode] = useState(false); // TO SHOW MODAL FOR FACET CODE
   const [showSearchStage, setShowSearchStage] = useState(false);
   const [noResultsMsg, setNoResultsMsg] = useState("");
   const [cuisineBuckets, setCuisineBuckets] = useState([]);
@@ -47,6 +49,8 @@ export const SearchParametersProvider = (props) => {
     setSubmitted,
     showAggregation,
     setShowAggregation,
+    showFacetCode,
+    setShowFacetCode,
     setShowSearchStage,
     showSearchStage,
     functionScore,
@@ -59,6 +63,8 @@ export const SearchParametersProvider = (props) => {
     setCuisine,
     stages,
     setStages,
+    facetStage,
+    setFacetStage,
     valid,
     setValid,
     showSuggestions,

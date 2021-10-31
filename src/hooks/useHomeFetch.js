@@ -23,6 +23,8 @@ export const useHomeFetch = () => {
     submitted,
     setSubmitted,
     setStages,
+    facetStage,
+    setFacetStage,
     functionScore,
     setFunctionScore,
     stars,
@@ -81,17 +83,17 @@ export const useHomeFetch = () => {
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
       console.log("FACET RESPONSE");
-      let count = res.data[0].count.lowerBound.$numberLong; // facet
+      let count = res.data.results[0].count.lowerBound.$numberLong; // facet
       setFacetOverallCount(count);
-      console.log(res.data[0].facet.cuisineFacet);
-      setCuisineBuckets(res.data[0].facet.cuisineFacet.buckets);
-      setBoroughBuckets(res.data[0].facet.boroughFacet.buckets);
-      // let obj = c.find((o) => o._id === "American");
+      console.log(res.data.results[0].facet.cuisineFacet);
+      setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
+      setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
+      setFacetStage(res.data.searchMetaStage);
 
       console.log("CUISINE BUCKETS", cuisineBuckets);
       console.log("BOROUGH BUCKETS", boroughBuckets);
-      console.log(cuisineBuckets.length);
-      console.log(boroughBuckets.length);
+      console.log("FACET STAGE", res.data.searchMetaStageString);
+
       setShowFacets(true);
     });
   };
@@ -124,6 +126,7 @@ export const useHomeFetch = () => {
     setFunctionScore,
     functionScore,
     stages,
+    facetStage,
     borough,
     setBorough,
     cuisine,
