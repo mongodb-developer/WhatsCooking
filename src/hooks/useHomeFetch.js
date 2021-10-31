@@ -34,6 +34,10 @@ export const useHomeFetch = () => {
     stages,
     noResultsMsg,
     setNoResultsMsg,
+    cuisineBuckets,
+    setCuisineBuckets,
+    boroughBuckets,
+    setBoroughBuckets,
   } = useContext(SearchParametersContext);
 
   const postSearch = async () => {
@@ -77,13 +81,16 @@ export const useHomeFetch = () => {
       let count = res.data[0].count.lowerBound; // facet
       console.log(Object.values(count));
       console.log(res.data[0].facet.cuisineFacet);
-      let c = res.data[0].facet.cuisineFacet.buckets;
-      let b = res.data[0].facet.boroughFacet.buckets;
-      let obj = c.find((o) => o._id === "American");
+      setCuisineBuckets(res.data[0].facet.cuisineFacet);
+      setBoroughBuckets(res.data[0].facet.boroughFacet);
+      // let obj = c.find((o) => o._id === "American");
 
-      console.log(obj);
-      console.log(Object.values(obj.count));
-      console.log(b.length); // 6
+      console.log("CUISINE BUCKETS", cuisineBuckets);
+      console.log("BOROUGH BUCKETS", boroughBuckets);
+      console.log(cuisineBuckets.length);
+      console.log(boroughBuckets.length);
+      // console.log(Object.values(obj.count));
+      // console.log(b.length); // 6
     });
   };
 

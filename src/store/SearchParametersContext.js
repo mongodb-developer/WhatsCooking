@@ -27,6 +27,8 @@ export const SearchParametersProvider = (props) => {
   const [showAggregation, setShowAggregation] = useState(false); // TO SHOW MODAL FOR AGGREGATION CODE
   const [showSearchStage, setShowSearchStage] = useState(false);
   const [noResultsMsg, setNoResultsMsg] = useState("");
+  const [cuisineBuckets, setCuisineBuckets] = useState([]);
+  const [boroughBuckets, setBoroughBuckets] = useState([]);
 
   const value = {
     restaurants,
@@ -67,6 +69,10 @@ export const SearchParametersProvider = (props) => {
     setShowDistanceInput,
     noResultsMsg,
     setNoResultsMsg,
+    cuisineBuckets,
+    setCuisineBuckets,
+    boroughBuckets,
+    setBoroughBuckets,
   };
 
   return (
