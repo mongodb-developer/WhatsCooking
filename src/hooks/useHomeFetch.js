@@ -76,6 +76,14 @@ export const useHomeFetch = () => {
       console.log("FACET RESPONSE");
       let count = res.data[0].count.lowerBound; // facet
       console.log(Object.values(count));
+      console.log(res.data[0].facet.cuisineFacet);
+      let c = res.data[0].facet.cuisineFacet.buckets;
+      let b = res.data[0].facet.boroughFacet.buckets;
+      let obj = c.find((o) => o._id === "American");
+
+      console.log(obj);
+      console.log(Object.values(obj.count));
+      console.log(b.length); // 6
     });
   };
 
