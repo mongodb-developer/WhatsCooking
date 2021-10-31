@@ -38,6 +38,9 @@ export const useHomeFetch = () => {
     setCuisineBuckets,
     boroughBuckets,
     setBoroughBuckets,
+    facetOverallCount,
+    setFacetOverallCount,
+    setShowFacets,
   } = useContext(SearchParametersContext);
 
   const postSearch = async () => {
@@ -65,7 +68,7 @@ export const useHomeFetch = () => {
         limitStage: res.data.limitStage,
         projectStage: res.data.projectStage,
       });
-      console.log("SEARCH STAGE", res.data.searchStage);
+      // console.log("SEARCH STAGE", res.data.searchStage);   ----------- FOR DEBUGGING ----------------
     });
   };
 
@@ -78,19 +81,18 @@ export const useHomeFetch = () => {
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
       console.log("FACET RESPONSE");
-      let count = res.data[0].count.lowerBound; // facet
-      console.log(Object.values(count));
+      let count = res.data[0].count.lowerBound.$numberLong; // facet
+      setFacetOverallCount(count);
       console.log(res.data[0].facet.cuisineFacet);
-      setCuisineBuckets(res.data[0].facet.cuisineFacet);
-      setBoroughBuckets(res.data[0].facet.boroughFacet);
+      setCuisineBuckets(res.data[0].facet.cuisineFacet.buckets);
+      setBoroughBuckets(res.data[0].facet.boroughFacet.buckets);
       // let obj = c.find((o) => o._id === "American");
 
       console.log("CUISINE BUCKETS", cuisineBuckets);
       console.log("BOROUGH BUCKETS", boroughBuckets);
       console.log(cuisineBuckets.length);
       console.log(boroughBuckets.length);
-      // console.log(Object.values(obj.count));
-      // console.log(b.length); // 6
+      setShowFacets(true);
     });
   };
 
@@ -100,6 +102,7 @@ export const useHomeFetch = () => {
 
     postSearch();
     postFacets();
+    console.log("FACET COUNT", facetOverallCount);
     setSubmitted(false);
 
     // eslint-disable-next-line
@@ -129,5 +132,8 @@ export const useHomeFetch = () => {
     stars,
     noResultsMsg,
     setNoResultsMsg,
+    cuisineBuckets,
+    boroughBuckets,
+    facetOverallCount,
   };
 };

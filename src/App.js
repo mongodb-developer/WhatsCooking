@@ -8,8 +8,6 @@ import ScoringPage from "./pages/ScoringPage";
 import Navbar from "./components/Navbar";
 
 function App() {
-  // const [showAggregation, setShowAggregation] = useState(false); // TO SHOW MODAL FOR AGGREGATION CODE
-
   return (
     <>
       <SearchParametersProvider>

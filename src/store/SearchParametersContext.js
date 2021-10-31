@@ -29,6 +29,8 @@ export const SearchParametersProvider = (props) => {
   const [noResultsMsg, setNoResultsMsg] = useState("");
   const [cuisineBuckets, setCuisineBuckets] = useState([]);
   const [boroughBuckets, setBoroughBuckets] = useState([]);
+  const [facetOverallCount, setFacetOverallCount] = useState(0);
+  const [showFacets, setShowFacets] = useState(false);
 
   const value = {
     restaurants,
@@ -73,6 +75,10 @@ export const SearchParametersProvider = (props) => {
     setCuisineBuckets,
     boroughBuckets,
     setBoroughBuckets,
+    setFacetOverallCount,
+    facetOverallCount,
+    showFacets,
+    setShowFacets,
   };
 
   return (

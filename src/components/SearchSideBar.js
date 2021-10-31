@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 
 import { SearchStageContext } from "../store/SearchStageContext";
@@ -22,6 +22,10 @@ const SearchSideBar = ({
   cuisine,
   setCuisine,
   setShowSuggestions,
+  boroughBuckets,
+  cuisineBuckets,
+  facetOverallCount,
+  showFacets,
 }) => {
   const {
     showStars,
@@ -46,6 +50,46 @@ const SearchSideBar = ({
     geoString,
     setGeoString,
   } = useContext(SearchStageContext);
+
+  let AmericanCount = 0;
+  let ChineseCount = 0;
+  let FrenchCount = 0;
+  let HamburgersCount = 0;
+  let ItalianCount = 0;
+  let JapaneseCount = 0;
+  let MexicanCount = 0;
+  let PizzaCount = 0;
+
+  for (let i = 0; i < cuisineBuckets.length; i++) {
+    switch (cuisineBuckets[i]._id) {
+      case "American":
+        AmericanCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "Chinese":
+        ChineseCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "French":
+        FrenchCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "Hamburgers":
+        HamburgersCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "Italian":
+        ItalianCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "Japanese":
+        JapaneseCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "Mexican":
+        MexicanCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      case "Pizza":
+        PizzaCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      default:
+        break;
+    }
+  }
 
   const ratingChanged = (rating) => {
     setStars(rating);
@@ -99,36 +143,6 @@ const SearchSideBar = ({
     setShowBoroughAgg(true);
     // eslint-disable-next-line
   }, [borough]);
-
-  const handleNearSearch = (event) => {
-    setOperator("near");
-    setShowDistanceInput(false);
-    setShowSuggestions(false);
-    console.log("NEAR SEARCH");
-    handleSearch(event);
-  };
-
-  const handleGeoSearch = (event) => {
-    event.preventDefault();
-    setOperator("geoWithin");
-    console.log("GEOSEARCH");
-    setShowSuggestions(false);
-    handleSearch(event);
-  };
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    setValid(true);
-    setShowSuggestions(false);
-    setSubmitted(true);
-  };
-
-  const handleSearchMaster = (event) => {
-    event.preventDefault();
-    if (operator === "text") handleSearch(event);
-    else if (operator === "near") handleNearSearch(event);
-    else handleGeoSearch(event);
-  };
 
   const onChangeBorough = (e) => {
     setBorough(e.target.value);
@@ -257,13 +271,6 @@ const SearchSideBar = ({
               geoWithin
             </button>
           )}
-          {/* <button
-            className="flex items-center justify-center w-20 h-12 my-auto text-lg font-bold transform bg-white border border-gray-400 rounded hover:shadow-2xl hover:scale-110 focus:outline-none"
-            type="button"
-            onClick={handleSearchMaster}
-          >
-            <img className="w-12" src={MagnifyingGlass} alt="glass" />
-          </button> */}
         </div>
         {showDistanceInput && (
           <div className="flex items-center pb-2 mx-4">
@@ -332,71 +339,100 @@ const SearchSideBar = ({
         <br />
 
         {/************* CUISINE TYPE SECTION ******************/}
+        {showFacets && (
+          <div className="text-deep-cerulean-600 text-2xl ml-10 mb-4">
+            Overall Count: {facetOverallCount}
+          </div>
+        )}
 
         <div className="" onChange={onChangeCuisine}>
-          <div className="mb-1 ml-10 space-x-6 cursor-pointer">
+          <div className="flex mb-1 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"
               name="American"
               defaultChecked={cuisine.includes("American")}
             />
             <label htmlFor="American">American</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({AmericanCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"
               name="Chinese"
               defaultChecked={cuisine.includes("Chinese")}
             />
             <label htmlFor="Chinese">Chinese</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({ChineseCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"
               name="French"
               defaultChecked={cuisine.includes("French")}
             />
             <label htmlFor="French">French</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({FrenchCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"
               name="Hamburgers"
               defaultChecked={cuisine.includes("Hamburgers")}
             />
             <label htmlFor="Hamburgers">Hamburgers</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({HamburgersCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"
               name="Italian"
               defaultChecked={cuisine.includes("Italian")}
             />
             <label htmlFor="Italian">Italian</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({ItalianCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"
               name="Japanese"
               defaultChecked={cuisine.includes("Japanese")}
             />
             <label htmlFor="Japanese">Japanese</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({JapaneseCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"
               name="Mexican"
               defaultChecked={cuisine.includes("Mexican")}
             />
             <label htmlFor="Mexican">Mexican</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({MexicanCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer ">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"
               name="Pizza"
               defaultChecked={cuisine.includes("Pizza")}
             />
             <label htmlFor="Pizza">Pizza</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({PizzaCount})</div>
+            )}
           </div>
         </div>
         {/* {showCuisine && (

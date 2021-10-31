@@ -31,9 +31,9 @@ const MenuModal = ({ menu, setShowMenu, name, highlights }) => {
           />
           <div className="flex flex-col ml-6 text-2xl font-body">
             {menu ? (
-              menu.map((item) => {
+              menu.map((item, idx) => {
                 if (!highlightedStringsArray.includes(item))
-                  return <div>{item}</div>;
+                  return <div key={idx}>{item}</div>;
                 else {
                   let highlightedIndex = highlightedStringsArray.indexOf(item);
                   let highlightedString = `<span className="flex flex-row">`;

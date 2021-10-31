@@ -38,6 +38,9 @@ const MainPage = () => {
     stars,
     noResultsMsg,
     setNoResultsMsg,
+    boroughBuckets,
+    cuisineBuckets,
+    facetOverallCount,
   } = useHomeFetch();
 
   const {
@@ -55,6 +58,8 @@ const MainPage = () => {
     setShowAggregation,
     setShowSearchStage,
     showSearchStage,
+    showFacets,
+    setShowFacets,
   } = useContext(SearchParametersContext);
 
   let displayRestaurants = false;
@@ -139,6 +144,11 @@ const MainPage = () => {
               borough={borough}
               cuisine={cuisine}
               setCuisine={setCuisine}
+              boroughBuckets={boroughBuckets}
+              cuisineBuckets={cuisineBuckets}
+              facetOverallCount={facetOverallCount}
+              showFacets={showFacets}
+              setShowFacets={setShowFacets}
             />
 
             <NYCMap
