@@ -51,6 +51,8 @@ const SearchSideBar = ({
     setGeoString,
   } = useContext(SearchStageContext);
 
+  //------------------------CUISINE FACETS----------------------------------------------
+
   let AmericanCount = 0;
   let ChineseCount = 0;
   let FrenchCount = 0;
@@ -85,6 +87,34 @@ const SearchSideBar = ({
         break;
       case "Pizza":
         PizzaCount = cuisineBuckets[i].count.$numberLong;
+        break;
+      default:
+        break;
+    }
+  }
+  //------------------------BOROUGH FACETS----------------------------------------------
+  let ManhattanCount = 0;
+  let BronxCount = 0;
+  let BrooklynCount = 0;
+  let QueensCount = 0;
+  let StatenIslandCount = 0;
+
+  for (let i = 0; i < boroughBuckets.length; i++) {
+    switch (boroughBuckets[i]._id) {
+      case "Manhattan":
+        ManhattanCount = boroughBuckets[i].count.$numberLong;
+        break;
+      case "Brooklyn":
+        BrooklynCount = boroughBuckets[i].count.$numberLong;
+        break;
+      case "Queens":
+        QueensCount = boroughBuckets[i].count.$numberLong;
+        break;
+      case "Bronx":
+        BronxCount = boroughBuckets[i].count.$numberLong;
+        break;
+      case "Staten Island":
+        StatenIslandCount = boroughBuckets[i].count.$numberLong;
         break;
       default:
         break;
@@ -340,7 +370,7 @@ const SearchSideBar = ({
 
         {/************* CUISINE TYPE SECTION ******************/}
         {showFacets && (
-          <div className="text-deep-cerulean-600 text-2xl ml-10 mb-4">
+          <div className="text-deep-cerulean-600 text-xl ml-10 mb-4">
             Overall Count: {facetOverallCount}
           </div>
         )}
@@ -461,7 +491,7 @@ const SearchSideBar = ({
         {/************* BOROUGH SECTION ******************/}
 
         <div className="text" onChange={onChangeBorough}>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer borough">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer borough">
             <input
               type="radio"
               name="borough"
@@ -469,8 +499,11 @@ const SearchSideBar = ({
               defaultChecked={borough === "Manhattan"}
             />
             <label htmlFor="Manhattan">Manhattan</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({ManhattanCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
             <input
               type="radio"
               value="Brooklyn"
@@ -478,8 +511,11 @@ const SearchSideBar = ({
               defaultChecked={borough === "Brooklyn"}
             />
             <label htmlFor="Brooklyn">Brooklyn</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({BrooklynCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
             <input
               type="radio"
               value="Queens"
@@ -487,8 +523,11 @@ const SearchSideBar = ({
               defaultChecked={borough === "Queens"}
             />
             <label htmlFor="Queens">Queens</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({QueensCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
             <input
               type="radio"
               value="Bronx"
@@ -496,8 +535,11 @@ const SearchSideBar = ({
               defaultChecked={borough === "Bronx"}
             />
             <label htmlFor="Bronx">Bronx</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({BronxCount})</div>
+            )}
           </div>
-          <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
             <input
               type="radio"
               value="Staten Island"
@@ -505,6 +547,11 @@ const SearchSideBar = ({
               defaultChecked={borough === "Staten Island"}
             />
             <label htmlFor="Staten Island">Staten Island</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">
+                ({StatenIslandCount})
+              </div>
+            )}
           </div>
           <div className="mb-2 ml-10 space-x-6 cursor-pointer checkbox-borough">
             <input
@@ -527,6 +574,27 @@ const SearchSideBar = ({
             </SyntaxHighlighter>
           </div>
         )} */}
+        <button
+          onClick={() => console.log("click!")}
+          type="button"
+          className="mx-auto relative w-4/5 flex space-x-4 my-auto font-body font-bold shadow-lg bg-gradient-to-r from-mongo-600 to-mongo-700 border-b-4 border-r-2 border-solid border-black rounded-lg"
+        >
+          <div className="relative text-2xl my-auto text-white  font-extrabold font-body pr-4 pl-12 py-2">
+            $facet Code
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute -right-6 -bottom-2 h-16 w-16 my-auto text-white bg-black rounded-full"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
       </div>
     </>
   );
