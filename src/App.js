@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { SearchParametersProvider } from "./store/SearchParametersContext";
 

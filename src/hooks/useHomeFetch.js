@@ -5,6 +5,9 @@ import { SearchParametersContext } from "../store/SearchParametersContext";
 const GetRestaurantsEndpointTEST =
   "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTest_Oct18";
 
+const GetFacetsEndpoint =
+  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getFacets";
+
 export const useHomeFetch = () => {
   const {
     restaurants,
@@ -62,11 +65,26 @@ export const useHomeFetch = () => {
     });
   };
 
+  const postFacets = async () => {
+    let facetData = {
+      searchTerm: searchTerm,
+      food: food,
+      operator: operator,
+      dist: distance,
+    };
+    axios.post(GetFacetsEndpoint, facetData).then((res) => {
+      console.log("FACET RESPONSE");
+      let count = res.data[0].count.lowerBound; // facet
+      console.log(Object.values(count));
+    });
+  };
+
   // eslint-disable-next-line
   useEffect(() => {
     if (!submitted) return;
 
     postSearch();
+    postFacets();
     setSubmitted(false);
 
     // eslint-disable-next-line

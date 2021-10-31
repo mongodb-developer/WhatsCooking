@@ -30,24 +30,8 @@ const SearchForm = ({
 }) => {
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log("FOODFROMFORM: " + food);
-    setValid(true);
-    setShowSuggestions(false);
-    setSubmitted(true);
-  };
 
-  const handleClearSearch = () => {
-    setOperator("text");
-    setDistance(1);
-    setSearchTerm("");
-    setFood("");
-    setRestaurants([]);
-    setShowDistanceInput(false);
-    setShowAggregation(false);
-    setFunctionScore(null);
-    setValid(false);
-    setBorough(null);
-    setStars(1);
+    setValid(true);
     setShowSuggestions(false);
     setSubmitted(true);
   };

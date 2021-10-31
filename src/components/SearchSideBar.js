@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import ReactStars from "react-rating-stars-component";
-import MagnifyingGlass from "../images/Search.png";
+
 import { SearchStageContext } from "../store/SearchStageContext";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
