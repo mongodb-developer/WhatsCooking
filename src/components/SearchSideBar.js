@@ -315,7 +315,7 @@ const SearchSideBar = ({
             ></input>
           </div>
         )}
-        {/* {showGeo && (
+        {showGeo && (
           <div
             onClick={() => {
               setShowGeo(false);
@@ -325,7 +325,7 @@ const SearchSideBar = ({
               {geoString}
             </SyntaxHighlighter>
           </div>
-        )} */}
+        )}
 
         <br />
 
@@ -346,7 +346,7 @@ const SearchSideBar = ({
           />
         </div>
 
-        {/* {showStars && (
+        {showStars && (
           <div
             onClick={() => {
               setShowStars(false);
@@ -356,7 +356,7 @@ const SearchSideBar = ({
               {starString}
             </SyntaxHighlighter>
           </div>
-        )} */}
+        )}
 
         <hr
           style={{
@@ -466,7 +466,7 @@ const SearchSideBar = ({
             )}
           </div>
         </div>
-        {/* {showCuisine && (
+        {showCuisine && (
           <div
             onClick={() => {
               setShowCuisine(false);
@@ -476,7 +476,7 @@ const SearchSideBar = ({
               {cuisineString}
             </SyntaxHighlighter>
           </div>
-        )} */}
+        )}
 
         <hr
           style={{
@@ -564,7 +564,7 @@ const SearchSideBar = ({
             <label>All</label>
           </div>
         </div>
-        {/* {showBorough && (
+        {showBorough && (
           <div
             onClick={() => {
               setShowBorough(false);
@@ -574,7 +574,7 @@ const SearchSideBar = ({
               {boroughString}
             </SyntaxHighlighter>
           </div>
-        )} */}
+        )}
         <button
           onClick={() => setShowFacetCode(true)}
           type="button"
