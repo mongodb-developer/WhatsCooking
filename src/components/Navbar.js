@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { SearchParametersContext } from "../store/SearchParametersContext";
 import LOGO from "../images/MongoDB_Logo.svg";
 import AGGLOGO from "../images/AggregationPipeline.png";
-import SYNLOGO from "../images/Synonyms1x.JPG";
+import SYNLOGO from "../images/Synonyms.png";
 
 const Navbar = () => {
   const history = useHistory();
@@ -44,14 +44,14 @@ const Navbar = () => {
           className="flex items-center h-12 pl-4 my-auto space-x-6 text-lg rounded w-full font-body transition duration-700 transform  hover:scale-150 hover:font-bold focus:outline-none"
         >
           <span>Aggregation</span>
-          <img className="mx-auto my-auto h-16" src={AGGLOGO} alt="logo" />
+          <img className="mx-auto my-auto h-16 z-5" src={AGGLOGO} alt="logo" />
         </button>
         <button
           onClick={handleFunctionScore}
           className="flex items-center pl-4 my-auto mx-auto space-x-6 text-lg text-tolopea transition duration-700 transform rounded  w-full font-body  hover:scale-150 hover:font-bold focus:outline-none"
         >
           <span>Function Score</span>
-          <div className="flex items-center justify-center w-8 h-12 text-xl rounded-full">
+          <div className="flex items-center justify-center w-8 h-12 text-xl rounded-full z-5">
             {" "}
             💯
           </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
           onClick={() => history.push("/synonyms")}
         >
           <span>Synonyms</span>
-          <img className="mx-auto my-auto h-16" src={SYNLOGO} alt="logo" />
+          <img className="mx-auto my-auto h-16 z-5" src={SYNLOGO} alt="logo" />
         </button>
       </div>
     </header>
