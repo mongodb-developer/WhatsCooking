@@ -3,9 +3,9 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const AggregationModal = ({ setShowAggregation, stages }) => {
-  var jsonSearch = JSON.stringify(JSON.parse(stages.searchStage), null, 2);
-  var jsonLimit = JSON.stringify(JSON.parse(stages.limitStage), null, 2);
-  var jsonProject = JSON.stringify(JSON.parse(stages.projectStage), null, 2);
+  const jsonSearch = JSON.stringify(JSON.parse(stages.searchStage), null, 2);
+  const jsonLimit = JSON.stringify(JSON.parse(stages.limitStage), null, 2);
+  const jsonProject = JSON.stringify(JSON.parse(stages.projectStage), null, 2);
 
   return (
     <div className="fixed inset-0 z-20 flex justify-center bg-smoke-dark font-body">
