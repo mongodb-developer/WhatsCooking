@@ -75,7 +75,7 @@ const NYCMap = ({ restaurants }) => {
           .setLngLat(point)
           .setPopup(
             new mapboxgl.Popup({ offset: 30 }).setHTML(
-              "<h4>" + rest.name + "</h4>" + rest.address.street
+              "<h4>" + rest.name + "</h4>"
             )
           )
           .addTo(map);
