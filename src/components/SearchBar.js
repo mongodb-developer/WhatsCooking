@@ -15,18 +15,23 @@ const SearchBar = ({
   if (searchTerm === "") setShowSuggestions(false);
 
   const Suggestions_AC_Endpoint =
-    "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsAutocomplete";
+    "https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/restaurants/incoming_webhook/getRestaurantsAutocomplete";
 
   // this is a function definition that calls another function API.fetchContent()
   const fetchAC_Content = async (searchTerm) => {
     let autocomplete_names_endpoint = Suggestions_AC_Endpoint;
     if (searchTerm) {
+      console.log("SEARCHTERM", searchTerm);
       autocomplete_names_endpoint =
         autocomplete_names_endpoint + `?restname=${searchTerm}`;
+      console.log(autocomplete_names_endpoint);
     }
     try {
       let restaurants = await (await fetch(autocomplete_names_endpoint)).json();
       setSuggestions(restaurants);
+      console.log("DID I SET RESTAURANTS?");
+      console.log(restaurants);
+      console.log(suggestions);
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +43,9 @@ const SearchBar = ({
       return;
     }
     // BUILD OUT AUTOCOMPLETE TERMS
+
     if (searchTerm !== "" && searchTerm.length > 3) {
+      console.log("building out ac terms");
       fetchAC_Content(searchTerm);
 
       if (suggestions.length !== 0) {

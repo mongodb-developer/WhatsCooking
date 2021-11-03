@@ -22,7 +22,7 @@ const SynonymUpdateForm = ({
 
   const updateSynonym = (data) => {
     console.log("In updateSynonym function");
-    const UPDATE_ENDPOINT = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/updateSynonym?id=${synID}`;
+    const UPDATE_ENDPOINT = `https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/synonyms/incoming_webhook/updateSynonym?id=${synID}`;
     setSynID(0);
     setCardIDToUpdate(0);
 

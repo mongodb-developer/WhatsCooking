@@ -22,7 +22,7 @@ const SynonymForm = ({ setShowSynForm, setSubmissionMessage }) => {
       },
     };
     fetch(
-      "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/addSynonyms",
+      "https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/synonyms/incoming_webhook/addSynonyms",
       requestOptions
     ).then(() => {
       console.log("SUBMITTED SYNONYM!!");

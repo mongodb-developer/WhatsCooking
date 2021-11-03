@@ -30,8 +30,8 @@ const NYCMap = ({ restaurants }) => {
   let longitude, latitude, point;
 
   const mapContainerRef = useRef(null);
-  const [lng, setLng] = useState(-73.98474);
-  const [lat, setLat] = useState(40.76289);
+  const [lng, setLng] = useState(-0.15526);
+  const [lat, setLat] = useState(51.48143);
   const [zoom, setZoom] = useState(14);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const NYCMap = ({ restaurants }) => {
 
     // marker for the MongoDB New York office
     let marker = new mapboxgl.Marker({ color: "#c53030" })
-      .setLngLat([-73.98474, 40.76289])
+      .setLngLat([-0.15526, 51.48143])
       .addTo(map);
 
     if (!restaurants || restaurants.length === 0) {

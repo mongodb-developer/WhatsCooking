@@ -16,7 +16,7 @@ const SynonymCard = ({
   const [synID, setSynID] = useState(0);
 
   const DELETE_ENDPOINT =
-    "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/removeSynonym";
+    "https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/synonyms/incoming_webhook/removeSynonym";
 
   const deleteSynonym = async (id) => {
     await axios.post(DELETE_ENDPOINT + `?id=${id}`);

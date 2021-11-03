@@ -17,7 +17,7 @@ const SynonymsPage = () => {
   const getSynonyms = async () => {
     let storedSynonyms = await (
       await fetch(
-        "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/getFoodSynonyms"
+        "https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/synonyms/incoming_webhook/getFoodSynonyms"
       )
     ).json();
     setLoadedSynonyms(storedSynonyms.foodSynonyms);

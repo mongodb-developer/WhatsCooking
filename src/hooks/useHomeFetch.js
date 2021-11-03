@@ -3,10 +3,10 @@ import { useContext, useEffect } from "react";
 import { SearchParametersContext } from "../store/SearchParametersContext";
 
 const GetRestaurantsEndpointTEST =
-  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTest_Oct18";
+  "https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/restaurants/incoming_webhook/getRestaurants";
 
 const GetFacetsEndpoint =
-  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getFacets";
+  "https://webhooks.mongodb-realm.com/api/client/v2.0/app/restaurantfinderkeynote-jinvs/service/restaurants/incoming_webhook/getFacets";
 
 export const useHomeFetch = () => {
   const {
@@ -74,37 +74,37 @@ export const useHomeFetch = () => {
     });
   };
 
-  const postFacets = async () => {
-    let facetData = {
-      searchTerm: searchTerm,
-      food: food,
-      operator: operator,
-      dist: distance,
-    };
-    axios.post(GetFacetsEndpoint, facetData).then((res) => {
-      console.log("FACET RESPONSE");
-      let count = res.data.results[0].count.lowerBound.$numberLong; // facet
-      setFacetOverallCount(count);
-      console.log(res.data.results[0].facet.cuisineFacet);
-      setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
-      setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
-      setFacetStage(res.data.searchMetaStage);
+  // const postFacets = async () => {
+  //   let facetData = {
+  //     searchTerm: searchTerm,
+  //     food: food,
+  //     operator: operator,
+  //     dist: distance,
+  //   };
+  //   axios.post(GetFacetsEndpoint, facetData).then((res) => {
+  //     console.log("FACET RESPONSE");
+  //     let count = res.data.results[0].count.lowerBound.$numberLong; // facet
+  //     setFacetOverallCount(count);
+  //     console.log(res.data.results[0].facet.cuisineFacet);
+  //     setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
+  //     setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
+  //     setFacetStage(res.data.searchMetaStage);
 
-      console.log("CUISINE BUCKETS", cuisineBuckets);
-      console.log("BOROUGH BUCKETS", boroughBuckets);
-      console.log("FACET STAGE", res.data.searchMetaStageString);
+  //     console.log("CUISINE BUCKETS", cuisineBuckets);
+  //     console.log("BOROUGH BUCKETS", boroughBuckets);
+  //     console.log("FACET STAGE", res.data.searchMetaStageString);
 
-      setShowFacets(true);
-    });
-  };
+  //     setShowFacets(false);        // change to true later
+  //   });
+  // };
 
   // eslint-disable-next-line
   useEffect(() => {
     if (!submitted) return;
 
     postSearch();
-    postFacets();
-    console.log("FACET COUNT", facetOverallCount);
+    //  postFacets();
+    //  console.log("FACET COUNT", facetOverallCount);
     setSubmitted(false);
 
     // eslint-disable-next-line
