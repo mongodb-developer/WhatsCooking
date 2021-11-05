@@ -48,8 +48,8 @@ const RestaurantCard = ({
     case "Pizza/Italian":
       image = "🍝";
       break;
-    case "Chinese":
-      image = "🍜";
+    case "British":
+      image = "🍻";
       break;
     case "Café/Coffee/Tea":
       image = "☕";

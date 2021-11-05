@@ -32,7 +32,7 @@ const NYCMap = ({ restaurants }) => {
   const mapContainerRef = useRef(null);
   const [lng, setLng] = useState(-0.15526);
   const [lat, setLat] = useState(51.48143);
-  const [zoom, setZoom] = useState(14);
+  const [zoom, setZoom] = useState(13);
 
   useEffect(() => {
     let topPicks = false;

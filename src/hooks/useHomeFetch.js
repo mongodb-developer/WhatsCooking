@@ -70,41 +70,41 @@ export const useHomeFetch = () => {
         limitStage: res.data.limitStage,
         projectStage: res.data.projectStage,
       });
-      // console.log("SEARCH STAGE", res.data.searchStage);   ----------- FOR DEBUGGING ----------------
+      console.log("SEARCH STAGE", res.data.searchStage); //----------- FOR DEBUGGING ----------------
     });
   };
 
-  // const postFacets = async () => {
-  //   let facetData = {
-  //     searchTerm: searchTerm,
-  //     food: food,
-  //     operator: operator,
-  //     dist: distance,
-  //   };
-  //   axios.post(GetFacetsEndpoint, facetData).then((res) => {
-  //     console.log("FACET RESPONSE");
-  //     let count = res.data.results[0].count.lowerBound.$numberLong; // facet
-  //     setFacetOverallCount(count);
-  //     console.log(res.data.results[0].facet.cuisineFacet);
-  //     setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
-  //     setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
-  //     setFacetStage(res.data.searchMetaStage);
+  const postFacets = async () => {
+    let facetData = {
+      searchTerm: searchTerm,
+      food: food,
+      operator: operator,
+      dist: distance,
+    };
+    axios.post(GetFacetsEndpoint, facetData).then((res) => {
+      console.log("FACET RESPONSE");
+      let count = res.data.results[0].count.lowerBound.$numberLong; // facet
+      setFacetOverallCount(count);
+      console.log(res.data.results[0].facet.cuisineFacet);
+      setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
+      setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
+      setFacetStage(res.data.searchMetaStage);
 
-  //     console.log("CUISINE BUCKETS", cuisineBuckets);
-  //     console.log("BOROUGH BUCKETS", boroughBuckets);
-  //     console.log("FACET STAGE", res.data.searchMetaStageString);
+      console.log("CUISINE BUCKETS", cuisineBuckets);
+      console.log("BOROUGH BUCKETS", boroughBuckets);
+      console.log("FACET STAGE", res.data.searchMetaStageString);
 
-  //     setShowFacets(false);        // change to true later
-  //   });
-  // };
+      setShowFacets(false); // change to true later
+    });
+  };
 
   // eslint-disable-next-line
   useEffect(() => {
     if (!submitted) return;
 
     postSearch();
-    //  postFacets();
-    //  console.log("FACET COUNT", facetOverallCount);
+    // postFacets();
+    // console.log("FACET COUNT", facetOverallCount);
     setSubmitted(false);
 
     // eslint-disable-next-line
