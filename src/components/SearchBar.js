@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import AutoSuggestions from "./AutoSuggestions";
 
+const removeDuplicateRestaurants = (restaurants) =>
+  restaurants.filter(
+    (restaurant, index, self) =>
+      // keep only the records that when search by name return the current index
+      // otherwise this is a duplicate
+      index === self.findIndex((r) => r.name === restaurant.name)
+  );
+
 const SearchBar = ({
   searchTerm,
   setSearchTerm,
@@ -26,6 +34,7 @@ const SearchBar = ({
     }
     try {
       let restaurants = await (await fetch(autocomplete_names_endpoint)).json();
+      restaurants = removeDuplicateRestaurants(restaurants);
       setSuggestions(restaurants);
     } catch (error) {
       console.error(error);
