@@ -58,7 +58,9 @@ const AggregationSideBar = () => {
   }, [showMustAgg, showFilterAgg]);
 
   useEffect(() => {
-    if (searchTerm || food) setShowAggCode(true);
+    if (searchTerm || food) {
+      setShowAggCode(true);
+    }
     if (
       (searchTerm !== "" && food !== "") ||
       (searchTerm !== "" && operator !== "text")
