@@ -80,6 +80,7 @@ export const useHomeFetch = () => {
       food: food,
       operator: operator,
       dist: distance,
+      stars: stars,
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
       console.log("FACET RESPONSE");
@@ -94,7 +95,7 @@ export const useHomeFetch = () => {
       console.log("BOROUGH BUCKETS", boroughBuckets);
       console.log("FACET STAGE", res.data.searchMetaStageString);
 
-      setShowFacets(false); // change to true later
+      setShowFacets(true); // change to true later
     });
   };
 
@@ -103,8 +104,8 @@ export const useHomeFetch = () => {
     if (!submitted) return;
 
     postSearch();
-    // postFacets();
-    // console.log("FACET COUNT", facetOverallCount);
+    postFacets();
+    console.log("FACET COUNT", facetOverallCount);
     setSubmitted(false);
 
     // eslint-disable-next-line

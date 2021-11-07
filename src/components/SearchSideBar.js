@@ -411,6 +411,19 @@ const SearchSideBar = ({
               <div className="text-deep-cerulean-600">({IndianCount})</div>
             )}
           </div>
+
+          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer">
+            <input
+              type="checkbox"
+              name="Thai"
+              defaultChecked={cuisine.includes("Thai")}
+            />
+            <label htmlFor="Thai">Thai</label>
+            {showFacets && (
+              <div className="text-deep-cerulean-600">({ThaiCount})</div>
+            )}
+          </div>
+
           <div className="flex mb-2 ml-10 space-x-6 cursor-pointer">
             <input
               type="checkbox"
@@ -422,17 +435,7 @@ const SearchSideBar = ({
               <div className="text-deep-cerulean-600">({BritishCount})</div>
             )}
           </div>
-          <div className="flex mb-2 ml-10 space-x-6 cursor-pointer">
-            <input
-              type="checkbox"
-              name="British"
-              defaultChecked={cuisine.includes("British")}
-            />
-            <label htmlFor="British">British</label>
-            {showFacets && (
-              <div className="text-deep-cerulean-600">({BritishCount})</div>
-            )}
-          </div>
+
           <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"

@@ -17,8 +17,10 @@ const RestaurantCard = ({
   source,
   functionScore,
 }) => {
-  let modScore = score["$numberDouble"].toString().slice(0, 3);
-  // let starValue = Object.values(stars)[0];
+  // let modScore = score["$numberDouble"].toString().slice(0, 3);
+  let scoreVal = score["$numberDouble"].toString();
+  let modScore = scoreVal.slice(0, scoreVal.indexOf(".") + 2);
+  let starValue = Object.values(stars)[0];
   let reviewCount;
   if (!reviews) {
     reviewCount = 0;
@@ -117,7 +119,7 @@ const RestaurantCard = ({
           </div>
         </div>
 
-        {/* <div className="flex my-auto mt-2 mb-0 BOTTOM ROW justify-evenly ">
+        <div className="flex my-auto mt-2 mb-0 BOTTOM ROW justify-evenly ">
           <div className="flex justify-center">
             <ReactStars
               className="my-auto "
@@ -126,8 +128,8 @@ const RestaurantCard = ({
               isHalf={true}
               value={starValue}
             />
-          </div> */}
-        {/* <div className="flex justify-center">
+          </div>
+          <div className="flex justify-center">
             {dollars.map((dollar, idx) => (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -144,9 +146,9 @@ const RestaurantCard = ({
                 />
               </svg>
             ))}
-          </div> */}
-        {/* <h2 className="text-sm">{reviewCount} reviews</h2> */}
-        {/* </div> */}
+          </div>
+          <h2 className="text-sm">{reviewCount} reviews</h2>
+        </div>
       </div>
     </>
   );
