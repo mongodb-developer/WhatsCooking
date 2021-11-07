@@ -64,8 +64,8 @@ const SynonymsPage = () => {
         </div>
         <div className="my-auto text-center">
           <div className="text-center text-3xl">
-            You say "pop," and I say "coke?"{" "}
-            <span className="text-6xl">🥤</span>
+            You say "chips," but I say "fries?"{" "}
+            <span className="text-6xl">🍟</span>
           </div>
           <div className="text-center text-2xl">
             <br></br>With synonyms in Atlas Search, call it what you will.
