@@ -4,9 +4,6 @@ import { SearchParametersContext } from "../store/SearchParametersContext";
 
 const GetRestaurantsEndpointTEST =
   "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTestNov1";
-
-//"https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTest_Oct18";
-
 const GetFacetsEndpoint =
   "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getFacets";
 
@@ -72,7 +69,7 @@ export const useHomeFetch = () => {
         limitStage: res.data.limitStage,
         projectStage: res.data.projectStage,
       });
-      // console.log("SEARCH STAGE", res.data.searchStage);   ----------- FOR DEBUGGING ----------------
+      console.log("SEARCH STAGE", res.data.searchStage); //----------- FOR DEBUGGING ----------------
     });
   };
 
@@ -82,6 +79,7 @@ export const useHomeFetch = () => {
       food: food,
       operator: operator,
       dist: distance,
+      stars: stars,
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
       console.log("FACET RESPONSE");
