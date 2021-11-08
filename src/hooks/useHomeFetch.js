@@ -80,6 +80,8 @@ export const useHomeFetch = () => {
       operator: operator,
       dist: distance,
       stars: stars,
+      borough: borough,
+      cuisine: cuisine,
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
       console.log("FACET RESPONSE");

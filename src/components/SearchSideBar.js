@@ -581,7 +581,7 @@ const SearchSideBar = ({
           className="mx-auto relative w-2/3 flex space-x-4 my-10 font-body font-bold shadow-lg bg-gradient-to-r from-mongo-500 to-mongo-600 border-b-4 border-r-2 border-solid border-mongo-700 rounded-lg"
         >
           <div className="relative text-2xl my-auto text-white  font-extrabold font-body pr-4 pl-12 py-2">
-            $facet
+            facet
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
