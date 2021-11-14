@@ -13,6 +13,10 @@ const AggregationSideBar = () => {
     showStarsAgg,
     showCuisineAgg,
     showBoroughAgg,
+    geoObject,
+    boroughObject,
+    cuisineObject,
+    starsObject,
   } = useContext(SearchStageContext);
 
   const { searchTerm, food, operator, borough, stars, cuisine } = useContext(
@@ -24,10 +28,16 @@ const AggregationSideBar = () => {
   const [showMustAgg, setShowMustAgg] = useState(false);
   const [showCompound, setShowCompound] = useState(false);
 
+  let mustCount = 0;
+  let mustArray = [];
+  let filterArray = []; // using filter for stars, borough, cuisine
+
   let basicSearchObject = {
     text: searchTerm,
     path: ["name", "cuisine"],
-    fuzzy: {},
+    fuzzy: {
+      maxEdits: 2,
+    },
   };
 
   let synObject = {
@@ -38,6 +48,33 @@ const AggregationSideBar = () => {
     },
   };
 
+  if (searchTerm !== "") {
+    mustCount++;
+    mustArray.push(basicSearchObject);
+  }
+  if (food !== "") {
+    mustCount++;
+    mustArray.push(synObject);
+  }
+  if (operator !== "text") {
+    mustCount++;
+    mustArray.push(geoObject);
+  }
+  let mustObject = {
+    must: mustArray,
+  };
+
+  if (stars > 1) filterArray.push(starsObject);
+  if (cuisine.length > 0) filterArray.push(cuisineObject);
+  if (borough) filterArray.push(boroughObject);
+
+  let filterObject = {
+    filter: filterArray,
+  };
+
+  let mustString = JSON.stringify(mustObject, null, 2);
+  let filterString = JSON.stringify(filterObject, null, 2);
+
   let synString = JSON.stringify(synObject, null, 2);
 
   let basicSearchString = JSON.stringify(basicSearchObject, null, 2);
@@ -46,7 +83,10 @@ const AggregationSideBar = () => {
     if (borough || stars > 1 || cuisine.length > 0) {
       setShowFilterAgg(true);
       setShowAggCode(true);
-    } else setShowFilterAgg(false);
+    } else {
+      setShowFilterAgg(false);
+      setShowFilterAgg(false);
+    }
     // eslint-disable-next-line
   }, [stars, cuisine, borough]);
 
@@ -58,25 +98,21 @@ const AggregationSideBar = () => {
   }, [showMustAgg, showFilterAgg]);
 
   useEffect(() => {
-    if (searchTerm || food) {
-      setShowAggCode(true);
-    }
-    if (
-      (searchTerm !== "" && food !== "") ||
-      (searchTerm !== "" && operator !== "text")
-    ) {
-      setShowMustAgg(true);
-    } else if (
-      (searchTerm !== "" || food !== "" || operator !== "text") &&
-      showFilterAgg
-    ) {
+    if (mustCount > 1) {
       setShowMustAgg(true);
     } else setShowMustAgg(false);
+    if (searchTerm !== "" || food !== "" || operator !== "text") {
+      setShowAggCode(true);
+    }
+
     // eslint-disable-next-line
-  }, [food, searchTerm, operator, showFilterAgg]);
+  }, [food, searchTerm, operator]);
 
   return (
-    <div className="flex flex-col w-96 rounded h-auto bg-black px-4 pt-10">
+    <div
+      className="flex flex-col w-96 rounded h-auto bg-black px-4 pt-10"
+      onClick={() => setShowAggCode(!showAggCode)}
+    >
       {/* <button className="absolute text-lg font-body font-bold bg-mongo-500 hover:bg-mongo-400 border-b-4 border-mongo-700 hover:border-green-500 text-white py-2 px-4 rounded -top-2">
         Search Stage
       </button> */}
@@ -86,54 +122,44 @@ const AggregationSideBar = () => {
           &#123; $search :
         </pre>
       )}
+
       {showCompound && (
         <pre className="text-blue-300 font-mono pl-2 text-left">
-          &#123; compound : &#123;
+          &#123; compound :
         </pre>
       )}
-      {showMustAgg && <pre className="pl-8 text-orange-300">must : [</pre>}
-      <div className="">
-        {searchTerm !== "" && (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {basicSearchString}
-          </SyntaxHighlighter>
-        )}
 
-        {food !== "" && (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {synString}
-          </SyntaxHighlighter>
-        )}
-        {operator !== "text" && (
-          <SyntaxHighlighter language="javascript" style={atomDark}>
-            {geoString}
-          </SyntaxHighlighter>
-        )}
-
-        {showMustAgg && <pre className="pl-4 text-orange-300">]</pre>}
-      </div>
-
-      {showFilterAgg && (
-        <div id="filter">
-          <div className="pl-2 text-yellow-300 font-mono">filter:[</div>
-          {showStarsAgg && (
+      {showMustAgg ? (
+        <SyntaxHighlighter language="javascript" style={atomDark}>
+          {mustString}
+        </SyntaxHighlighter>
+      ) : (
+        <div className="">
+          {searchTerm !== "" && (
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {starString},
+              {basicSearchString}
             </SyntaxHighlighter>
           )}
-          {showCuisineAgg && (
+
+          {food !== "" && (
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {cuisineString},
+              {synString}
             </SyntaxHighlighter>
           )}
-          {showBoroughAgg && (
+          {operator !== "text" && (
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {boroughString}
+              {geoString}
             </SyntaxHighlighter>
           )}
-          <div className="pl-4 text-yellow-300 font-mono">]</div>
         </div>
       )}
+
+      {showFilterAgg && (
+        <SyntaxHighlighter language="javascript" style={atomDark}>
+          {filterString}
+        </SyntaxHighlighter>
+      )}
+
       {showCompound && (
         <pre className="text-blue-300 font-mono pl-2 text-left">&#125; </pre>
       )}

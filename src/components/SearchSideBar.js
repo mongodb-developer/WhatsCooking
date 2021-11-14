@@ -13,15 +13,12 @@ const SearchSideBar = ({
   setDistance,
   setShowDistanceInput,
   showDistanceInput,
-  setValid,
-  setSubmitted,
   setStars,
   stars,
   borough,
   setBorough,
   cuisine,
   setCuisine,
-  setShowSuggestions,
   boroughBuckets,
   cuisineBuckets,
   facetOverallCount,
@@ -35,21 +32,17 @@ const SearchSideBar = ({
     setShowCuisine,
     showBorough,
     setShowBorough,
-    cuisineString,
-    setCuisineString,
-    starString,
-    setStarString,
-    boroughString,
-    setBoroughString,
-    setShowStarsAgg,
-    setShowCuisineAgg,
-    setShowBoroughAgg,
     showGeo,
     setShowGeo,
-    showGeoAgg,
-    setShowGeoAgg,
     geoString,
     setGeoString,
+    setGeoObject,
+    setBoroughObject,
+    boroughObject,
+    cuisineObject,
+    setCuisineObject,
+    setStarsObject,
+    starsObject,
   } = useContext(SearchStageContext);
 
   //------------------------CUISINE FACETS----------------------------------------------
@@ -128,18 +121,19 @@ const SearchSideBar = ({
 
   useEffect(() => {
     if (operator === "text") {
-      setShowGeoAgg(false);
       setShowGeo(false);
       return;
     }
     if (operator === "geoWithin") {
       setGeoString(geoWithinString);
+      setGeoObject(geoWithinObject);
     } else if (operator === "near") {
       setGeoString(nearString);
+      setGeoObject(nearObject);
     }
 
     setShowGeo(true);
-    setShowGeoAgg(true);
+
     // eslint-disable-next-line
   }, [operator, distance]);
 
@@ -147,31 +141,47 @@ const SearchSideBar = ({
     if (stars === 1) {
       return;
     }
+    setStarsObject({
+      range: {
+        gte: stars,
+        path: "stars",
+      },
+    });
+
     setShowStars(true);
-    setShowStarsAgg(true);
 
     // eslint-disable-next-line
   }, [stars]);
 
   useEffect(() => {
     if (cuisine.length === 0) {
-      setShowCuisineAgg(false);
       setShowCuisine(false);
       return;
     }
+    setCuisineObject({
+      text: {
+        query: cuisine,
+        path: "cuisine",
+      },
+    });
     setShowCuisine(true);
-    setShowCuisineAgg(true);
     // eslint-disable-next-line
   }, [cuisine]);
 
   useEffect(() => {
     if (!borough) {
-      setShowBoroughAgg(false);
       setShowBorough(false);
       return;
     }
+    setBoroughObject({
+      text: {
+        query: borough,
+        path: "borough",
+      },
+    });
+
     setShowBorough(true);
-    setShowBoroughAgg(true);
+
     // eslint-disable-next-line
   }, [borough]);
 
@@ -183,7 +193,6 @@ const SearchSideBar = ({
     let { name, checked } = e.target;
     if (checked) {
       setCuisine((prevCuisine) => [...prevCuisine, name]);
-      console.log("CUISINE", cuisine);
     }
     if (checked === false) {
       let cuisineArray = cuisine.filter((item) => item !== name);
@@ -191,37 +200,16 @@ const SearchSideBar = ({
     }
   };
 
+  const sString = JSON.stringify(starsObject, null, 2);
+
+  const bString = JSON.stringify(boroughObject, null, 2);
+
+  const cString = JSON.stringify(cuisineObject, null, 2);
+
   let active =
     "w-1/2 h-12 my-auto text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none";
   let inactive =
     "w-1/2 h-12 my-auto text-white bg-gray-700 border border-black rounded hover:shadow-2xl hover:bg-green-800 transform hover:scale-110 focus:outline-none";
-
-  const starObject = {
-    range: {
-      gte: stars,
-      path: "stars",
-    },
-  };
-  const sString = JSON.stringify(starObject, null, 2);
-  setStarString(sString);
-
-  const cuisineObject = {
-    text: {
-      query: cuisine,
-      path: "cuisine",
-    },
-  };
-  const cString = JSON.stringify(cuisineObject, null, 2);
-  setCuisineString(cString);
-
-  const boroughObject = {
-    text: {
-      query: borough,
-      path: "borough",
-    },
-  };
-  const bString = JSON.stringify(boroughObject, null, 2);
-  setBoroughString(bString);
 
   const METERS_PER_MILE = 1609.0;
 
@@ -353,7 +341,7 @@ const SearchSideBar = ({
             }}
           >
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {starString}
+              {sString}
             </SyntaxHighlighter>
           </div>
         )}
@@ -473,7 +461,7 @@ const SearchSideBar = ({
             }}
           >
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {cuisineString}
+              {cString}
             </SyntaxHighlighter>
           </div>
         )}
@@ -571,7 +559,7 @@ const SearchSideBar = ({
             }}
           >
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {boroughString}
+              {bString}
             </SyntaxHighlighter>
           </div>
         )}

@@ -7,15 +7,19 @@ export const SearchStageProvider = (props) => {
   const [showStars, setShowStars] = useState(false);
   const [showCuisine, setShowCuisine] = useState(false);
   const [showBorough, setShowBorough] = useState(false);
-  const [starString, setStarString] = useState("");
-  const [cuisineString, setCuisineString] = useState("");
-  const [boroughString, setBoroughString] = useState("");
+
+  const [starsObject, setStarsObject] = useState({});
+
+  const [cuisineObject, setCuisineObject] = useState({});
+
+  const [boroughObject, setBoroughObject] = useState({});
   const [showStarsAgg, setShowStarsAgg] = useState(false);
   const [showCuisineAgg, setShowCuisineAgg] = useState(false);
   const [showBoroughAgg, setShowBoroughAgg] = useState(false);
   const [showGeo, setShowGeo] = useState(false);
   const [showGeoAgg, setShowGeoAgg] = useState(false);
   const [geoString, setGeoString] = useState("");
+  const [geoObject, setGeoObject] = useState({});
 
   const value = {
     showStars,
@@ -24,12 +28,6 @@ export const SearchStageProvider = (props) => {
     setShowCuisine,
     showBorough,
     setShowBorough,
-    cuisineString,
-    setCuisineString,
-    starString,
-    setStarString,
-    boroughString,
-    setBoroughString,
     showStarsAgg,
     setShowStarsAgg,
     showCuisineAgg,
@@ -42,6 +40,14 @@ export const SearchStageProvider = (props) => {
     setShowGeoAgg,
     geoString,
     setGeoString,
+    geoObject,
+    setGeoObject,
+    starsObject,
+    setStarsObject,
+    cuisineObject,
+    setCuisineObject,
+    boroughObject,
+    setBoroughObject,
   };
 
   return (
