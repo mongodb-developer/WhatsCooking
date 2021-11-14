@@ -108,13 +108,22 @@ const AggregationSideBar = () => {
       </button> */}
 
       {showAggCode && (
-        <pre className="text-fuchsia-400 font-mono text-xl py-2 text-left">
-          &#123; $search :
-        </pre>
+        <>
+          <pre className="text-fuchsia-400 font-mono text-xl py-2 text-left">
+            &#123; $search :
+          </pre>
+          <pre className="text-blue-500 font-mono text py-2 pl-2 text-left">
+            &#47; &#47; optional, defaults to "default"
+          </pre>
+
+          <pre className="text-yellow-400 font-mono text-xl py-2 pl-2 text-left">
+            index: &#60; indexName &#62;
+          </pre>
+        </>
       )}
 
       {showCompound && (
-        <pre className="text-blue-300 font-mono pl-2 text-left text-lg font-bold">
+        <pre className="text-blue-300 font-mono pl-2 text-left text-xl font-bold">
           &#123; compound :
         </pre>
       )}
@@ -151,7 +160,9 @@ const AggregationSideBar = () => {
       )}
 
       {showCompound && (
-        <pre className="text-blue-300 font-mono pl-2 text-left">&#125; </pre>
+        <pre className="text-blue-300 font-mono pl-2 text-left text-xl font-bold">
+          &#125;{" "}
+        </pre>
       )}
       {showAggCode && (
         <pre className="text-fuchsia-400 font-mono text-lg px-0 text-left">
