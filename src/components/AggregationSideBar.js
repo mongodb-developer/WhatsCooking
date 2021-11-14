@@ -5,19 +5,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const AggregationSideBar = () => {
-  const {
-    cuisineString,
-    starString,
-    geoString,
-    boroughString,
-    showStarsAgg,
-    showCuisineAgg,
-    showBoroughAgg,
-    geoObject,
-    boroughObject,
-    cuisineObject,
-    starsObject,
-  } = useContext(SearchStageContext);
+  const { geoString, geoObject, boroughObject, cuisineObject, starsObject } =
+    useContext(SearchStageContext);
 
   const { searchTerm, food, operator, borough, stars, cuisine } = useContext(
     SearchParametersContext
@@ -83,6 +72,7 @@ const AggregationSideBar = () => {
     if (borough || stars > 1 || cuisine.length > 0) {
       setShowFilterAgg(true);
       setShowAggCode(true);
+      if (mustCount > 0) setShowMustAgg(true);
     } else {
       setShowFilterAgg(false);
       setShowFilterAgg(false);
@@ -124,7 +114,7 @@ const AggregationSideBar = () => {
       )}
 
       {showCompound && (
-        <pre className="text-blue-300 font-mono pl-2 text-left">
+        <pre className="text-blue-300 font-mono pl-2 text-left text-lg font-bold">
           &#123; compound :
         </pre>
       )}

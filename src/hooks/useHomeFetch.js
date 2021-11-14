@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { SearchParametersContext } from "../store/SearchParametersContext";
+const { REACT_APP_GETRESTAURANTS_SECRET, REACT_APP_GETFACETS_SECRET } =
+  process.env;
+//const { REACT_APP_GETFACETS_SECRET } = process.env;
 
-const GetRestaurantsEndpointTEST =
-  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsTestNov1";
-const GetFacetsEndpoint =
-  "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getFacets";
+const GetRestaurantsEndpoint = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurants?secret=${REACT_APP_GETRESTAURANTS_SECRET}`;
+const GetFacetsEndpoint = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getFacets?secret=${REACT_APP_GETFACETS_SECRET}`;
 
 export const useHomeFetch = () => {
   const {
@@ -45,7 +46,7 @@ export const useHomeFetch = () => {
   } = useContext(SearchParametersContext);
 
   const postSearch = async () => {
-    let endpoint = GetRestaurantsEndpointTEST;
+    // POST TO GETRESTAURANTSENDPOINT
 
     let data = {
       searchTerm: searchTerm,
@@ -57,7 +58,7 @@ export const useHomeFetch = () => {
       cuisine: cuisine,
       stars: stars,
     };
-    axios.post(endpoint, data).then((res) => {
+    axios.post(GetRestaurantsEndpoint, data).then((res) => {
       setRestaurants(res.data.restaurants);
       if (res.data.restaurants.length === 0) {
         setNoResultsMsg(
@@ -84,17 +85,11 @@ export const useHomeFetch = () => {
       cuisine: cuisine,
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
-      console.log("FACET RESPONSE");
       let count = res.data.results[0].count.lowerBound.$numberLong; // facet
       setFacetOverallCount(count);
-      console.log(res.data.results[0].facet.cuisineFacet);
       setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
       setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
       setFacetStage(res.data.searchMetaStage);
-
-      console.log("CUISINE BUCKETS", cuisineBuckets);
-      console.log("BOROUGH BUCKETS", boroughBuckets);
-      console.log("FACET STAGE", res.data.searchMetaStageString);
 
       setShowFacets(true);
     });
@@ -106,7 +101,7 @@ export const useHomeFetch = () => {
 
     postSearch();
     postFacets();
-    console.log("FACET COUNT", facetOverallCount);
+
     setSubmitted(false);
 
     // eslint-disable-next-line

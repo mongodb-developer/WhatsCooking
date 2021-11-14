@@ -200,11 +200,11 @@ const SearchSideBar = ({
     }
   };
 
-  const sString = JSON.stringify(starsObject, null, 2);
+  const starString = JSON.stringify(starsObject, null, 2);
 
-  const bString = JSON.stringify(boroughObject, null, 2);
+  const boroughString = JSON.stringify(boroughObject, null, 2);
 
-  const cString = JSON.stringify(cuisineObject, null, 2);
+  const cuisineString = JSON.stringify(cuisineObject, null, 2);
 
   let active =
     "w-1/2 h-12 my-auto text-white bg-gradient-to-r from-mongo-700 to-mongo-600 border border-green-700 rounded hover:shadow-2xl hover:bg-green-700 transform hover:scale-110 focus:outline-none";
@@ -341,7 +341,7 @@ const SearchSideBar = ({
             }}
           >
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {sString}
+              {starString}
             </SyntaxHighlighter>
           </div>
         )}
@@ -461,7 +461,7 @@ const SearchSideBar = ({
             }}
           >
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {cString}
+              {cuisineString}
             </SyntaxHighlighter>
           </div>
         )}
@@ -559,7 +559,7 @@ const SearchSideBar = ({
             }}
           >
             <SyntaxHighlighter language="javascript" style={atomDark}>
-              {bString}
+              {boroughString}
             </SyntaxHighlighter>
           </div>
         )}
