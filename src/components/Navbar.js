@@ -9,15 +9,21 @@ import INDEXLOGO from "../images/index.png";
 const Navbar = () => {
   const history = useHistory();
   const {
-    showAggregation,
+    setAggregationErrorMsg,
     setShowAggregation,
     setFunctionScore,
+    valid,
     setValid,
     setShowSuggestions,
     setSubmitted,
   } = useContext(SearchParametersContext);
   const handleShowAggregation = () => {
-    setShowAggregation(!showAggregation);
+    if (valid) setShowAggregation(true);
+    else {
+      setAggregationErrorMsg(
+        "Execute a search query to see the aggregation performed by the server."
+      );
+    }
   };
 
   const handleFunctionScore = (event) => {

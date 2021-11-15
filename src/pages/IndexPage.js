@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Icon from "../images/whatscooking.png";
 import DEVELOPERICON from "../images/Developer_hero_green.png";
-import SEARCHICON from "../images/Search_hero_blue.png";
+import SEARCHPARAMETERS from "../images/SearchParameters.png";
 import ATLASUI from "../images/AtlasUI.png";
 
 // INDEX DEFINITIONS IN ATLAS SEARCH
@@ -169,37 +169,35 @@ const IndexPage = () => {
       </div>
 
       <div className="flex flex-col space-x-8 mx-16 text-2xl justify-center">
-        <div className="flex space-x-8 mx-16 text-2xl justify-around">
-          <div className="text-center text-2xl w-1/2 font-body my-auto mx-auto">
+        <div className="flex justify-around">
+          <div className="w-1/2 px-8 mt-20 text-center text-2xl font-body">
             <span className="text-mongo font-bold">Atlas Search</span> combines
             the power of Apache Lucene with the developer productivity, scale,
             and resilience of MongoDB Atlas to integrate fast, relevance-based
             search capabilities into your MongoDB applications. <br></br>
             <br></br>
-          </div>
-          <div className="w-1/3 my-auto">
-            <img src={SEARCHICON} alt="thinking" className="my-auto w-72"></img>
-          </div>
-        </div>
-        <div className="flex justify-around">
-          <div className="w-1/2">
-            <img
-              src={ATLASUI}
-              alt="ATLASUI"
-              className="my-16 border-4 border-light-blue-500 border-opacity-25 shadow-2xl h-128"
-            ></img>
-          </div>
-          <div className="w-1/3 mt-32 text-center text-2xl font-body">
             This{" "}
             <span className="text-mongo font-bold">
               What's Cooking Restaurant Finder
             </span>{" "}
             application uses 2 collections and only 3 Atlas Search indexes in
             Atlas.<br></br>
-            <br></br>
-            <br></br>
+            <span className="w-1/2 mx-auto">
+              <img
+                src={SEARCHPARAMETERS}
+                alt="ATLASUI"
+                className="my-8 mx-auto h-24"
+              ></img>
+            </span>
             Create your own search indexes with the Visual Index Builder or use
             the ones below used in this application as examples.
+          </div>
+          <div className="w-1/2">
+            <img
+              src={ATLASUI}
+              alt="ATLASUI"
+              className="my-16 border-4 border-light-blue-500 border-opacity-25 shadow-2xl h-128"
+            ></img>
           </div>
         </div>
         <div className="flex justify-around">

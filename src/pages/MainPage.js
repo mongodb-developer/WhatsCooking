@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { SearchStageProvider } from "../store/SearchStageContext";
 import { SearchParametersContext } from "../store/SearchParametersContext";
 import SearchForm from "../components/SearchForm";
@@ -11,6 +11,7 @@ import AggregationModal from "../components/AggregationModal";
 import FacetModal from "../components/FacetModal";
 import MenuModal from "../components/MenuModal";
 
+import AGGLOGO from "../images/pipeline.png";
 // HOOKS
 import { useHomeFetch } from "../hooks/useHomeFetch";
 
@@ -52,6 +53,8 @@ const MainPage = () => {
     setValid,
     showSuggestions,
     setShowSuggestions,
+    aggregationErrorMsg,
+    setAggregationErrorMsg,
     setIndex,
     index,
     showMenu,
@@ -116,6 +119,14 @@ const MainPage = () => {
             onClick={() => setNoResultsMsg("")}
           >
             {noResultsMsg}
+          </div>
+        )}
+        {aggregationErrorMsg !== "" && (
+          <div
+            className="w-3/4 mx-auto py-6 text-2xl bg-black text-white text-center rounded my-4"
+            onClick={() => setAggregationErrorMsg("")}
+          >
+            {aggregationErrorMsg}
           </div>
         )}
 

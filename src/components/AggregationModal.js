@@ -46,20 +46,3 @@ const AggregationModal = ({ setShowAggregation, stages }) => {
 };
 
 export default AggregationModal;
-
-/**********
- *  <div className="text-white ">[</div>
-        <div className="divide-y-4 divide-yellow-300 ">
-          <pre className="mb-10 font-body  text-2xl">{jsonSearch},</pre>
-          <pre className="py-10 mb-10 ml-10 font-body text-2xl">
-            <SyntaxHighlighter language="javascript" style={coldarkDark}>
-              {jsonLimit}
-            </SyntaxHighlighter>
-            ,
-          </pre>
-          <pre className="pt-10 ml-10 font-body text-2xl">{jsonProject}</pre>
-        </div>
-        <div className="text-white ">]</div>
- * 
- * 
- */

@@ -28,6 +28,7 @@ export const SearchParametersProvider = (props) => {
   const [showAggregation, setShowAggregation] = useState(false); // TO SHOW MODAL FOR AGGREGATION CODE
   const [showFacetCode, setShowFacetCode] = useState(false); // TO SHOW MODAL FOR FACET CODE
   const [showSearchStage, setShowSearchStage] = useState(true);
+  const [aggregationErrorMsg, setAggregationErrorMsg] = useState("");
   const [noResultsMsg, setNoResultsMsg] = useState("");
   const [cuisineBuckets, setCuisineBuckets] = useState([]);
   const [boroughBuckets, setBoroughBuckets] = useState([]);
@@ -77,6 +78,8 @@ export const SearchParametersProvider = (props) => {
     setShowDistanceInput,
     noResultsMsg,
     setNoResultsMsg,
+    aggregationErrorMsg,
+    setAggregationErrorMsg,
     cuisineBuckets,
     setCuisineBuckets,
     boroughBuckets,
