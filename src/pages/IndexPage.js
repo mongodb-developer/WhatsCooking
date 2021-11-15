@@ -169,7 +169,7 @@ const IndexPage = () => {
       </div>
 
       <div className="flex flex-col space-x-8 mx-16 text-2xl justify-center">
-        <div className="flex justify-around">
+        <div className="flex justify-around mx-32">
           <div className="w-1/2 px-8 mt-20 text-center text-2xl font-body">
             <span className="text-mongo font-bold">Atlas Search</span> combines
             the power of Apache Lucene with the developer productivity, scale,
@@ -192,7 +192,7 @@ const IndexPage = () => {
             Create your own search indexes with the Visual Index Builder or use
             the ones below used in this application as examples.
           </div>
-          <div className="w-1/2">
+          <div className="w-1/3">
             <img
               src={ATLASUI}
               alt="ATLASUI"
@@ -202,17 +202,35 @@ const IndexPage = () => {
         </div>
         <div className="flex justify-around">
           <div className="w-1/4 ml-10 rounded text-base  p-4">
-            <div className="text-2xl font-body text-center">
+            <div className="text-2xl font-body text-center font-bold text-indigo-800 ">
               Default Index Definition
             </div>
+            <hr
+              style={{
+                color: "darkgreen",
+                backgroundColor: "darkgreen",
+                height: 1,
+                margin: 24,
+                borderColor: "darkgreen",
+              }}
+            />
             <SyntaxHighlighter language="javascript" style={okaidia}>
               {defaultIndexString}
             </SyntaxHighlighter>
           </div>
           <div className="w-1/4 ml-10 rounded text-base p-4">
-            <div className="text-2xl font-body text-center">
+            <div className="text-2xl font-body text-indigo-800 text-center font-bold">
               Autocomplete Index Definition
             </div>
+            <hr
+              style={{
+                color: "darkgreen",
+                backgroundColor: "darkgreen",
+                height: 1,
+                margin: 24,
+                borderColor: "darkgreen",
+              }}
+            />
             <SyntaxHighlighter language="javascript" style={okaidia}>
               {autocompleteIndexString}
             </SyntaxHighlighter>
@@ -235,9 +253,18 @@ const IndexPage = () => {
           </div>
 
           <div className="w-1/4 ml-10 rounded text-base p-4">
-            <div className="text-2xl font-body text-center">
+            <div className="text-2xl font-body text-center font-bold text-indigo-800 ">
               Facet Index Definition
             </div>
+            <hr
+              style={{
+                color: "darkgreen",
+                backgroundColor: "darkgreen",
+                height: 1,
+                margin: 24,
+                borderColor: "darkgreen",
+              }}
+            />
             <SyntaxHighlighter language="javascript" style={okaidia}>
               {facetIndexString}
             </SyntaxHighlighter>
