@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import MenuIcon from "../images/restaurant-menu.png";
+const { REACT_APP_CREATESYNONYM } = process.env;
 
 const SynonymForm = ({ setShowSynForm, setSubmissionMessage }) => {
   const [equivalentMapping, setEquivalentMapping] = useState(true);
@@ -21,10 +22,7 @@ const SynonymForm = ({ setShowSynForm, setSubmissionMessage }) => {
         "Content-Type": "application/json",
       },
     };
-    fetch(
-      "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/addSynonyms",
-      requestOptions
-    ).then(() => {
+    fetch(REACT_APP_CREATESYNONYM, requestOptions).then(() => {
       console.log("SUBMITTED SYNONYM!!");
       setShowSynForm(false);
       setSubmissionMessage(`You successfully added synonyms for ${data.word}.`);

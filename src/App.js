@@ -4,7 +4,7 @@ import { SearchParametersProvider } from "./store/SearchParametersContext";
 
 import MainPage from "./pages/MainPage";
 import SynonymsPage from "./pages/SynonymsPage";
-import ScoringPage from "./pages/ScoringPage";
+import IndexPage from "./pages/IndexPage";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
           <Route path="/synonyms">
             <SynonymsPage />
           </Route>
-          <Route path="/scoring">
-            <ScoringPage />
+          <Route path="/indexes">
+            <IndexPage />
           </Route>
         </Switch>
       </SearchParametersProvider>

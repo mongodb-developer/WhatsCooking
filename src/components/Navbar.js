@@ -4,6 +4,7 @@ import { SearchParametersContext } from "../store/SearchParametersContext";
 import LOGO from "../images/MongoDB_Logo.svg";
 import AGGLOGO from "../images/AggregationPipeline.png";
 import SYNLOGO from "../images/Synonyms.png";
+import INDEXLOGO from "../images/index.png";
 
 const Navbar = () => {
   const history = useHistory();
@@ -37,7 +38,7 @@ const Navbar = () => {
       </div>
       <div
         id="right"
-        className="container pl-32 mt-4 flex justify-end divide-x divide-green-500 "
+        className="container pl-24 mt-4 flex justify-end divide-x divide-green-500 "
       >
         <button
           onClick={handleShowAggregation}
@@ -63,34 +64,20 @@ const Navbar = () => {
           <span>Synonyms</span>
           <img className="mx-auto my-auto h-16 z-5" src={SYNLOGO} alt="logo" />
         </button>
+        <button
+          className="flex items-center pl-4 my-auto space-x-6 text-lg  transition duration-700 transform rounded w-full font-body font-bold hover:scale-150 hover:font-bold focus:outline-none"
+          onClick={() => history.push("/indexes")}
+        >
+          <span>Data & Indexes</span>
+          <img
+            className="mx-auto my-auto h-16 z-5"
+            src={INDEXLOGO}
+            alt="logo"
+          />
+        </button>
       </div>
     </header>
   );
 };
 
 export default Navbar;
-
-/***
- * <nav>
-        <ul className="flex space-x-10">
-          <li className="text-mongo-600 text-xl">
-            <Link to="/synonyms">Synonyms</Link>
-          </li>
-          <li className="text-indigo-600 text-xl">
-            <Link to="/scoring">Custom Scores</Link>
-          </li>
-        </ul>
-        <button
-        className="flex items-center pl-4 my-auto space-x-6 text-lg text-mongo-600 transition duration-700 transform rounded  w-full font-body font-bold hover:scale-150 hover:font-bold focus:outline-none"
-        onClick={() => history.push("/scoring")}
-      >
-        <span>Custom Scores</span>
-        <div className="flex items-center justify-center w-8 h-12 text-xl rounded-full">
-          {" "}
-          ✨
-        </div>
-      </button>
-      </nav>
- * 
- * 
- */

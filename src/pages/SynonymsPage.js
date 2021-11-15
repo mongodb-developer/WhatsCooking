@@ -7,6 +7,8 @@ import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Icon from "../images/whatscooking.png";
 import IdeasIcon from "../images/foodIdeas.png";
 
+const { REACT_APP_GETSYNONYMS } = process.env;
+
 const SynonymsPage = () => {
   const [loadedSynonyms, setLoadedSynonyms] = useState([]);
   const [showSynForm, setShowSynForm] = useState(false);
@@ -15,11 +17,7 @@ const SynonymsPage = () => {
   const [updateMessage, setUpdateMessage] = useState("");
 
   const getSynonyms = async () => {
-    let storedSynonyms = await (
-      await fetch(
-        "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/getFoodSynonyms"
-      )
-    ).json();
+    let storedSynonyms = await (await fetch(REACT_APP_GETSYNONYMS)).json();
     setLoadedSynonyms(storedSynonyms.foodSynonyms);
   };
   useEffect(() => {
@@ -74,12 +72,12 @@ const SynonymsPage = () => {
           <button
             type="button"
             className="flex justify-center my-auto mt-12 w-4/5 mx-auto h-16 pl-4 space-x-4 text-3xl text-white rounded bg-gradient-to-r from-mongo-500 to-green-700 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
-            onClick={() => {
-              setShowSynForm(true);
-              setSubmissionMessage("");
-            }}
+            // onClick={() => {
+            //   setShowSynForm(true);
+            //   setSubmissionMessage("");
+            // }}
           >
-            <span className="my-auto">Create Synonym</span>
+            <span className="my-auto">Our Custom Synonyms</span>
             <div className="flex items-center justify-center w-16 h-16 text-6xl rounded-full bg-white">
               🍽️
             </div>

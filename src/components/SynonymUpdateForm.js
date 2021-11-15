@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+const { REACT_APP_UPDATESYNONYM } = process.env;
 
 const SynonymUpdateForm = ({
   values,
@@ -22,7 +23,7 @@ const SynonymUpdateForm = ({
 
   const updateSynonym = (data) => {
     console.log("In updateSynonym function");
-    const UPDATE_ENDPOINT = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/updateSynonym?id=${synID}`;
+    const UPDATE_ENDPOINT = `${REACT_APP_UPDATESYNONYM}?id=${synID}`;
     setSynID(0);
     setCardIDToUpdate(0);
 

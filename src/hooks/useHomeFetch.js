@@ -3,7 +3,6 @@ import { useContext, useEffect } from "react";
 import { SearchParametersContext } from "../store/SearchParametersContext";
 const { REACT_APP_GETRESTAURANTS_SECRET, REACT_APP_GETFACETS_SECRET } =
   process.env;
-//const { REACT_APP_GETFACETS_SECRET } = process.env;
 
 const GetRestaurantsEndpoint = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurants?secret=${REACT_APP_GETRESTAURANTS_SECRET}`;
 const GetFacetsEndpoint = `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getFacets?secret=${REACT_APP_GETFACETS_SECRET}`;

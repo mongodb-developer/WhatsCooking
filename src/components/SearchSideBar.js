@@ -1,7 +1,8 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import ReactStars from "react-rating-stars-component";
 
 import { SearchStageContext } from "../store/SearchStageContext";
+import FACETICON from "../images/filterfacet.png";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -568,12 +569,17 @@ const SearchSideBar = ({
           type="button"
           className="mx-auto relative w-2/3 flex space-x-4 my-10 font-body font-bold shadow-lg bg-gradient-to-r from-mongo-500 to-mongo-600 border-b-4 border-r-2 border-solid border-mongo-700 rounded-lg"
         >
+          <img
+            src={FACETICON}
+            alt="app logo"
+            className="absolute -left-6 -bottom-4 my-auto w-20 h-20 rounded-full mx-auto bg-white border-t-2 border-l-2 border-b-4 border-r-4 border-solid border-mongo-600"
+          ></img>
           <div className="relative text-2xl my-auto text-white  font-extrabold font-body pr-4 pl-12 py-2">
             facet
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -right-4 -bottom-2 h-16 w-16 my-auto text-white bg-black rounded-full"
+            className="absolute -right-0  h-12 w-12 my-auto text-white bg-black rounded-lg"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
