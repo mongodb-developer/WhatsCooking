@@ -85,6 +85,7 @@ export const useHomeFetch = () => {
     };
     axios.post(GetFacetsEndpoint, facetData).then((res) => {
       let count = res.data.results[0].count.lowerBound.$numberLong; // facet
+      console.log("GETFACETS", res.data.results[0]);
       setFacetOverallCount(count);
       setCuisineBuckets(res.data.results[0].facet.cuisineFacet.buckets);
       setBoroughBuckets(res.data.results[0].facet.boroughFacet.buckets);
