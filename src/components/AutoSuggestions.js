@@ -16,6 +16,7 @@ const AutoSuggestions = ({
 
   const autoSuggestObject = {
     $search: {
+      index: "autocomplete",
       autocomplete: {
         path: "name",
         query: searchTerm,

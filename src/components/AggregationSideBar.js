@@ -8,9 +8,8 @@ const AggregationSideBar = () => {
   const { geoString, geoObject, boroughObject, cuisineObject, starsObject } =
     useContext(SearchStageContext);
 
-  const { searchTerm, food, operator, borough, stars, cuisine } = useContext(
-    SearchParametersContext
-  );
+  const { searchTerm, food, operator, borough, stars, cuisine, functionScore } =
+    useContext(SearchParametersContext);
 
   const [showAggCode, setShowAggCode] = useState(false);
   const [showFilterAgg, setShowFilterAgg] = useState(false);
@@ -23,7 +22,7 @@ const AggregationSideBar = () => {
 
   let basicSearchObject = {
     text: searchTerm,
-    path: ["name", "cuisine"],
+    path: "name",
     fuzzy: {
       maxEdits: 2,
     },
@@ -52,6 +51,7 @@ const AggregationSideBar = () => {
   let mustObject = {
     must: mustArray,
   };
+  console.log("MUST OBJECT", JSON.stringify.mustObject);
 
   if (stars > 1) filterArray.push(starsObject);
   if (cuisine.length > 0) filterArray.push(cuisineObject);
@@ -67,14 +67,16 @@ const AggregationSideBar = () => {
   let synString = JSON.stringify(synObject, null, 2);
 
   let basicSearchString = JSON.stringify(basicSearchObject, null, 2);
+  let scoreString = JSON.stringify(scoreObject, null, 2);
+  let highlightString = JSON.stringify(highlightObject, null, 2);
 
   useEffect(() => {
     if (borough || stars > 1 || cuisine.length > 0) {
       setShowFilterAgg(true);
+      setShowMustAgg(true);
       setShowAggCode(true);
       if (mustCount > 0) setShowMustAgg(true);
     } else {
-      setShowFilterAgg(false);
       setShowFilterAgg(false);
     }
     // eslint-disable-next-line
@@ -88,7 +90,7 @@ const AggregationSideBar = () => {
   }, [showMustAgg, showFilterAgg]);
 
   useEffect(() => {
-    if (mustCount > 1) {
+    if (mustCount > 1 || showFilterAgg) {
       setShowMustAgg(true);
     } else setShowMustAgg(false);
     if (searchTerm !== "" || food !== "" || operator !== "text") {
@@ -103,10 +105,6 @@ const AggregationSideBar = () => {
       className="flex flex-col w-96 rounded h-auto bg-black px-4 pt-10"
       onClick={() => setShowAggCode(!showAggCode)}
     >
-      {/* <button className="absolute text-lg font-body font-bold bg-mongo-500 hover:bg-mongo-400 border-b-4 border-mongo-700 hover:border-green-500 text-white py-2 px-4 rounded -top-2">
-        Search Stage
-      </button> */}
-
       {showAggCode && (
         <>
           <pre className="text-fuchsia-400 font-mono text-xl py-2 text-left">
@@ -123,12 +121,17 @@ const AggregationSideBar = () => {
       )}
 
       {showCompound && (
-        <pre className="text-blue-300 font-mono pl-2 text-left text-xl font-bold">
-          &#123; compound :
-        </pre>
+        <>
+          <pre className="text-blue-300 font-mono pl-2 text-left text-xl font-bold">
+            &#123; compound :
+          </pre>
+          <pre className="text-blue-500 font-mono text py-2 pl-2 text-left">
+            &#47; &#47; must | mustNot | should | filter
+          </pre>
+        </>
       )}
 
-      {showMustAgg ? (
+      {showMustAgg && mustArray.length > 0 ? (
         <SyntaxHighlighter language="javascript" style={atomDark}>
           {mustString}
         </SyntaxHighlighter>
@@ -158,11 +161,31 @@ const AggregationSideBar = () => {
           {filterString}
         </SyntaxHighlighter>
       )}
+      {functionScore && (
+        <div className="border-solid border-2 border-yellow-200 ">
+          <pre className="text-blue-300 font-mono pl-2 text-left text-xl font-bold">
+            score :
+          </pre>
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {scoreString}
+          </SyntaxHighlighter>
+        </div>
+      )}
 
       {showCompound && (
         <pre className="text-blue-300 font-mono pl-2 text-left text-xl font-bold">
           &#125;{" "}
         </pre>
+      )}
+      {food !== "" && (
+        <div>
+          <pre className="text-yellow-200 font-mono pl-2 text-left text-xl font-bold">
+            highlight :
+          </pre>
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {highlightString}
+          </SyntaxHighlighter>
+        </div>
       )}
       {showAggCode && (
         <pre className="text-fuchsia-400 font-mono text-lg px-0 text-left">
@@ -174,3 +197,28 @@ const AggregationSideBar = () => {
 };
 
 export default AggregationSideBar;
+
+const scoreObject = {
+  function: {
+    multiply: [
+      {
+        score: "relevance",
+      },
+      {
+        path: {
+          value: "stars",
+          undefined: 1,
+        },
+      },
+      {
+        path: {
+          value: "sponsored",
+          undefined: 1,
+        },
+      },
+    ],
+  },
+};
+const highlightObject = {
+  path: "menu",
+};
