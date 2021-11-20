@@ -68,7 +68,7 @@ const AggregationSideBar = () => {
 
   let basicSearchString = JSON.stringify(basicSearchObject, null, 2);
   let scoreString = JSON.stringify(scoreObject, null, 2);
-  let highlightString = JSON.stringify(highlightObject, null, 2);
+  let highlightString = JSON.stringify(highlightObject, null, 4);
 
   useEffect(() => {
     if (borough || stars > 1 || cuisine.length > 0) {
@@ -114,7 +114,7 @@ const AggregationSideBar = () => {
             &#47; &#47; optional, defaults to "default"
           </pre>
 
-          <pre className="text-yellow-400 font-mono text-xl py-2 pl-2 text-left">
+          <pre className="text-yellow-200 font-mono text-xl py-2 pl-2 text-left">
             index: &#60; indexName &#62;
           </pre>
         </>

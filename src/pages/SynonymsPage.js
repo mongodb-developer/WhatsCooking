@@ -7,7 +7,7 @@ import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Icon from "../images/whatscooking.png";
 import IdeasIcon from "../images/foodIdeas.png";
 
-const { REACT_APP_GETSYNONYMS } = process.env;
+const { REACT_APP_GETSYNONYMS_SECRET } = process.env;
 
 const SynonymsPage = () => {
   const [loadedSynonyms, setLoadedSynonyms] = useState([]);
@@ -17,11 +17,17 @@ const SynonymsPage = () => {
   const [updateMessage, setUpdateMessage] = useState("");
 
   const getSynonyms = async () => {
-    let storedSynonyms = await (await fetch(REACT_APP_GETSYNONYMS)).json();
+    let storedSynonyms = await (
+      await fetch(
+        `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/getFoodSynonyms?secret=${REACT_APP_GETSYNONYMS_SECRET}`
+      )
+    ).json();
     setLoadedSynonyms(storedSynonyms.foodSynonyms);
+    console.log(storedSynonyms);
   };
   useEffect(() => {
     getSynonyms();
+    console.log("GETTING SYNONYMS");
   }, [deleteMessage, submissionMessage]); // add all external values your effect function depends on - none in this case
 
   const synonymIndex = {
