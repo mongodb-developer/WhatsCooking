@@ -94,14 +94,14 @@ const SynonymsPage = () => {
 
             <button
               type="button"
-              className="flex justify-center my-auto mt-12 w-4/5 mx-auto h-16 pl-4 space-x-4 text-3xl text-white rounded bg-gradient-to-r from-mongo-500 to-green-700 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
+              className="flex justify-center my-auto mt-12 w-full mx-auto h-20 px-4 space-x-4 text-3xl text-white rounded bg-gradient-to-r from-mongo-500 to-green-700 font-body hover:shadow-2xl hover:bg-green-700 focus:outline-none"
               // onClick={() => {
               //   setShowSynForm(true);
               //   setSubmissionMessage("");
               // }}
             >
               <span className="my-auto">Our Custom Synonyms</span>
-              <div className="flex items-center justify-center w-16 h-16 text-6xl rounded-full bg-white">
+              <div className="flex items-center justify-center w-14 mt-2 h-14 text-6xl rounded-full bg-white">
                 🍽️
               </div>
             </button>
