@@ -28,6 +28,7 @@
 - facets
 - relevance-based scoring
 - custom function scoring
+- synonyms
 
 <p>Check out the video of the MongoDB .Live keynote to see a demonstration of all the features or visit the link below to play around with the finished application, hosted entirely in MongoDB Atlas:</p>
 <h2 align="center"><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
