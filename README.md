@@ -11,7 +11,7 @@
 </ul>
 <br/>
 <div align="center">
-<img src="CookingDemo.gif" width="450"  />
+<img src="restaurantDemo.gif" width="450"  />
 </div>
 <br/>
 <p><em>Note: This dataset is mocked. Please do not use to make actual dining decisions.</em></p>
@@ -85,9 +85,7 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 
 <h2>React Components....</h2>
 <p float="left">
-    <img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents1.png" width="250"  />
-    <img src="https://search-demos.s3.us-east-2.amazonaws.com/AppComponents2.png" width="250"  />
-    <img src="https://search-demos.s3.us-east-2.amazonaws.com/AggregationComponent.png" width="250"  />
+    <img src="Main.png" width="550"  />
 </p>
 
 <h2>Using Realm as Your Serverless Backend....</h2>
