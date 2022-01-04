@@ -11,7 +11,6 @@ import AggregationModal from "../components/AggregationModal";
 import FacetModal from "../components/FacetModal";
 import MenuModal from "../components/MenuModal";
 
-import AGGLOGO from "../images/pipeline.png";
 // HOOKS
 import { useHomeFetch } from "../hooks/useHomeFetch";
 

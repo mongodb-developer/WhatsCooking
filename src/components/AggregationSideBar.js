@@ -51,7 +51,6 @@ const AggregationSideBar = () => {
   let mustObject = {
     must: mustArray,
   };
-  console.log("MUST OBJECT", JSON.stringify.mustObject);
 
   if (stars > 1) filterArray.push(starsObject);
   if (cuisine.length > 0) filterArray.push(cuisineObject);
