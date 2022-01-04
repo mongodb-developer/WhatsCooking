@@ -21,7 +21,8 @@ const SynonymsPage = () => {
   const getSynonyms = async () => {
     let storedSynonyms = await (
       await fetch(
-        `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/getFoodSynonyms?secret=${REACT_APP_GETSYNONYMS_SECRET}`
+        `https://us-east-1.aws.data.mongodb-api.com/app/whatscooking-agtge/endpoint/synonyms/getFoodSynonyms?secret=${REACT_APP_GETSYNONYMS_SECRET}`
+        // `https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/synonyms/incoming_webhook/getFoodSynonyms?secret=${REACT_APP_GETSYNONYMS_SECRET}`
       )
     ).json();
     setLoadedSynonyms(storedSynonyms.foodSynonyms);
