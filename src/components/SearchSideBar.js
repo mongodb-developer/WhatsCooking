@@ -57,7 +57,6 @@ const SearchSideBar = ({
   let MexicanCount = 0;
   let PizzaCount = 0;
   let BakeryCount = 0;
-  let PICount = 0;
 
   for (let i = 0; i < cuisineBuckets.length; i++) {
     switch (cuisineBuckets[i]._id) {
@@ -88,22 +87,11 @@ const SearchSideBar = ({
       case "Bakery":
         BakeryCount = cuisineBuckets[i].count.$numberLong;
         break;
-      case "Pizza/Italian":
-        PICount = cuisineBuckets[i].count.$numberLong;
-        break;
+
       default:
         break;
     }
   }
-  let PizzaCountInt = parseInt(PizzaCount);
-  let PICountInt = parseInt(PICount);
-  let ItalianCountInt = parseInt(ItalianCount);
-
-  ItalianCountInt = ItalianCountInt + PICountInt;
-  PizzaCountInt = PizzaCountInt + PICountInt;
-
-  PizzaCount = PizzaCountInt.toString();
-  ItalianCount = ItalianCountInt.toString();
 
   //------------------------BOROUGH FACETS----------------------------------------------
   let ManhattanCount = 0;
@@ -432,9 +420,7 @@ const SearchSideBar = ({
             <input
               type="checkbox"
               name="Italian"
-              defaultChecked={
-                cuisine.includes("Italian") || cuisine.includes("Pizza/Italian")
-              }
+              defaultChecked={cuisine.includes("Italian")}
             />
             <label htmlFor="Italian">Italian</label>
             {showFacets && (
@@ -467,15 +453,14 @@ const SearchSideBar = ({
             <input
               type="checkbox"
               name="Pizza"
-              defaultChecked={
-                cuisine.includes("Pizza") || cuisine.includes("Pizza/Italian")
-              }
+              defaultChecked={cuisine.includes("Pizza")}
             />
             <label htmlFor="Pizza">Pizza</label>
             {showFacets && (
               <div className="text-deep-cerulean-600">({PizzaCount})</div>
             )}
           </div>
+
           <div className="flex mb-2 ml-10 space-x-6 cursor-pointer ">
             <input
               type="checkbox"
