@@ -21,10 +21,12 @@ const AggregationSideBar = () => {
   let filterArray = []; // using filter for stars, borough, cuisine
 
   let basicSearchObject = {
-    text: searchTerm,
-    path: "name",
-    fuzzy: {
-      maxEdits: 2,
+    text: {
+      query: searchTerm,
+      path: "name",
+      fuzzy: {
+        maxEdits: 2,
+      },
     },
   };
 
