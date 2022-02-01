@@ -24,7 +24,6 @@ const SearchBar = ({
 
   const Suggestions_AC_Endpoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/whatscooking-agtge/endpoint/restaurants/getRestaurantsAutocomplete";
-  // "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/whatscooking-agtge/service/restaurants/incoming_webhook/getRestaurantsAutocomplete";
 
   // this is a function definition that calls another function API.fetchContent()
   const fetchAC_Content = async (searchTerm) => {

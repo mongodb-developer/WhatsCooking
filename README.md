@@ -37,7 +37,12 @@
 
 - React
 - Tailwind CSS
+- MongoDB Realm for backend HTTPs endpoints and webhooks
 - A modified sample dataset based on MongoDB's Atlas sample_restaurants dataset
+
+<p float="left">
+    <img src="WhatsCookingArchitecture.png" width="750"  />
+</p>
 
 <p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
 
@@ -46,6 +51,7 @@
 - A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
 - A recent version of Node.js and npm.
 - Restaurant sample dataset.
+- Synonyms dataset.
 - (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
 
 <p>You can read and download the dataset using the MongoDB Shell, any MongoDB driver, or my favorite MongoDB Compass using the following URI:</p>
@@ -90,12 +96,14 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 </p>
 
 <h2>Using Realm as Your Serverless Backend....</h2>
-<p>What's Cooking uses HTTP services in Realm to create 2 APIs to allow you to query for your restaurant data over HTTP: </p>
+<p>What's Cooking uses HTTP services in Realm to create 5 APIs to allow you to query for your restaurant data over HTTP: </p>
 
-- `getRestaurants` called from the `useHomeFetch.js` hook.
-- `getRestaurantsAutocomplete` called from the `Autosuggestions.js` component.
+- `GetRestaurantsEndPoint` called from the `useHomeFetch.js` hook.
+- `GetFacetsEndpoint` called from the `useHomeFetch.js` hook.
+- `Suggestions_AC_Endpoint` called from the `SearchBar.js` component.
+- `getSynonyms` called in the `SynonymsPage.js`.
 
-Find the Realm application and code for these webhooks in the <code>supplement-files</code> branch in a folder called `WhatsCookingRealm`</p>
+Find the Realm application and code for these webhooks in the <code>WhatsCookingRealm</code> folder.</p>
 
 <h5>If you have any questions or feedback about this repo, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</h5>
 

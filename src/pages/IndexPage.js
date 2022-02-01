@@ -170,7 +170,7 @@ const IndexPage = () => {
 
       <div className="flex flex-col space-x-8 mx-16 text-2xl justify-center">
         <div className="flex justify-around mx-32">
-          <div className="w-1/2 px-8 mt-20 text-center text-2xl font-body">
+          <div className="w-1/2 px-8 my-4 text-center text-2xl font-body">
             <span className="text-mongo font-bold">Atlas Search</span> combines
             the power of Apache Lucene with the developer productivity, scale,
             and resilience of MongoDB Atlas to integrate fast, relevance-based
@@ -199,6 +199,14 @@ const IndexPage = () => {
               className="my-16 border-4 border-light-blue-500 border-opacity-25 shadow-2xl h-128"
             ></img>
           </div>
+        </div>
+        <div className="flex mx-auto w-full justify-center">
+          <div className="text-4xl font-body my-auto text-center font-bold text-mongo-700 mr-10">
+            whatscooking data:
+          </div>
+          <SyntaxHighlighter language="javascript" style={okaidia}>
+            mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
+          </SyntaxHighlighter>
         </div>
         <div className="flex justify-around">
           <div className="w-1/4 ml-10 rounded text-base  p-4">

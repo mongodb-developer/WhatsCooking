@@ -1,0 +1,66 @@
+[
+    {
+        "name": "buildProjectStage",
+        "private": false
+    },
+    {
+        "name": "buildSearchStage",
+        "private": false
+    },
+    {
+        "name": "buildCompoundFilter",
+        "private": false
+    },
+    {
+        "name": "buildCompoundMust",
+        "private": false
+    },
+    {
+        "name": "restaurants_getRestaurants",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "restaurants_getRestaurantsAutocomplete",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "restaurants_getFacets",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "restaurants_getRestaurantsTestNov1",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "synonyms_getFoodSynonyms",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "synonyms_addSynonyms",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "synonyms_removeSynonym",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "synonyms_updateSynonym",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    }
+]
