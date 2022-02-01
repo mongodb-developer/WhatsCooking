@@ -102,7 +102,22 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 - `GetFacetsEndpoint` called from the `useHomeFetch.js` hook.
 - `Suggestions_AC_Endpoint` called from the `SearchBar.js` component.
 - `getSynonyms` called in the `SynonymsPage.js`.
-
+<p float="left">
+    <img src="RestaurantsFunction.png" width="550"  />
+</p>
+<hr>
+<p float="left">
+    <img src="FacetFunction.png" width="550"  />
+</p>
+<hr>
+<p float="left">
+    <img src="ACFunction.png" width="550"  />
+</p>
+<hr>
+<p float="left">
+    <img src="SynonymsFunction.png" width="550"  />
+</p>
+<hr>
 Find the Realm application and code for these webhooks in the <code>WhatsCookingRealm</code> folder.</p>
 
 <h5>If you have any questions or feedback about this repo, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.</h5>
