@@ -46,4 +46,3 @@ console.log("INSERTING: ", JSON.stringify(DOC_TO_INSERT));
   }
   return {ok:false};
 }
-  

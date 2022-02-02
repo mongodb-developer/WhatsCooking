@@ -1,7 +1,0 @@
-{
-    "enabled": true,
-    "custom_domain": "atlassearchrestaurants.com",
-    "app_default_domain": "whatscooking-agtge.mongodbstitch.com",
-    "default_error_path": "/index.html",
-    "default_error_code": "200"
-}

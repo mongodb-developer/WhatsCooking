@@ -3,9 +3,6 @@ exports = async function(payload, response) {
   
     // Querying a mongodb collection:
     const collection = context.services.get("mongodb-atlas").db("whatscooking").collection("restaurants");
-    
-  response.addHeader("Access-Control-Allow-Origin", "*");
- 
 
   if (!payload.body) {
      return({
