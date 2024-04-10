@@ -17,13 +17,13 @@ const RestaurantCard = ({
   source,
   functionScore,
 }) => {
-  let modScore = score["$numberDouble"].toString().slice(0, 3);
-  let starValue = Object.values(stars)[0];
+  let modScore = score.toString().slice(0, 3);
+  let starValue = stars;
   let reviewCount;
   if (!reviews) {
     reviewCount = 0;
   } else {
-    reviewCount = Object.values(reviews)[0];
+    reviewCount = reviews;
   }
   let priceValue;
   if (!price) {

@@ -67,8 +67,8 @@ const NYCMap = ({ restaurants }) => {
           ref.current
         );
 
-        longitude = Object.values(rest.location.coordinates[0]);
-        latitude = Object.values(rest.location.coordinates[1]);
+        longitude = rest.location.coordinates[0];
+        latitude = rest.location.coordinates[1];
         point = [longitude, latitude];
 
         new mapboxgl.Marker(ref.current)

@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "borough": {
+        "type": "stringFacet"
+      },
+      "cuisine": {
+        "type": "stringFacet"
+      }
+    }
+  }
+}
