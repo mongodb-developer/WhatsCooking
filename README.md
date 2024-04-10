@@ -30,7 +30,7 @@
 - custom function scoring
 - synonyms
 
-<p>Check out the video of the MongoDB .Live keynote to see a demonstration of all the features or visit the link below to play around with the finished application, hosted entirely in MongoDB Atlas:</p>
+<p>Check out the video of the MongoDB.Live keynote to see a demonstration of all the features or visit the link below to play around with the finished application, hosted entirely in MongoDB Atlas:</p>
 <h2 align="center"><a href="https://www.atlassearchrestaurants.com">www.atlassearchrestaurants.com</a></h2>
 
 <p>This application is hosted entirely by MongoDB Atlas was created using:</p>
@@ -63,15 +63,6 @@ mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
 </pre>
 
 <p>It is also included in this repo's Supplemental Files branch as <pre>whatscooking.json</pre></p>
-
----
-
-<h2>To Run This Application....</h2>
-
-1. Clone the repo.
-2. Navigate inside `WhatsCooking` directory.
-3. Run <code>npm install</code> .
-4. Run <code>npm start </code> .
 
 ---
 
@@ -134,7 +125,7 @@ Create following 3 HTTP endpoints</br>
 		</tr>
         <tr>
 			<td>/synonyms/getFoodSynonyms</td>
-			<td>🚧</td>
+			<td>_backend_functions/getFoodSynonyms.js</td>
 			<td>POST</td>
             <td>Enable</td>
             <td>JSON</td>
@@ -193,7 +184,16 @@ response
 <h3>/synonyms/getFoodSynonyms</h3>
 🚧
 
+<h2>To Run This Application....</h2>
 
+1. Clone the repo.
+2. Navigate inside `WhatsCooking` directory.
+3. Run <code>npm install</code> .
+4. Change HTTPS endpoint urls at <code>src/hooks/useHomeFetch.js</code> to your own ones.
+5. Change MongoDB Connectionstring at <code>src/pages/IndexPage.js</code> to your own one.
+6. Run <code>npm start </code> .
+
+---
 <h2>React Components....</h2>
 
 <p float="left">
