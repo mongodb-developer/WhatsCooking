@@ -5,8 +5,23 @@
       "borough": {
         "type": "stringFacet"
       },
-      "cuisine": {
-        "type": "stringFacet"
+      "cuisine": [
+        {
+          "type": "stringFacet"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "location": {
+        "indexShapes": true,
+        "type": "geo"
+      },
+      "name": {
+        "type": "string"
+      },
+      "stars": {
+        "type": "number"
       }
     }
   }
