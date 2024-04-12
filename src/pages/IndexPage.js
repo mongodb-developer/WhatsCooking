@@ -205,7 +205,7 @@ const IndexPage = () => {
             whatscooking data:
           </div>
           <SyntaxHighlighter language="javascript" style={okaidia}>
-            mongodb+srv://mongodb:atlassearch@shareddemoapps.dezdl.mongodb.net/whatscooking
+            mongodb+srv://hoge:hoge@cluster2.XXXXX.mongodb.net/whatscooking
           </SyntaxHighlighter>
         </div>
         <div className="flex justify-around">

@@ -61,31 +61,31 @@ const SearchSideBar = ({
   for (let i = 0; i < cuisineBuckets.length; i++) {
     switch (cuisineBuckets[i]._id) {
       case "American":
-        AmericanCount = cuisineBuckets[i].count.$numberLong;
+        AmericanCount = cuisineBuckets[i].count;
         break;
       case "Chinese":
-        ChineseCount = cuisineBuckets[i].count.$numberLong;
+        ChineseCount = cuisineBuckets[i].count;
         break;
       case "French":
-        FrenchCount = cuisineBuckets[i].count.$numberLong;
+        FrenchCount = cuisineBuckets[i].count;
         break;
       case "Hamburgers":
-        HamburgersCount = cuisineBuckets[i].count.$numberLong;
+        HamburgersCount = cuisineBuckets[i].count;
         break;
       case "Italian":
-        ItalianCount = cuisineBuckets[i].count.$numberLong;
+        ItalianCount = cuisineBuckets[i].count;
         break;
       case "Japanese":
-        JapaneseCount = cuisineBuckets[i].count.$numberLong;
+        JapaneseCount = cuisineBuckets[i].count;
         break;
       case "Mexican":
-        MexicanCount = cuisineBuckets[i].count.$numberLong;
+        MexicanCount = cuisineBuckets[i].count;
         break;
       case "Pizza":
-        PizzaCount = cuisineBuckets[i].count.$numberLong;
+        PizzaCount = cuisineBuckets[i].count;
         break;
       case "Bakery":
-        BakeryCount = cuisineBuckets[i].count.$numberLong;
+        BakeryCount = cuisineBuckets[i].count;
         break;
 
       default:
