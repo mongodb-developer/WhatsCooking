@@ -190,8 +190,9 @@ response
 2. Navigate inside `WhatsCooking` directory.
 3. Run <code>npm install</code> .
 4. Change HTTPS endpoint urls at <code>src/hooks/useHomeFetch.js</code> to your own ones.
-5. Change MongoDB Connectionstring at <code>src/pages/IndexPage.js</code> to your own one.
-6. Run <code>npm start </code> .
+5. Change HTTPS endpoint urls at <code>src/compenents/SearchBar.js</code> to your own one.
+6. Change MongoDB Connectionstring at <code>src/pages/IndexPage.js</code> to your own one.
+7. Run <code>npm start </code> .
 
 ---
 <h2>React Components....</h2>
